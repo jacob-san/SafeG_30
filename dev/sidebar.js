@@ -20,45 +20,45 @@ class SideBar extends Component{
                                 className="header-short-name text-success ls-xs fw-thkr">S</strong><span className="ls-xs fw-thk">afeguard</span></a>
                         </div>
 
-                        {/*<ul className="sidebar-navigation ul-clear">*/}
+                        <ul className="sidebar-navigation ul-clear">
 
 
-                            {/*<li className="open"><a href="javascript:void(0)"><i className="fa fa-home fa-fw"></i><span>Dashboard</span></a>*/}
-                            {/*</li>*/}
-
-
-
-                            {/*<li><a href="#"><i className="fa fa-tablet  fa-fw"></i><span>Manage Device</span></a></li>*/}
+                            <li className="open"><a href="javascript:void(0)"><i className="fa fa-home fa-fw"></i><span>Dashboard</span></a>
+                            </li>
 
 
 
-                            {/*<li><a href="#"><i className="fa fa-user fa-fw"></i><span>Manage User</span></a></li>*/}
+                            <li><a href="#"><i className="fa fa-tablet  fa-fw"></i><span>Manage Device</span></a></li>
 
 
 
-                            {/*<li><a href="#"><i className="fa fa-calendar fa-fw"></i><span>Manage Events</span></a></li>*/}
+                            <li><a href="#"><i className="fa fa-user fa-fw"></i><span>Manage User</span></a></li>
 
 
-                            {/*<li><a href="#"><i className="fa fa-search fa-fw"></i><span>Site Scanner</span></a></li>*/}
 
-                            {/*<li><a href="#"><i className="fa fa-bell fa-fw"></i><span>Site Alerts</span></a></li>*/}
-
-                            {/*<li><a href="#"><i className="fa fa-list-alt fa-fw"></i><span>Black List</span></a></li>*/}
-
-                        {/*</ul>*/}
+                            <li><a href="#"><i className="fa fa-calendar fa-fw"></i><span>Manage Events</span></a></li>
 
 
-                                <Menu.Item name='home'>
-                                    <i className="fa fa-home fa-fw"></i><span>Dashboard</span>
-                                </Menu.Item>
-                                <Menu.Item name='gamepad'>
-                                    <Icon name='gamepad' />
-                                    Games
-                                </Menu.Item>
-                                <Menu.Item name='camera'>
-                                    <Icon name='camera' />
-                                    Channels
-                                </Menu.Item>
+                            <li><a href="#"><i className="fa fa-search fa-fw"></i><span>Site Scanner</span></a></li>
+
+                            <li><a href="#"><i className="fa fa-bell fa-fw"></i><span>Site Alerts</span></a></li>
+
+                            <li><a href="#"><i className="fa fa-list-alt fa-fw"></i><span>Black List</span></a></li>
+
+                        </ul>
+
+
+                                {/*<Menu.Item name='home'>*/}
+                                    {/*<i className="fa fa-home fa-fw"></i><span>Dashboard</span>*/}
+                                {/*</Menu.Item>*/}
+                                {/*<Menu.Item name='gamepad'>*/}
+                                    {/*<Icon name='gamepad' />*/}
+                                    {/*Games*/}
+                                {/*</Menu.Item>*/}
+                                {/*<Menu.Item name='camera'>*/}
+                                    {/*<Icon name='camera' />*/}
+                                    {/*Channels*/}
+                                {/*</Menu.Item>*/}
 
 
 

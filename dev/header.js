@@ -10,7 +10,7 @@ class Header extends Component{
 
 
                     <div className="navbar-content">
-                        <ul className="nav navbar-nav">
+                        <ul className="nav navbar-nav" >
                             <li className="hidden-sm hidden-xs"><a href="javascript:void(0)" className="text-default"
                                                                    data-toggle-className="navbar-collapsed" data-target="body"><i
                                 className="fa fa-bars fa-fw"></i></a></li>

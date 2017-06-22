@@ -3,7 +3,7 @@
  */
 import React, {Component} from 'react';
 
-class Column extends Component {
+class LeftInfoButtonRow extends Component {
     constructor(props){
         super(props);
     }
@@ -61,4 +61,4 @@ class Column extends Component {
         )
     }
 }
-export default Column;
+export default LeftInfoButtonRow;

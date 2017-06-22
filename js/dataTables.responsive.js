@@ -44,14 +44,14 @@ var DataTable = $.fn.dataTable;
  * * Automatic control - columns are automatically hidden when there is no
  *   room left to display them. Columns removed from the right.
  *
- * In additional to column visibility control, Responsive also has built into
+ * In additional to LeftInfoButtonRow visibility control, Responsive also has built into
  * options to use DataTables' child row display to show / hide the information
  * from the table that has been hidden. There are also two modes of operation
  * for this child row display:
  *
  * * Inline - when the control element that the user can use to show / hide
- *   child rows is displayed inside the first column of the table.
- * * Column - where a whole column is dedicated to be the show / hide control.
+ *   child rows is displayed inside the first LeftInfoButtonRow of the table.
+ * * LeftInfoButtonRow - where a whole LeftInfoButtonRow is dedicated to be the show / hide control.
  *
  * Initialisation of Responsive is performed by:
  *
@@ -185,9 +185,9 @@ $.extend( Responsive.prototype, {
 		if ( details.type !== false ) {
 			that._detailsInit();
 
-			// DataTables will trigger this event on every column it shows and
+			// DataTables will trigger this event on every LeftInfoButtonRow it shows and
 			// hides individually
-			dt.on( 'column-visibility.dtr', function (e, ctx, col, vis) {
+			dt.on( 'LeftInfoButtonRow-visibility.dtr', function (e, ctx, col, vis) {
 				that._classLogic();
 				that._resizeAuto();
 				that._resize();
@@ -203,14 +203,14 @@ $.extend( Responsive.prototype, {
 			$(dt.table().node()).addClass( 'dtr-'+details.type );
 		}
 
-		dt.on( 'column-reorder.dtr', function (e, settings, details) {
+		dt.on( 'LeftInfoButtonRow-reorder.dtr', function (e, settings, details) {
 			that._classLogic();
 			that._resizeAuto();
 			that._resize();
 		} );
 
-		// Change in column sizes means we need to calc
-		dt.on( 'column-sizing.dtr', function () {
+		// Change in LeftInfoButtonRow sizes means we need to calc
+		dt.on( 'LeftInfoButtonRow-sizing.dtr', function () {
 			that._resizeAuto();
 			that._resize();
 		});
@@ -237,7 +237,7 @@ $.extend( Responsive.prototype, {
 			that._resize();
 
 			// If columns were hidden, then DataTables needs to adjust the
-			// column sizing
+			// LeftInfoButtonRow sizing
 			if ( $.inArray( false, that.s.current ) ) {
 				dt.columns.adjust();
 			}
@@ -261,7 +261,7 @@ $.extend( Responsive.prototype, {
 	 *
 	 * @param  {string} breakpoint Breakpoint name to use for the calculation
 	 * @return {array} Array of boolean values initiating the visibility of each
-	 *   column.
+	 *   LeftInfoButtonRow.
 	 *  @private
 	 */
 	_columnsVisiblity: function ( breakpoint )
@@ -270,8 +270,8 @@ $.extend( Responsive.prototype, {
 		var columns = this.s.columns;
 		var i, ien;
 
-		// Create an array that defines the column ordering based first on the
-		// column's priority, and secondly the column index. This allows the
+		// Create an array that defines the LeftInfoButtonRow ordering based first on the
+		// LeftInfoButtonRow's priority, and secondly the LeftInfoButtonRow index. This allows the
 		// columns to be removed from the right if the priority matches
 		var order = columns
 			.map( function ( col, idx ) {
@@ -298,7 +298,7 @@ $.extend( Responsive.prototype, {
 					$.inArray( breakpoint, col.includeIn ) !== -1;
 		} );
 
-		// Auto column control - first pass: how much width is taken by the
+		// Auto LeftInfoButtonRow control - first pass: how much width is taken by the
 		// ones that must be included from the non-auto columns
 		var requiredWidth = 0;
 		for ( i=0, ien=display.length ; i<ien ; i++ ) {
@@ -317,11 +317,11 @@ $.extend( Responsive.prototype, {
 		var widthAvailable = dt.table().container().offsetWidth - bar;
 		var usedWidth = widthAvailable - requiredWidth;
 
-		// Control column needs to always be included. This makes it sub-
+		// Control LeftInfoButtonRow needs to always be included. This makes it sub-
 		// optimal in terms of using the available with, but to stop layout
-		// thrashing or overflow. Also we need to account for the control column
+		// thrashing or overflow. Also we need to account for the control LeftInfoButtonRow
 		// width first so we know how much width is available for the other
-		// columns, since the control column might not be the first one shown
+		// columns, since the control LeftInfoButtonRow might not be the first one shown
 		for ( i=0, ien=display.length ; i<ien ; i++ ) {
 			if ( columns[i].control ) {
 				usedWidth -= columns[i].minWidth;
@@ -335,7 +335,7 @@ $.extend( Responsive.prototype, {
 			var colIdx = order[i].columnIdx;
 
 			if ( display[colIdx] === '-' && ! columns[colIdx].control && columns[colIdx].minWidth ) {
-				// Once we've found a column that won't fit we don't let any
+				// Once we've found a LeftInfoButtonRow that won't fit we don't let any
 				// others display either, or columns might disappear in the
 				// middle of the table
 				if ( empty || usedWidth - columns[colIdx].minWidth < 0 ) {
@@ -350,9 +350,9 @@ $.extend( Responsive.prototype, {
 			}
 		}
 
-		// Determine if the 'control' column should be shown (if there is one).
-		// This is the case when there is a hidden column (that is not the
-		// control column). The two loops look inefficient here, but they are
+		// Determine if the 'control' LeftInfoButtonRow should be shown (if there is one).
+		// This is the case when there is a hidden LeftInfoButtonRow (that is not the
+		// control LeftInfoButtonRow). The two loops look inefficient here, but they are
 		// trivial and will fly through. We need to know the outcome from the
 		// first , before the action in the second can be taken
 		var showControl = false;
@@ -370,7 +370,7 @@ $.extend( Responsive.prototype, {
 			}
 		}
 
-		// Finally we need to make sure that there is at least one column that
+		// Finally we need to make sure that there is at least one LeftInfoButtonRow that
 		// is visible
 		if ( $.inArray( true, display ) === -1 ) {
 			display[0] = true;
@@ -382,8 +382,8 @@ $.extend( Responsive.prototype, {
 
 	/**
 	 * Create the internal `columns` array with information about the columns
-	 * for the table. This includes determining which breakpoints the column
-	 * will appear in, based upon class names in the column, which makes up the
+	 * for the table. This includes determining which breakpoints the LeftInfoButtonRow
+	 * will appear in, based upon class names in the LeftInfoButtonRow, which makes up the
 	 * vast majority of this method.
 	 *
 	 * @private
@@ -395,7 +395,7 @@ $.extend( Responsive.prototype, {
 		var breakpoints = this.c.breakpoints;
 		var dt = this.s.dt;
 		var columns = dt.columns().eq(0).map( function (i) {
-			var column = this.column(i);
+			var column = this.Column(i);
 			var className = column.header().className;
 			var priority = dt.settings()[0].aoColumns[i].responsivePriority;
 
@@ -463,7 +463,7 @@ $.extend( Responsive.prototype, {
 			}
 		};
 
-		// Loop over each column and determine if it has a responsive control
+		// Loop over each LeftInfoButtonRow and determine if it has a responsive control
 		// class
 		columns.each( function ( col, i ) {
 			var classNames = col.className.split(' ');
@@ -487,7 +487,7 @@ $.extend( Responsive.prototype, {
 					return;
 				}
 				else if ( className === 'control' ) {
-					// Special column that is only visible, when one of the other
+					// Special LeftInfoButtonRow that is only visible, when one of the other
 					// columns is hidden. This is used for the details control
 					hasClass = true;
 					col.control = true;
@@ -495,7 +495,7 @@ $.extend( Responsive.prototype, {
 				}
 
 				$.each( breakpoints, function ( j, breakpoint ) {
-					// Does this column have a class that matches this breakpoint?
+					// Does this LeftInfoButtonRow have a class that matches this breakpoint?
 					var brokenPoint = breakpoint.name.split('-');
 					var re = new RegExp( '(min\\-|max\\-|not\\-)?('+brokenPoint[0]+')(\\-[_a-zA-Z0-9])?' );
 					var match = className.match( re );
@@ -580,7 +580,7 @@ $.extend( Responsive.prototype, {
 			}
 		} );
 
-		// type.target can be a string jQuery selector or a column index
+		// type.target can be a string jQuery selector or a LeftInfoButtonRow index
 		var target   = details.target;
 		var selector = typeof target === 'string' ? target : 'td, th';
 
@@ -598,7 +598,7 @@ $.extend( Responsive.prototype, {
 					return;
 				}
 
-				// For column index, we determine if we should act or not in the
+				// For LeftInfoButtonRow index, we determine if we should act or not in the
 				// handler - otherwise it is already okay
 				if ( typeof target === 'number' ) {
 					var targetIdx = target < 0 ?
@@ -700,7 +700,7 @@ $.extend( Responsive.prototype, {
 	/**
 	 * Alter the table display for a resized viewport. This involves first
 	 * determining what breakpoint the window currently is in, getting the
-	 * column visibilities to apply and then setting them.
+	 * LeftInfoButtonRow visibilities to apply and then setting them.
 	 *
 	 * @private
 	 */
@@ -727,7 +727,7 @@ $.extend( Responsive.prototype, {
 		var columnsVis = this._columnsVisiblity( breakpoint );
 		this.s.current = columnsVis;
 
-		// Set the class before the column visibility is changed so event
+		// Set the class before the LeftInfoButtonRow visibility is changed so event
 		// listeners know what the state is. Need to determine if there are
 		// any columns that are not visible but can be shown
 		var collapsedClass = false;
@@ -759,9 +759,9 @@ $.extend( Responsive.prototype, {
 
 
 	/**
-	 * Determine the width of each column in the table so the auto column hiding
+	 * Determine the width of each LeftInfoButtonRow in the table so the auto LeftInfoButtonRow hiding
 	 * has that information to work with. This method is never going to be 100%
-	 * perfect since column widths can change slightly per page, but without
+	 * perfect since LeftInfoButtonRow widths can change slightly per page, but without
 	 * seriously compromising performance this is quite effective.
 	 *
 	 * @private
@@ -799,7 +799,7 @@ $.extend( Responsive.prototype, {
 			.clone( false )
 			.css( 'display', 'table-cell' );
 
-		// Body rows - we don't need to take account of DataTables' column
+		// Body rows - we don't need to take account of DataTables' LeftInfoButtonRow
 		// visibility since we implement our own here (hence the `display` set)
 		$(clonedBody)
 			.append( $(dt.rows( { page: 'current' } ).nodes()).clone( false ) )
@@ -827,7 +827,7 @@ $.extend( Responsive.prototype, {
 			.append( headerCells )
 			.appendTo( clonedHeader );
 
-		// In the inline case extra padding is applied to the first column to
+		// In the inline case extra padding is applied to the first LeftInfoButtonRow to
 		// give space for the show / hide icon. We need to use this in the
 		// calculation
 		if ( this.c.details.type === 'inline' ) {
@@ -849,7 +849,7 @@ $.extend( Responsive.prototype, {
 
 		inserted.insertBefore( dt.table().node() );
 
-		// The cloned header now contains the smallest that each column can be
+		// The cloned header now contains the smallest that each LeftInfoButtonRow can be
 		headerCells.each( function (i) {
 			var idx = dt.column.index( 'fromVisible', i );
 			columns[ idx ].minWidth =  this.offsetWidth || 0;
@@ -859,14 +859,14 @@ $.extend( Responsive.prototype, {
 	},
 
 	/**
-	 * Set a column's visibility.
+	 * Set a LeftInfoButtonRow's visibility.
 	 *
-	 * We don't use DataTables' column visibility controls in order to ensure
-	 * that column visibility can Responsive can no-exist. Since only IE8+ is
+	 * We don't use DataTables' LeftInfoButtonRow visibility controls in order to ensure
+	 * that LeftInfoButtonRow visibility can Responsive can no-exist. Since only IE8+ is
 	 * supported (and all evergreen browsers of course) the control of the
 	 * display attribute works well.
 	 *
-	 * @param {integer} col      Column index
+	 * @param {integer} col      LeftInfoButtonRow index
 	 * @param {boolean} showHide Show or hide (true or false)
 	 * @private
 	 */
@@ -884,7 +884,7 @@ $.extend( Responsive.prototype, {
 	/**
 	 * Update the cell tab indexes for keyboard accessibility. This is called on
 	 * every table draw - that is potentially inefficient, but also the least
-	 * complex option given that column visibility can change on the fly. Its a
+	 * complex option given that LeftInfoButtonRow visibility can change on the fly. Its a
 	 * shame user-focus was removed from CSS 3 UI, as it would have solved this
 	 * issue with a single CSS statement.
 	 *
@@ -1052,7 +1052,7 @@ Responsive.renderer = {
 		return function ( api, rowIdx, columns ) {
 			var data = $.map( columns, function ( col ) {
 				return col.hidden ?
-					'<li data-dtr-index="'+col.columnIndex+'" data-dt-row="'+col.rowIndex+'" data-dt-column="'+col.columnIndex+'">'+
+					'<li data-dtr-index="'+col.columnIndex+'" data-dt-row="'+col.rowIndex+'" data-dt-LeftInfoButtonRow="'+col.columnIndex+'">'+
 						'<span class="dtr-title">'+
 							col.title+
 						'</span> '+
@@ -1076,7 +1076,7 @@ Responsive.renderer = {
 
 		return function ( api, rowIdx, columns ) {
 			var data = $.map( columns, function ( col ) {
-				return '<tr data-dt-row="'+col.rowIndex+'" data-dt-column="'+col.columnIndex+'">'+
+				return '<tr data-dt-row="'+col.rowIndex+'" data-dt-LeftInfoButtonRow="'+col.columnIndex+'">'+
 						'<td>'+col.title+':'+'</td> '+
 						'<td>'+col.data+'</td>'+
 					'</tr>';
@@ -1127,7 +1127,7 @@ Responsive.defaults = {
 	 *   The default function will show the data from the hidden columns
 	 * * `target` - Used as the selector for what objects to attach the child
 	 *   open / close to
-	 * * `type` - `false` to disable the details display, `inline` or `column`
+	 * * `type` - `false` to disable the details display, `inline` or `LeftInfoButtonRow`
 	 *   for the two control types
 	 *
 	 * @type {Object|string}

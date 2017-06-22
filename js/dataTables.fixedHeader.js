@@ -126,7 +126,7 @@ $.extend( FixedHeader.prototype, {
 		}
 
 		if ( this.c.footer && this.dom.tfoot.length ) {
-			this._modeChange( 'in-place', 'footer', true );
+			this._modeChange( 'in-place', 'Footer', true );
 		}
 
 		this.update();
@@ -148,7 +148,7 @@ $.extend( FixedHeader.prototype, {
 	},
 	
 	/**
-	 * Set footer offset
+	 * Set Footer offset
 	 *
 	 * @param  {int} new value for footerOffset
 	 */
@@ -207,7 +207,7 @@ $.extend( FixedHeader.prototype, {
 			this.c.footerOffset = autoFooter.outerHeight();
 		}
 
-		dt.on( 'column-reorder.dt.dtfc column-visibility.dt.dtfc draw.dt.dtfc column-sizing.dt.dtfc', function () {
+		dt.on( 'LeftInfoButtonRow-reorder.dt.dtfc LeftInfoButtonRow-visibility.dt.dtfc draw.dt.dtfc LeftInfoButtonRow-sizing.dt.dtfc', function () {
 			that.update();
 		} );
 
@@ -230,7 +230,7 @@ $.extend( FixedHeader.prototype, {
 	 * which is moved into a clone of the table element, and moved around the
 	 * document to give the fixed effect.
 	 *
-	 * @param  {string}  item  'header' or 'footer'
+	 * @param  {string}  item  'header' or 'Footer'
 	 * @param  {boolean} force Force the clone to happen, or allow automatic
 	 *   decision (reuse existing if available)
 	 * @private
@@ -272,8 +272,8 @@ $.extend( FixedHeader.prototype, {
 
 	/**
 	 * Copy widths from the cells in one element to another. This is required
-	 * for the footer as the footer in the main table takes its sizes from the
-	 * header columns. That isn't present in the footer so to have it still
+	 * for the Footer as the Footer in the main table takes its sizes from the
+	 * header columns. That isn't present in the Footer so to have it still
 	 * align correctly, the sizes need to be copied over. It is also required
 	 * for the header when auto width is not enabled
 	 *
@@ -307,17 +307,17 @@ $.extend( FixedHeader.prototype, {
 
 	/**
 	 * Remove assigned widths from the cells in an element. This is required
-	 * when inserting the footer back into the main table so the size is defined
+	 * when inserting the Footer back into the main table so the size is defined
 	 * by the header columns and also when auto width is disabled in the
 	 * DataTable.
 	 *
-	 * @param  {string} item The `header` or `footer`
+	 * @param  {string} item The `header` or `Footer`
 	 * @private
 	 */
 	_unsize: function ( item ) {
 		var el = this.dom[ item ].floating;
 
-		if ( el && (item === 'footer' || (item === 'header' && ! this.s.autoWidth)) ) {
+		if ( el && (item === 'Footer' || (item === 'header' && ! this.s.autoWidth)) ) {
 			$('th, td', el).css( {
 				width: '',
 				minWidth: ''
@@ -332,7 +332,7 @@ $.extend( FixedHeader.prototype, {
 	 * Reposition the floating elements to take account of horizontal page
 	 * scroll
 	 *
-	 * @param  {string} item       The `header` or `footer`
+	 * @param  {string} item       The `header` or `Footer`
 	 * @param  {int}    scrollLeft Document scrollLeft
 	 * @private
 	 */
@@ -359,7 +359,7 @@ $.extend( FixedHeader.prototype, {
 	 * * `above` - (Footer only) Fixed to the top of the table body
 	 * 
 	 * @param  {string}  mode        Mode that the item should be shown in
-	 * @param  {string}  item        'header' or 'footer'
+	 * @param  {string}  item        'header' or 'Footer'
 	 * @param  {boolean} forceChange Force a redraw of the mode, even if already
 	 *     in that mode.
 	 * @private
@@ -372,7 +372,7 @@ $.extend( FixedHeader.prototype, {
 
 		// Record focus. Browser's will cause input elements to loose focus if
 		// they are inserted else where in the doc
-		var tablePart = this.dom[ item==='footer' ? 'tfoot' : 'thead' ];
+		var tablePart = this.dom[ item==='Footer' ? 'tfoot' : 'thead' ];
 		var focus = $.contains( tablePart[0], document.activeElement ) ?
 			document.activeElement :
 			null;
@@ -409,7 +409,7 @@ $.extend( FixedHeader.prototype, {
 				.css( 'left', position.left+'px' )
 				.css( 'width', position.width+'px' );
 
-			if ( item === 'footer' ) {
+			if ( item === 'Footer' ) {
 				itemDom.floating.css( 'top', '' );
 			}
 		}
@@ -423,8 +423,8 @@ $.extend( FixedHeader.prototype, {
 				.css( 'left', position.left+'px' )
 				.css( 'width', position.width+'px' );
 		}
-		else if ( mode === 'above' ) { // only used for the footer
-			// Fix the position of the floating footer at top of the table body
+		else if ( mode === 'above' ) { // only used for the Footer
+			// Fix the position of the floating Footer at top of the table body
 			this._clone( item, forceChange );
 
 			itemDom.floating
@@ -458,7 +458,7 @@ $.extend( FixedHeader.prototype, {
 		var dom = this.dom;
 		var tableNode = $(table.node());
 
-		// Need to use the header and footer that are in the main table,
+		// Need to use the header and Footer that are in the main table,
 		// regardless of if they are clones, since they hold the positions we
 		// want to measure from
 		var thead = tableNode.children('thead');
@@ -534,10 +534,10 @@ $.extend( FixedHeader.prototype, {
 			}
 
 			if ( forceChange || footerMode !== this.s.footerMode ) {
-				this._modeChange( footerMode, 'footer', forceChange );
+				this._modeChange( footerMode, 'Footer', forceChange );
 			}
 
-			this._horizontal( 'footer', windowLeft );
+			this._horizontal( 'Footer', windowLeft );
 		}
 	}
 } );
@@ -624,7 +624,7 @@ DataTable.Api.register( 'fixedHeader.disable()', function ( ) {
 	} );
 } );
 
-$.each( ['header', 'footer'], function ( i, el ) {
+$.each( ['header', 'Footer'], function (i, el ) {
 	DataTable.Api.register( 'fixedHeader.'+el+'Offset()', function ( offset ) {
 		var ctx = this.context;
 
