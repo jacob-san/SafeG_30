@@ -5,28 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ce10a371-64c8-4bf7-a5d6-db180e3b4c18" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dev/footer.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dev/main-sub/latestMembers.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dev/main-sub/leftInfoButtonRow.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dev/main-sub/table.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dev/main-sub/tableRow.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/phone.svg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/dev/main.js" afterPath="$PROJECT_DIR$/dev/main_content.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/grid.css" afterPath="$PROJECT_DIR$/css/grid.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/jquery.dataTables.css" afterPath="$PROJECT_DIR$/css/jquery.dataTables.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/xploit.css" afterPath="$PROJECT_DIR$/css/xploit.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dev/app.js" afterPath="$PROJECT_DIR$/dev/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dev/header.js" afterPath="$PROJECT_DIR$/dev/header.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dev/index.js" afterPath="$PROJECT_DIR$/dev/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dev/sidebar.js" afterPath="$PROJECT_DIR$/dev/sidebar.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/dataTables.fixedHeader.js" afterPath="$PROJECT_DIR$/js/dataTables.fixedHeader.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/dataTables.responsive.js" afterPath="$PROJECT_DIR$/js/dataTables.responsive.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/dataTables.tableTools.js" afterPath="$PROJECT_DIR$/js/dataTables.tableTools.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/highcharts.js" afterPath="$PROJECT_DIR$/js/highcharts.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/jquery.dataTables.js" afterPath="$PROJECT_DIR$/js/jquery.dataTables.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/nv.d3.min.js" afterPath="$PROJECT_DIR$/js/nv.d3.min.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -353,12 +332,12 @@
       <workItem from="1498043584490" duration="24000" />
       <workItem from="1498043643954" duration="12647000" />
       <workItem from="1498104247990" duration="6278000" />
-      <workItem from="1498111257040" duration="27749000" />
+      <workItem from="1498111257040" duration="28024000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="53040000" />
+    <option name="totallyTimeSpent" value="53315000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="-4" width="1301" height="772" extended-state="6" />
