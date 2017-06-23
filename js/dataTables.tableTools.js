@@ -932,11 +932,11 @@ TableTools.prototype = {
 
 
 	/**
-	 * Calculate a unity array with the LeftInfoButtonRow width by proportion for a set of columns to be
+	 * Calculate a unity array with the InformationBar width by proportion for a set of columns to be
 	 * included for a button. This is particularly useful for PDF creation, where we can use the
-	 * LeftInfoButtonRow widths calculated by the browser to size the columns in the PDF.
+	 * InformationBar widths calculated by the browser to size the columns in the PDF.
 	 *  @param   {Object} oConfig Button configuration object
-	 *  @returns {Array} Unity array of LeftInfoButtonRow ratios
+	 *  @returns {Array} Unity array of InformationBar ratios
 	 */
 	"fnCalcColRatios": function ( oConfig )
 	{
@@ -968,7 +968,7 @@ TableTools.prototype = {
 	/**
 	 * Get the information contained in a table as a string
 	 *  @param   {Object} oConfig Button configuration object
-	 *  @returns {String} Table data as a string
+	 *  @returns {String} EventsTable data as a string
 	 */
 	"fnGetTableData": function ( oConfig )
 	{
@@ -1174,7 +1174,7 @@ TableTools.prototype = {
 			ZeroClipboard_TableTools.moviePath = this.s.swfPath;
 		}
 
-		/* Table row selecting */
+		/* EventsTable row selecting */
 		this.s.select.type = this.s.custom.sRowSelect;
 		this.s.select.preRowSelect = this.s.custom.fnPreRowSelect;
 		this.s.select.postSelected = this.s.custom.fnRowSelected;
@@ -2033,9 +2033,9 @@ TableTools.prototype = {
 	 *  @method  _fnColumnTargets
 	 *  @param   {String|Array} mColumns The columns to be included in data retrieval. If a string
 	 *			 then it can take the value of "visible" or "hidden" (to include all visible or
-	 *			 hidden columns respectively). Or an array of LeftInfoButtonRow indexes
+	 *			 hidden columns respectively). Or an array of InformationBar indexes
 	 *  @returns {Array} A boolean array the length of the columns of the table, which each value
-	 *			 indicating if the LeftInfoButtonRow is to be included or not
+	 *			 indicating if the InformationBar is to be included or not
 	 *  @private 
 	 */
 	"_fnColumnTargets": function ( mColumns )
@@ -2844,7 +2844,7 @@ TableTools.BUTTONS = {
             if (oConfig.bHeader) lines--;
             if (this.s.dt.nTFoot !== null && oConfig.bFooter) lines--;
 			var plural = (lines==1) ? "" : "s";
-			this.fnInfo( '<h6>Table copied</h6>'+
+			this.fnInfo( '<h6>EventsTable copied</h6>'+
 				'<p>Copied '+lines+' row'+plural+' to the clipboard.</p>',
 				1500
 			);

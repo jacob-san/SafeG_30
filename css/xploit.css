@@ -3307,7 +3307,7 @@ select.input-sm {
  *  Description: Contains all the basic and responsive
  *  				layout for the app.
  *
- *  Reference Class or Main Elements
+ *  Reference Class or Dashboard Elements
  *  	.content-wrapper
  *  		#page-sidebar
  *  		#page-header
@@ -6725,7 +6725,7 @@ select.input-sm {
 }
 
 /* ----------------------------------------------------
- *  9. Pricing Table
+ *  9. Pricing EventsTable
  *
  *  Contains all the CSS codes for all the pricing tables
  *  shown in the demo
@@ -7976,7 +7976,7 @@ div.rating-container:hover div.counter {
  *      FooTable
  *      Editable
  * ---------------------------------------------------- */
-/* ====== Bootstrap Table ===== 
+/* ====== Bootstrap EventsTable =====
 ------------------------------------------------------------ */
 .table > thead > tr > th {
   font-family: "Montserrat", sans-serif;

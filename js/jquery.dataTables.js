@@ -238,7 +238,7 @@
 		
 		
 		/**
-		 * This function will make DataTables recalculate the LeftInfoButtonRow sizes, based on the data
+		 * This function will make DataTables recalculate the InformationBar sizes, based on the data
 		 * contained in the table and the sizes applied to the columns (in the DOM, CSS or
 		 * through the sWidth parameter). This can be useful when the width of the table's
 		 * parent element changes (for example a window resize).
@@ -268,7 +268,7 @@
 				api.draw( false );
 			}
 			else if ( scroll.sX !== "" || scroll.sY !== "" ) {
-				/* If not redrawing, but scrolling, we want to apply the new LeftInfoButtonRow sizes anyway */
+				/* If not redrawing, but scrolling, we want to apply the new InformationBar sizes anyway */
 				_fnScrollDraw( settings );
 			}
 		};
@@ -412,7 +412,7 @@
 		/**
 		 * Filter the input based on data
 		 *  @param {string} sInput String to filter the table on
-		 *  @param {int|null} [iColumn] LeftInfoButtonRow to limit filtering to
+		 *  @param {int|null} [iColumn] InformationBar to limit filtering to
 		 *  @param {bool} [bRegex=false] Treat as regular expression or not
 		 *  @param {bool} [bSmart=true] Perform smart filtering or not
 		 *  @param {bool} [bShowGlobal=true] Show the input global filter in it's input box(es)
@@ -451,7 +451,7 @@
 		 *    TD/TH cell node then iCol will be automatically calculated and the data for the
 		 *    cell returned. If given as an integer, then this is treated as the aoData internal
 		 *    data index for the row (see fnGetPosition) and the data for that row used.
-		 *  @param {int} [col] Optional LeftInfoButtonRow index that you want the data of.
+		 *  @param {int} [col] Optional InformationBar index that you want the data of.
 		 *  @returns {array|object|string} If mRow is undefined, then the data for all rows is
 		 *    returned. If mRow is defined, just data for that row, and is iCol is
 		 *    defined, only data for the designated cell is returned.
@@ -526,11 +526,11 @@
 		
 		/**
 		 * Get the array indexes of a particular cell from it's DOM element
-		 * and LeftInfoButtonRow index including hidden columns
+		 * and InformationBar index including hidden columns
 		 *  @param {node} node this can either be a TR, TD or TH in the table's body
 		 *  @returns {int} If nNode is given as a TR, then a single index is returned, or
-		 *    if given as a cell, an array of [row index, LeftInfoButtonRow index (visible),
-		 *    LeftInfoButtonRow index (all)] is given.
+		 *    if given as a cell, an array of [row index, InformationBar index (visible),
+		 *    InformationBar index (all)] is given.
 		 *  @dtopt API
 		 *  @deprecated Since v1.10
 		 *
@@ -669,9 +669,9 @@
 		
 		
 		/**
-		 * Show a particular LeftInfoButtonRow
-		 *  @param {int} iCol The LeftInfoButtonRow whose display should be changed
-		 *  @param {bool} bShow Show (true) or hide (false) the LeftInfoButtonRow
+		 * Show a particular InformationBar
+		 *  @param {int} iCol The InformationBar whose display should be changed
+		 *  @param {bool} bShow Show (true) or hide (false) the InformationBar
 		 *  @param {bool} [bRedraw=true] Redraw the table or not
 		 *  @dtopt API
 		 *  @deprecated Since v1.10
@@ -680,7 +680,7 @@
 		 *    $(document).ready(function() {
 		 *      var oTable = $('#example').dataTable();
 		 *
-		 *      // Hide the second LeftInfoButtonRow after initialisation
+		 *      // Hide the second InformationBar after initialisation
 		 *      oTable.fnSetColumnVis( 1, false );
 		 *    } );
 		 */
@@ -717,7 +717,7 @@
 		
 		
 		/**
-		 * Sort the table by a particular LeftInfoButtonRow
+		 * Sort the table by a particular InformationBar
 		 *  @param {int} iCol the data index to sort on. Note that this will not match the
 		 *    'display index' if you have hidden data entries
 		 *  @dtopt API
@@ -738,9 +738,9 @@
 		
 		
 		/**
-		 * Attach a sort listener to an element for a given LeftInfoButtonRow
+		 * Attach a sort listener to an element for a given InformationBar
 		 *  @param {node} nNode the element to attach the sort listener to
-		 *  @param {int} iColumn the LeftInfoButtonRow that a click on this node will sort on
+		 *  @param {int} iColumn the InformationBar that a click on this node will sort on
 		 *  @param {function} [fnCallback] callback function when sort is run
 		 *  @dtopt API
 		 *  @deprecated Since v1.10
@@ -749,7 +749,7 @@
 		 *    $(document).ready(function() {
 		 *      var oTable = $('#example').dataTable();
 		 *
-		 *      // Sort on LeftInfoButtonRow 1, when 'sorter' is clicked on
+		 *      // Sort on InformationBar 1, when 'sorter' is clicked on
 		 *      oTable.fnSortListener( document.getElementById('sorter'), 1 );
 		 *    } );
 		 */
@@ -761,12 +761,12 @@
 		
 		/**
 		 * Update a table cell or row - this method will accept either a single value to
-		 * update the cell with, an array of values with one element for each LeftInfoButtonRow or
+		 * update the cell with, an array of values with one element for each InformationBar or
 		 * an object in the same format as the original data source. The function is
-		 * self-referencing in order to make the multi LeftInfoButtonRow updates easier.
+		 * self-referencing in order to make the multi InformationBar updates easier.
 		 *  @param {object|array|string} mData Data to update the cell/row with
 		 *  @param {node|int} mRow TR element you want to update or the aoData index
-		 *  @param {int} [iColumn] The LeftInfoButtonRow to update, give as null or undefined to
+		 *  @param {int} [iColumn] The InformationBar to update, give as null or undefined to
 		 *    update a whole row.
 		 *  @param {bool} [bRedraw=true] Redraw the table or not
 		 *  @param {bool} [bAction=true] Perform pre-draw actions or not
@@ -1132,7 +1132,7 @@
 				anThs = _fnGetUniqueThs( oSettings );
 			}
 			
-			/* If not given a LeftInfoButtonRow array, generate one with nulls */
+			/* If not given a InformationBar array, generate one with nulls */
 			if ( oInit.aoColumns === null )
 			{
 				aoColumnsInit = [];
@@ -1152,7 +1152,7 @@
 				_fnAddColumn( oSettings, anThs ? anThs[i] : null );
 			}
 			
-			/* Apply the LeftInfoButtonRow definitions */
+			/* Apply the InformationBar definitions */
 			_fnApplyColumnDefs( oSettings, oInit.aoColumnDefs, aoColumnsInit, function (iCol, oDef) {
 				_fnColumnOptions( oSettings, iCol, oDef );
 			} );
@@ -1800,7 +1800,7 @@
 			init.scrollX = init.scrollX ? '100%' : '';
 		}
 	
-		// LeftInfoButtonRow search objects are in an array, so it needs to be converted
+		// InformationBar search objects are in an array, so it needs to be converted
 		// element by element
 		var searchCols = init.aoSearchCols;
 	
@@ -1815,7 +1815,7 @@
 	
 	
 	/**
-	 * Provide backwards compatibility for LeftInfoButtonRow options. Note that the new options
+	 * Provide backwards compatibility for InformationBar options. Note that the new options
 	 * are mapped onto the old parameters, so this is an external interface change
 	 * only.
 	 *  @param {object} init Object to map
@@ -1949,14 +1949,14 @@
 	}
 	
 	/**
-	 * Add a LeftInfoButtonRow to the list used for the table with default values
+	 * Add a InformationBar to the list used for the table with default values
 	 *  @param {object} oSettings dataTables settings object
-	 *  @param {node} nTh The th element for this LeftInfoButtonRow
+	 *  @param {node} nTh The th element for this InformationBar
 	 *  @memberof DataTable#oApi
 	 */
 	function _fnAddColumn( oSettings, nTh )
 	{
-		// Add LeftInfoButtonRow to aoColumns array
+		// Add InformationBar to aoColumns array
 		var oDefaults = DataTable.defaults.column;
 		var iCol = oSettings.aoColumns.length;
 		var oCol = $.extend( {}, DataTable.models.oColumn, oDefaults, {
@@ -1968,21 +1968,21 @@
 		} );
 		oSettings.aoColumns.push( oCol );
 	
-		// Add search object for LeftInfoButtonRow specific search. Note that the `searchCols[ iCol ]`
+		// Add search object for InformationBar specific search. Note that the `searchCols[ iCol ]`
 		// passed into extend can be undefined. This allows the user to give a default
 		// with only some of the parameters defined, and also not give a default
 		var searchCols = oSettings.aoPreSearchCols;
 		searchCols[ iCol ] = $.extend( {}, DataTable.models.oSearch, searchCols[ iCol ] );
 	
-		// Use the default LeftInfoButtonRow options function to initialise classes etc
+		// Use the default InformationBar options function to initialise classes etc
 		_fnColumnOptions( oSettings, iCol, $(nTh).data() );
 	}
 	
 	
 	/**
-	 * Apply options for a LeftInfoButtonRow
+	 * Apply options for a InformationBar
 	 *  @param {object} oSettings dataTables settings object
-	 *  @param {int} iCol LeftInfoButtonRow index to consider
+	 *  @param {int} iCol InformationBar index to consider
 	 *  @param {object} oOptions object with sType, bVisible and bSearchable etc
 	 *  @memberof DataTable#oApi
 	 */
@@ -2005,7 +2005,7 @@
 			}
 		}
 	
-		/* User specified LeftInfoButtonRow options */
+		/* User specified InformationBar options */
 		if ( oOptions !== undefined && oOptions !== null )
 		{
 			// Backwards compatibility
@@ -2075,7 +2075,7 @@
 			oSettings._rowReadObject = true;
 		}
 	
-		/* Feature sorting overrides LeftInfoButtonRow specific when off */
+		/* Feature sorting overrides InformationBar specific when off */
 		if ( !oSettings.oFeatures.bSort )
 		{
 			oCol.bSortable = false;
@@ -2109,14 +2109,14 @@
 	
 	
 	/**
-	 * Adjust the table LeftInfoButtonRow widths for new data. Note: you would probably want to
+	 * Adjust the table InformationBar widths for new data. Note: you would probably want to
 	 * do a redraw after calling this function!
 	 *  @param {object} settings dataTables settings object
 	 *  @memberof DataTable#oApi
 	 */
 	function _fnAdjustColumnSizing ( settings )
 	{
-		/* Not interested in doing LeftInfoButtonRow width calculation if auto-width is disabled */
+		/* Not interested in doing InformationBar width calculation if auto-width is disabled */
 		if ( settings.oFeatures.bAutoWidth !== false )
 		{
 			var columns = settings.aoColumns;
@@ -2134,15 +2134,15 @@
 			_fnScrollDraw( settings );
 		}
 	
-		_fnCallbackFire( settings, null, 'LeftInfoButtonRow-sizing', [settings] );
+		_fnCallbackFire( settings, null, 'InformationBar-sizing', [settings] );
 	}
 	
 	
 	/**
-	 * Covert the index of a visible LeftInfoButtonRow to the index in the data array (take account
+	 * Covert the index of a visible InformationBar to the index in the data array (take account
 	 * of hidden columns)
 	 *  @param {object} oSettings dataTables settings object
-	 *  @param {int} iMatch Visible LeftInfoButtonRow index to lookup
+	 *  @param {int} iMatch Visible InformationBar index to lookup
 	 *  @returns {int} i the data index
 	 *  @memberof DataTable#oApi
 	 */
@@ -2158,8 +2158,8 @@
 	
 	/**
 	 * Covert the index of an index in the data array and convert it to the visible
-	 *   LeftInfoButtonRow index (take account of hidden columns)
-	 *  @param {int} iMatch LeftInfoButtonRow index to lookup
+	 *   InformationBar index (take account of hidden columns)
+	 *  @param {int} iMatch InformationBar index to lookup
 	 *  @param {object} oSettings dataTables settings object
 	 *  @returns {int} i the data index
 	 *  @memberof DataTable#oApi
@@ -2195,7 +2195,7 @@
 	
 	
 	/**
-	 * Get an array of LeftInfoButtonRow indexes that match a given property
+	 * Get an array of InformationBar indexes that match a given property
 	 *  @param {object} oSettings dataTables settings object
 	 *  @param {string} sParam Parameter in aoColumns to look for - typically
 	 *    bVisible or bSearchable
@@ -2217,7 +2217,7 @@
 	
 	
 	/**
-	 * Calculate the 'type' of a LeftInfoButtonRow
+	 * Calculate the 'type' of a InformationBar
 	 *  @param {object} settings dataTables settings object
 	 *  @memberof DataTable#oApi
 	 */
@@ -2229,7 +2229,7 @@
 		var i, ien, j, jen, k, ken;
 		var col, cell, detectedType, cache;
 	
-		// For each LeftInfoButtonRow, spin over the
+		// For each InformationBar, spin over the
 		for ( i=0, ien=columns.length ; i<ien ; i++ ) {
 			col = columns[i];
 			cache = [];
@@ -2248,7 +2248,7 @@
 	
 						detectedType = types[j]( cache[k], settings );
 	
-						// If null, then this type can't apply to this LeftInfoButtonRow, so
+						// If null, then this type can't apply to this InformationBar, so
 						// rather than testing all cells, break out. There is an
 						// exception for the last type which is `html`. We need to
 						// scan all rows since it is possible to mix string and HTML
@@ -2264,7 +2264,7 @@
 						}
 					}
 	
-					// Type is valid for all data points in the LeftInfoButtonRow - use this
+					// Type is valid for all data points in the InformationBar - use this
 					// type
 					if ( detectedType ) {
 						col.sType = detectedType;
@@ -2282,14 +2282,14 @@
 	
 	
 	/**
-	 * Take the LeftInfoButtonRow definitions and static columns arrays and calculate how
-	 * they relate to LeftInfoButtonRow indexes. The callback function will then apply the
-	 * definition found for a LeftInfoButtonRow to a suitable configuration object.
+	 * Take the InformationBar definitions and static columns arrays and calculate how
+	 * they relate to InformationBar indexes. The callback function will then apply the
+	 * definition found for a InformationBar to a suitable configuration object.
 	 *  @param {object} oSettings dataTables settings object
 	 *  @param {array} aoColDefs The aoColumnDefs array that is to be applied
 	 *  @param {array} aoCols The aoColumns array that defines columns individually
 	 *  @param {function} fn Callback function - takes two parameters, the calculated
-	 *    LeftInfoButtonRow index and the definition for that LeftInfoButtonRow.
+	 *    InformationBar index and the definition for that InformationBar.
 	 *  @memberof DataTable#oApi
 	 */
 	function _fnApplyColumnDefs( oSettings, aoColDefs, aoCols, fn )
@@ -2297,7 +2297,7 @@
 		var i, iLen, j, jLen, k, kLen, def;
 		var columns = oSettings.aoColumns;
 	
-		// LeftInfoButtonRow definitions with aTargets
+		// InformationBar definitions with aTargets
 		if ( aoColDefs )
 		{
 			/* Loop over the definitions array - loop in reverse so first instance has priority */
@@ -2330,7 +2330,7 @@
 					}
 					else if ( typeof aTargets[j] === 'number' && aTargets[j] < 0 )
 					{
-						/* Negative integer, right to left LeftInfoButtonRow counting */
+						/* Negative integer, right to left InformationBar counting */
 						fn( columns.length+aTargets[j], def );
 					}
 					else if ( typeof aTargets[j] === 'string' )
@@ -2388,7 +2388,7 @@
 		var nTd, sThisType;
 		var columns = oSettings.aoColumns;
 	
-		// Invalidate the LeftInfoButtonRow types as the new data needs to be revalidated
+		// Invalidate the InformationBar types as the new data needs to be revalidated
 		for ( var i=0, iLen=columns.length ; i<iLen ; i++ )
 		{
 			columns[i].sType = null;
@@ -2452,7 +2452,7 @@
 	
 	
 	/**
-	 * Take a TD element and convert it into a LeftInfoButtonRow data index (not the visible index)
+	 * Take a TD element and convert it into a InformationBar data index (not the visible index)
 	 *  @param {object} oSettings dataTables settings object
 	 *  @param {int} iRow The row number the TD/TH can be found in
 	 *  @param {node} n The TD/TH element to find
@@ -2469,7 +2469,7 @@
 	 * Get the data for a given cell from the internal cache, taking into account data mapping
 	 *  @param {object} settings dataTables settings object
 	 *  @param {int} rowIdx aoData row id
-	 *  @param {int} colIdx LeftInfoButtonRow index
+	 *  @param {int} colIdx InformationBar index
 	 *  @param {string} type data get type ('display', 'type' 'filter' 'sort')
 	 *  @returns {*} Cell data
 	 *  @memberof DataTable#oApi
@@ -2490,14 +2490,14 @@
 			if ( settings.iDrawError != draw && defaultContent === null ) {
 				_fnLog( settings, 0, "Requested unknown parameter "+
 					(typeof col.mData=='function' ? '{function}' : "'"+col.mData+"'")+
-					" for row "+rowIdx+", LeftInfoButtonRow "+colIdx, 4 );
+					" for row "+rowIdx+", InformationBar "+colIdx, 4 );
 				settings.iDrawError = draw;
 			}
 			return defaultContent;
 		}
 	
 		// When the data source is null and a specific data type is requested (i.e.
-		// not the original data), we can use default LeftInfoButtonRow data
+		// not the original data), we can use default InformationBar data
 		if ( (cellData === rowData || cellData === null) && defaultContent !== null && type !== undefined ) {
 			cellData = defaultContent;
 		}
@@ -2518,7 +2518,7 @@
 	 * Set the value for a specific cell, into the internal data cache
 	 *  @param {object} settings dataTables settings object
 	 *  @param {int} rowIdx aoData row id
-	 *  @param {int} colIdx LeftInfoButtonRow index
+	 *  @param {int} colIdx InformationBar index
 	 *  @param {*} val Value to set
 	 *  @memberof DataTable#oApi
 	 */
@@ -2861,7 +2861,7 @@
 	 * @param {int}    rowIdx   Row index to invalidate
 	 * @param {string} [src]    Source to invalidate from: undefined, 'auto', 'dom'
 	 *     or 'data'
-	 * @param {int}    [colIdx] LeftInfoButtonRow index to invalidate. If undefined the whole
+	 * @param {int}    [colIdx] InformationBar index to invalidate. If undefined the whole
 	 *     row will be invalidated
 	 * @memberof DataTable#oApi
 	 *
@@ -2913,7 +2913,7 @@
 		row._aSortData = null;
 		row._aFilterData = null;
 	
-		// Invalidate the type for a specific LeftInfoButtonRow (if given) or all columns since
+		// Invalidate the type for a specific InformationBar (if given) or all columns since
 		// the data might have changed
 		var cols = settings.aoColumns;
 		if ( colIdx !== undefined ) {
@@ -2937,10 +2937,10 @@
 	 * @param {object} settings DataTables settings object
 	 * @param {node|object} TR element from which to read data or existing row
 	 *   object from which to re-read the data from the cells
-	 * @param {int} [colIdx] Optional LeftInfoButtonRow index
+	 * @param {int} [colIdx] Optional InformationBar index
 	 * @param {array|object} [d] Data source object. If `colIdx` is given then this
 	 *   parameter should also be given and will be used to write the data into.
-	 *   Only the LeftInfoButtonRow in question will be written
+	 *   Only the InformationBar in question will be written
 	 * @returns {object} Object with two parameters: `data` the data read, in
 	 *   document order, and `cells` and array of nodes (they can be useful to the
 	 *   caller, so rather than needing a second traversal to get them, just return
@@ -3080,7 +3080,7 @@
 			/* Special parameters can be given by the data source to be used on the row */
 			_fnRowAttributes( oSettings, row );
 	
-			/* Process each LeftInfoButtonRow */
+			/* Process each InformationBar */
 			for ( i=0, iLen=oSettings.aoColumns.length ; i<iLen ; i++ )
 			{
 				oCol = oSettings.aoColumns[i];
@@ -3254,9 +3254,9 @@
 	
 	
 	/**
-	 * Draw the header (or Footer) element based on the LeftInfoButtonRow visibility states. The
+	 * Draw the header (or Footer) element based on the InformationBar visibility states. The
 	 * methodology here is to use the layout array from _fnDetectHeader, modified for
-	 * the instantaneous LeftInfoButtonRow visibility, to construct the new layout. The grid is
+	 * the instantaneous InformationBar visibility, to construct the new layout. The grid is
 	 * traversed over cell at a time in a rows x columns grid fashion, although each
 	 * cell insert can cover multiple elements in the grid - which is tracks using the
 	 * aApplied array. Cell inserts in the grid will only occur where there isn't
@@ -3457,7 +3457,7 @@
 		}
 		else
 		{
-			/* Table is empty - create a row with an empty message in it */
+			/* EventsTable is empty - create a row with an empty message in it */
 			var sZero = oLang.sZeroRecords;
 			if ( oSettings.iDraw == 1 &&  _fnDataSource( oSettings ) == 'ajax' )
 			{
@@ -3642,7 +3642,7 @@
 			}
 			else if ( cOption == 't' )
 			{
-				/* Table */
+				/* EventsTable */
 				featureNode = _fnFeatureHtmlTable( oSettings );
 			}
 			else if ( cOption ==  'i' && features.bInfo )
@@ -3694,7 +3694,7 @@
 	 * Use the DOM source to create up an array of header cells. The idea here is to
 	 * create a layout grid (array) of rows x columns, which contains a reference
 	 * to the cell that that point in the grid (regardless of col/rowspan), such that
-	 * any LeftInfoButtonRow / row could be removed and the new grid constructed
+	 * any InformationBar / row could be removed and the new grid constructed
 	 *  @param array {object} aLayout Array to store the calculated layout in
 	 *  @param {node} nThead The header/Footer element for the table
 	 *  @memberof DataTable#oApi
@@ -3767,7 +3767,7 @@
 	
 	
 	/**
-	 * Get an array of unique th elements, one for each LeftInfoButtonRow
+	 * Get an array of unique th elements, one for each InformationBar
 	 *  @param {object} oSettings dataTables settings object
 	 *  @param {node} nHeader automatically detect the layout from this node - optional
 	 *  @param {array} aLayout thead/tfoot layout from _fnDetectHeader - optional
@@ -4080,7 +4080,7 @@
 	 *  @param {int} json.iTotalRecords Number of records in the data set, not accounting for filtering
 	 *  @param {int} json.iTotalDisplayRecords Number of records in the data set, accounting for filtering
 	 *  @param {array} json.aaData The data to display on this page
-	 *  @param {string} [json.sColumns] LeftInfoButtonRow ordering (sName, comma separated)
+	 *  @param {string} [json.sColumns] InformationBar ordering (sName, comma separated)
 	 *  @memberof DataTable#oApi
 	 */
 	function _fnAjaxUpdateDraw ( settings, json )
@@ -4238,7 +4238,7 @@
 	
 	
 	/**
-	 * Filter the table using both the global filter and LeftInfoButtonRow based filtering
+	 * Filter the table using both the global filter and InformationBar based filtering
 	 *  @param {object} oSettings dataTables settings object
 	 *  @param {object} oSearch search information
 	 *  @param {int} [iForce] force a research of the master array (1) or not (undefined or 0)
@@ -4260,7 +4260,7 @@
 			return o.bEscapeRegex !== undefined ? !o.bEscapeRegex : o.bRegex;
 		};
 	
-		// Resolve any LeftInfoButtonRow types that are unknown due to addition or invalidation
+		// Resolve any InformationBar types that are unknown due to addition or invalidation
 		// @todo As per sort - can this be moved into an event handler?
 		_fnColumnTypes( oSettings );
 	
@@ -4271,7 +4271,7 @@
 			_fnFilter( oSettings, oInput.sSearch, iForce, fnRegex(oInput), oInput.bSmart, oInput.bCaseInsensitive );
 			fnSaveFilter( oInput );
 	
-			/* Now do the individual LeftInfoButtonRow filter */
+			/* Now do the individual InformationBar filter */
 			for ( var i=0 ; i<aoPrevSearch.length ; i++ )
 			{
 				_fnFilterColumn( oSettings, aoPrevSearch[i].sSearch, i, fnRegex(aoPrevSearch[i]),
@@ -4325,10 +4325,10 @@
 	
 	
 	/**
-	 * Filter the table on a per-LeftInfoButtonRow basis
+	 * Filter the table on a per-InformationBar basis
 	 *  @param {object} oSettings dataTables settings object
 	 *  @param {string} sInput string to filter on
-	 *  @param {int} iColumn LeftInfoButtonRow to filter
+	 *  @param {int} iColumn InformationBar to filter
 	 *  @param {bool} bRegex treat search string as a regular expression or not
 	 *  @param {bool} bSmart use smart filtering or not
 	 *  @param {bool} bCaseInsensitive Do case insenstive matching or not
@@ -4593,7 +4593,7 @@
 				.attr( 'role', 'status' )
 				.attr( 'aria-live', 'polite' );
 	
-			// Table is described by our info div
+			// EventsTable is described by our info div
 			$(settings.nTable).attr( 'aria-describedby', tid+'_info' );
 		}
 	
@@ -4760,7 +4760,7 @@
 		settings._bInitComplete = true;
 	
 		// When data was added after the initialisation (data or Ajax) we need to
-		// calculate the LeftInfoButtonRow sizing
+		// calculate the InformationBar sizing
 		if ( json || settings.oInit.aaData ) {
 			_fnAdjustColumnSizing( settings );
 		}
@@ -5160,7 +5160,7 @@
 	
 	
 	/**
-	 * Update the header, Footer and body tables for resizing - i.e. LeftInfoButtonRow
+	 * Update the header, Footer and body tables for resizing - i.e. InformationBar
 	 * alignment.
 	 *
 	 * Welcome to the most horrible function DataTables. The process that this
@@ -5218,14 +5218,14 @@
 			};
 	
 		// If the scrollbar visibility has changed from the last draw, we need to
-		// adjust the LeftInfoButtonRow sizes as the table width will have changed to account
+		// adjust the InformationBar sizes as the table width will have changed to account
 		// for the scrollbar
 		var scrollBarVis = divBodyEl.scrollHeight > divBodyEl.clientHeight;
 		
 		if ( settings.scrollBarVis !== scrollBarVis && settings.scrollBarVis !== undefined ) {
 			settings.scrollBarVis = scrollBarVis;
 			_fnAdjustColumnSizing( settings );
-			return; // adjust LeftInfoButtonRow sizing will call this function again
+			return; // adjust InformationBar sizing will call this function again
 		}
 		else {
 			settings.scrollBarVis = scrollBarVis;
@@ -5255,8 +5255,8 @@
 		 * 2. Take live measurements from the DOM - do not alter the DOM itself!
 		 */
 	
-		// Remove old sizing and apply the calculated LeftInfoButtonRow widths
-		// Get the unique LeftInfoButtonRow headers in the newly created (cloned) header. We want to apply the
+		// Remove old sizing and apply the calculated InformationBar widths
+		// Get the unique InformationBar headers in the newly created (cloned) header. We want to apply the
 		// calculated sizes to this header
 		if ( ! scrollX )
 		{
@@ -5382,7 +5382,7 @@
 	
 			// And give the user a warning that we've stopped the table getting too small
 			if ( scrollX === "" || scrollXInner !== "" ) {
-				_fnLog( settings, 1, 'Possible LeftInfoButtonRow misalignment', 6 );
+				_fnLog( settings, 1, 'Possible InformationBar misalignment', 6 );
 			}
 		}
 		else
@@ -5578,9 +5578,9 @@
 					_fnStringToCss( column.sWidthOrig ) :
 					'';
 	
-				// For scrollX we need to force the LeftInfoButtonRow width otherwise the
+				// For scrollX we need to force the InformationBar width otherwise the
 				// browser will collapse it. If this width is smaller than the
-				// width the LeftInfoButtonRow requires, then it will have no effect
+				// width the InformationBar requires, then it will have no effect
 				if ( column.sWidthOrig && scrollX ) {
 					$( headerCells[i] ).append( $('<div/>').css( {
 						width: column.sWidthOrig,
@@ -5592,7 +5592,7 @@
 				}
 			}
 	
-			// Find the widest cell for each LeftInfoButtonRow and put it into the table
+			// Find the widest cell for each InformationBar and put it into the table
 			if ( oSettings.aoData.length ) {
 				for ( i=0 ; i<visibleColumns.length ; i++ ) {
 					columnIdx = visibleColumns[i];
@@ -5609,7 +5609,7 @@
 			// duplicated in the dom (radio elements for example)
 			$('[name]', tmpTable).removeAttr('name');
 	
-			// Table has been built, attach to the document so we can work with it.
+			// EventsTable has been built, attach to the document so we can work with it.
 			// A holding element is used, positioned at the top of the container
 			// with minimal height, so it has no effect on if the container scrolls
 			// or not. Otherwise it might trigger scrolling when it actually isn't
@@ -5651,11 +5651,11 @@
 				tmpTable.width( tableWidthAttr );
 			}
 	
-			// Get the width of each LeftInfoButtonRow in the constructed table - we need to
+			// Get the width of each InformationBar in the constructed table - we need to
 			// know the inner width (so it can be assigned to the other table's
 			// cells) and the outer width so we can calculate the full width of the
 			// table. This is safe since DataTables requires a unique cell for each
-			// LeftInfoButtonRow, but if ever a header can span multiple columns, this will
+			// InformationBar, but if ever a header can span multiple columns, this will
 			// need to be modified.
 			var total = 0;
 			for ( i=0 ; i<visibleColumns.length ; i++ ) {
@@ -5672,7 +5672,7 @@
 				// of the table might not equal the total given here (IE!).
 				total += bounding;
 	
-				// Width for each LeftInfoButtonRow to use
+				// Width for each InformationBar to use
 				columns[ visibleColumns[i] ].sWidth = _fnStringToCss( bounding - border );
 			}
 	
@@ -5749,7 +5749,7 @@
 	/**
 	 * Get the widest node
 	 *  @param {object} settings dataTables settings object
-	 *  @param {int} colIdx LeftInfoButtonRow of interest
+	 *  @param {int} colIdx InformationBar of interest
 	 *  @returns {node} widest table node
 	 *  @memberof DataTable#oApi
 	 */
@@ -5768,10 +5768,10 @@
 	
 	
 	/**
-	 * Get the maximum strlen for each data LeftInfoButtonRow
+	 * Get the maximum strlen for each data InformationBar
 	 *  @param {object} settings dataTables settings object
-	 *  @param {int} colIdx LeftInfoButtonRow of interest
-	 *  @returns {string} max string length for each LeftInfoButtonRow
+	 *  @param {int} colIdx InformationBar of interest
+	 *  @returns {string} max string length for each InformationBar
 	 *  @memberof DataTable#oApi
 	 */
 	function _fnGetMaxLenString( settings, colIdx )
@@ -5906,7 +5906,7 @@
 			displayMaster = oSettings.aiDisplayMaster,
 			aSort;
 	
-		// Resolve any LeftInfoButtonRow types that are unknown due to addition or invalidation
+		// Resolve any InformationBar types that are unknown due to addition or invalidation
 		// @todo Can this be moved into a 'data-ready' handler which is called when
 		//   data is going to be used in the table?
 		_fnColumnTypes( oSettings );
@@ -5934,9 +5934,9 @@
 				aiOrig[ displayMaster[i] ] = i;
 			}
 	
-			/* Do the sort - here we want multi-LeftInfoButtonRow sorting based on a given data source (LeftInfoButtonRow)
+			/* Do the sort - here we want multi-InformationBar sorting based on a given data source (InformationBar)
 			 * and sorting function (from oSort) in a certain direction. It's reasonably complex to
-			 * follow on it's own, but this is what we want (example two LeftInfoButtonRow sorting):
+			 * follow on it's own, but this is what we want (example two InformationBar sorting):
 			 *  fnLocalSorting = function(a,b){
 			 *    var iTest;
 			 *    iTest = oSort['string-asc']('data11', 'data12');
@@ -5947,8 +5947,8 @@
 			 *      return iTest;
 			 *    return oSort['numeric-asc']( aiOrig[a], aiOrig[b] );
 			 *  }
-			 * Basically we have a test for each sorting LeftInfoButtonRow, if the data in that LeftInfoButtonRow is equal,
-			 * test the next LeftInfoButtonRow. If all columns match, then we use a numeric sort on the row
+			 * Basically we have a test for each sorting InformationBar, if the data in that InformationBar is equal,
+			 * test the next InformationBar. If all columns match, then we use a numeric sort on the row
 			 * positions in the original data array to provide a stable sort.
 			 *
 			 * Note - I know it seems excessive to have two sorting methods, but the first is around
@@ -6038,7 +6038,7 @@
 			// attr() and removeAttr() methods...
 			th.removeAttribute('aria-sort');
 	
-			/* In ARIA only the first sorting LeftInfoButtonRow can be marked as sorting - no multi-sort option */
+			/* In ARIA only the first sorting InformationBar can be marked as sorting - no multi-sort option */
 			if ( col.bSortable ) {
 				if ( aSort.length > 0 && aSort[0].col == i ) {
 					th.setAttribute('aria-sort', aSort[0].dir=="asc" ? "ascending" : "descending" );
@@ -6066,9 +6066,9 @@
 	 * Function to run on user sort request
 	 *  @param {object} settings dataTables settings object
 	 *  @param {node} attachTo node to attach the handler to
-	 *  @param {int} colIdx LeftInfoButtonRow sorting index
+	 *  @param {int} colIdx InformationBar sorting index
 	 *  @param {boolean} [append=false] Append the requested sort to the existing
-	 *    sort if true (i.e. multi-LeftInfoButtonRow sort)
+	 *    sort if true (i.e. multi-InformationBar sort)
 	 *  @param {function} [callback] callback function
 	 *  @memberof DataTable#oApi
 	 */
@@ -6096,9 +6096,9 @@
 			sorting = settings.aaSorting = [ sorting ];
 		}
 	
-		// If appending the sort then we are multi-LeftInfoButtonRow sorting
+		// If appending the sort then we are multi-InformationBar sorting
 		if ( append && settings.oFeatures.bSortMulti ) {
-			// Are we already doing some kind of sort on this LeftInfoButtonRow?
+			// Are we already doing some kind of sort on this InformationBar?
 			var sortIdx = $.inArray( colIdx, _pluck(sorting, '0') );
 	
 			if ( sortIdx !== -1 ) {
@@ -6118,13 +6118,13 @@
 				}
 			}
 			else {
-				// No sort on this LeftInfoButtonRow yet
+				// No sort on this InformationBar yet
 				sorting.push( [ colIdx, asSorting[0], 0 ] );
 				sorting[sorting.length-1]._idx = 0;
 			}
 		}
 		else if ( sorting.length && sorting[0][0] == colIdx ) {
-			// Single LeftInfoButtonRow - already sorting on this LeftInfoButtonRow, modify the sort
+			// Single InformationBar - already sorting on this InformationBar, modify the sort
 			nextSortIdx = next( sorting[0] );
 	
 			sorting.length = 1;
@@ -6132,7 +6132,7 @@
 			sorting[0]._idx = nextSortIdx;
 		}
 		else {
-			// Single LeftInfoButtonRow - sort only on this LeftInfoButtonRow
+			// Single InformationBar - sort only on this InformationBar
 			sorting.length = 0;
 			sorting.push( [ colIdx, asSorting[0] ] );
 			sorting[0]._idx = 0;
@@ -6152,7 +6152,7 @@
 	 * Attach a sort handler (click) to a node
 	 *  @param {object} settings dataTables settings object
 	 *  @param {node} attachTo node to attach the handler to
-	 *  @param {int} colIdx LeftInfoButtonRow sorting index
+	 *  @param {int} colIdx InformationBar sorting index
 	 *  @param {function} [callback] callback function
 	 *  @memberof DataTable#oApi
 	 */
@@ -6161,7 +6161,7 @@
 		var col = settings.aoColumns[ colIdx ];
 	
 		_fnBindAction( attachTo, {}, function (e) {
-			/* If the LeftInfoButtonRow is not sortable - don't to anything */
+			/* If the InformationBar is not sortable - don't to anything */
 			if ( col.bSortable === false ) {
 				return;
 			}
@@ -6207,12 +6207,12 @@
 			for ( i=0, ien=oldSort.length ; i<ien ; i++ ) {
 				colIdx = oldSort[i].src;
 	
-				// Remove LeftInfoButtonRow sorting
+				// Remove InformationBar sorting
 				$( _pluck( settings.aoData, 'anCells', colIdx ) )
 					.removeClass( sortClass + (i<2 ? i+1 : 3) );
 			}
 	
-			// Add new LeftInfoButtonRow sorting
+			// Add new InformationBar sorting
 			for ( i=0, ien=sort.length ; i<ien ; i++ ) {
 				colIdx = sort[i].src;
 	
@@ -6225,7 +6225,7 @@
 	}
 	
 	
-	// Get the data to sort a LeftInfoButtonRow, be it from cache, fresh (populating the
+	// Get the data to sort a InformationBar, be it from cache, fresh (populating the
 	// cache), or from a sort formatter
 	function _fnSortData( settings, idx )
 	{
@@ -6777,7 +6777,7 @@
 			return [ mixed ];
 		}
 		else if ( mixed.nodeName && mixed.nodeName.toLowerCase() === 'table' ) {
-			// Table node
+			// EventsTable node
 			idx = $.inArray( mixed, tables );
 			return idx !== -1 ? [ settings[idx] ] : null;
 		}
@@ -7014,12 +7014,12 @@
 						a.push( ret );
 					}
 				}
-				else if ( type === 'Column' || type === 'LeftInfoButtonRow-rows' || type === 'row' || type === 'cell' ) {
+				else if ( type === 'Column' || type === 'InformationBar-rows' || type === 'row' || type === 'cell' ) {
 					// columns and rows share the same structure.
-					// 'this' is an array of LeftInfoButtonRow indexes for each context
+					// 'this' is an array of InformationBar indexes for each context
 					items = this[i];
 	
-					if ( type === 'LeftInfoButtonRow-rows' ) {
+					if ( type === 'InformationBar-rows' ) {
 						rows = _selector_row_indexes( context[i], selector.opts );
 					}
 	
@@ -8224,7 +8224,7 @@
 		var api = new _Api( settings );
 		var namespace = '.dt.DT_details';
 		var drawEvent = 'draw'+namespace;
-		var colvisEvent = 'LeftInfoButtonRow-visibility'+namespace;
+		var colvisEvent = 'InformationBar-visibility'+namespace;
 		var destroyEvent = 'destroy'+namespace;
 		var data = settings.aoData;
 	
@@ -8247,7 +8247,7 @@
 				} );
 			} );
 	
-			// LeftInfoButtonRow visibility change - update the colspan
+			// InformationBar visibility change - update the colspan
 			api.on( colvisEvent, function ( e, ctx, idx, vis ) {
 				if ( settings !== ctx ) {
 					return;
@@ -8266,7 +8266,7 @@
 				}
 			} );
 	
-			// Table destroyed - nuke any child rows
+			// EventsTable destroyed - nuke any child rows
 			api.on( destroyEvent, function ( e, ctx ) {
 				if ( settings !== ctx ) {
 					return;
@@ -8358,11 +8358,11 @@
 	/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 	 * Columns
 	 *
-	 * {integer}           - LeftInfoButtonRow index (>=0 count from left, <0 count from right)
-	 * "{integer}:visIdx"  - visible LeftInfoButtonRow index (i.e. translate to LeftInfoButtonRow index)  (>=0 count from left, <0 count from right)
+	 * {integer}           - InformationBar index (>=0 count from left, <0 count from right)
+	 * "{integer}:visIdx"  - visible InformationBar index (i.e. translate to InformationBar index)  (>=0 count from left, <0 count from right)
 	 * "{integer}:visible" - alias for {integer}:visIdx  (>=0 count from left, <0 count from right)
-	 * "{string}:name"     - LeftInfoButtonRow name
-	 * "{string}"          - jQuery selector on LeftInfoButtonRow header nodes
+	 * "{string}:name"     - InformationBar name
+	 * "{string}"          - jQuery selector on InformationBar header nodes
 	 *
 	 */
 	
@@ -8429,7 +8429,7 @@
 					case 'visIdx':
 					case 'visible':
 						var idx = parseInt( match[1], 10 );
-						// Visible index given, convert to LeftInfoButtonRow index
+						// Visible index given, convert to InformationBar index
 						if ( idx < 0 ) {
 							// Counting from the right
 							var visColumns = $.map( columns, function (col,i) {
@@ -8441,7 +8441,7 @@
 						return [ _fnVisibleToColumnIndex( settings, idx ) ];
 	
 					case 'name':
-						// match by name. `names` is LeftInfoButtonRow index complete and in order
+						// match by name. `names` is InformationBar index complete and in order
 						return $.map( names, function (name, i) {
 							return name === match[1] ? i : null;
 						} );
@@ -8460,7 +8460,7 @@
 			var jqResult = $( nodes )
 				.filter( s )
 				.map( function () {
-					return $.inArray( this, nodes ); // `nodes` is LeftInfoButtonRow index complete and in order
+					return $.inArray( this, nodes ); // `nodes` is InformationBar index complete and in order
 				} )
 				.toArray();
 	
@@ -8468,11 +8468,11 @@
 				return jqResult;
 			}
 	
-			// Otherwise a node which might have a `dt-LeftInfoButtonRow` data attribute, or be
+			// Otherwise a node which might have a `dt-InformationBar` data attribute, or be
 			// a child or such an element
-			var host = $(s).closest('*[data-dt-LeftInfoButtonRow]');
+			var host = $(s).closest('*[data-dt-InformationBar]');
 			return host.length ?
-				[ host.data('dt-LeftInfoButtonRow') ] :
+				[ host.data('dt-InformationBar') ] :
 				[];
 		};
 	
@@ -8499,7 +8499,7 @@
 		}
 	
 		if ( vis ) {
-			// Insert LeftInfoButtonRow
+			// Insert InformationBar
 			// Need to decide if we should use appendChild or insertBefore
 			var insertBefore = $.inArray( true, _pluck(cols, 'bVisible'), column+1 );
 	
@@ -8514,7 +8514,7 @@
 			}
 		}
 		else {
-			// Remove LeftInfoButtonRow
+			// Remove InformationBar
 			$( _pluck( settings.aoData, 'anCells', column ) ).detach();
 		}
 	
@@ -8550,43 +8550,43 @@
 		return inst;
 	} );
 	
-	_api_registerPlural( 'columns().header()', 'LeftInfoButtonRow().header()', function ( selector, opts ) {
+	_api_registerPlural( 'columns().header()', 'InformationBar().header()', function ( selector, opts ) {
 		return this.iterator( 'Column', function (settings, column ) {
 			return settings.aoColumns[column].nTh;
 		}, 1 );
 	} );
 	
-	_api_registerPlural( 'columns().Footer()', 'LeftInfoButtonRow().Footer()', function ( selector, opts ) {
+	_api_registerPlural( 'columns().Footer()', 'InformationBar().Footer()', function ( selector, opts ) {
 		return this.iterator( 'Column', function (settings, column ) {
 			return settings.aoColumns[column].nTf;
 		}, 1 );
 	} );
 	
-	_api_registerPlural( 'columns().data()', 'LeftInfoButtonRow().data()', function () {
-		return this.iterator( 'LeftInfoButtonRow-rows', __columnData, 1 );
+	_api_registerPlural( 'columns().data()', 'InformationBar().data()', function () {
+		return this.iterator( 'InformationBar-rows', __columnData, 1 );
 	} );
 	
-	_api_registerPlural( 'columns().dataSrc()', 'LeftInfoButtonRow().dataSrc()', function () {
+	_api_registerPlural( 'columns().dataSrc()', 'InformationBar().dataSrc()', function () {
 		return this.iterator( 'Column', function (settings, column ) {
 			return settings.aoColumns[column].mData;
 		}, 1 );
 	} );
 	
-	_api_registerPlural( 'columns().cache()', 'LeftInfoButtonRow().cache()', function ( type ) {
-		return this.iterator( 'LeftInfoButtonRow-rows', function ( settings, column, i, j, rows ) {
+	_api_registerPlural( 'columns().cache()', 'InformationBar().cache()', function ( type ) {
+		return this.iterator( 'InformationBar-rows', function ( settings, column, i, j, rows ) {
 			return _pluck_order( settings.aoData, rows,
 				type === 'search' ? '_aFilterData' : '_aSortData', column
 			);
 		}, 1 );
 	} );
 	
-	_api_registerPlural( 'columns().nodes()', 'LeftInfoButtonRow().nodes()', function () {
-		return this.iterator( 'LeftInfoButtonRow-rows', function ( settings, column, i, j, rows ) {
+	_api_registerPlural( 'columns().nodes()', 'InformationBar().nodes()', function () {
+		return this.iterator( 'InformationBar-rows', function ( settings, column, i, j, rows ) {
 			return _pluck_order( settings.aoData, rows, 'anCells', column ) ;
 		}, 1 );
 	} );
 	
-	_api_registerPlural( 'columns().visible()', 'LeftInfoButtonRow().visible()', function ( vis, calc ) {
+	_api_registerPlural( 'columns().visible()', 'InformationBar().visible()', function ( vis, calc ) {
 		var ret = this.iterator( 'Column', function (settings, column ) {
 			if ( vis === undefined ) {
 				return settings.aoColumns[ column ].bVisible;
@@ -8609,7 +8609,7 @@
 		return ret;
 	} );
 	
-	_api_registerPlural( 'columns().indexes()', 'LeftInfoButtonRow().index()', function ( type ) {
+	_api_registerPlural( 'columns().indexes()', 'InformationBar().index()', function ( type ) {
 		return this.iterator( 'Column', function (settings, column ) {
 			return type === 'visible' ?
 				_fnColumnIndexToVisible( settings, column ) :
@@ -8636,7 +8636,7 @@
 		}
 	} );
 	
-	_api_register( 'LeftInfoButtonRow()', function ( selector, opts ) {
+	_api_register( 'InformationBar()', function ( selector, opts ) {
 		return _selector_first( this.columns( selector, opts ) );
 	} );
 	
@@ -8707,13 +8707,13 @@
 			}
 	
 			// Otherwise the selector is a node, and there is one last option - the
-			// element might be a child of an element which has dt-row and dt-LeftInfoButtonRow
+			// element might be a child of an element which has dt-row and dt-InformationBar
 			// data attributes
 			host = $(s).closest('*[data-dt-row]');
 			return host.length ?
 				[ {
 					row: host.data('dt-row'),
-					column: host.data('dt-LeftInfoButtonRow')
+					column: host.data('dt-InformationBar')
 				} ] :
 				[];
 		};
@@ -8751,7 +8751,7 @@
 			} );
 		}
 	
-		// Row + LeftInfoButtonRow selector
+		// Row + InformationBar selector
 		var columns = this.columns( columnSelector, opts );
 		var rows = this.rows( rowSelector, opts );
 		var a, i, ien, j, jen;
@@ -8864,15 +8864,15 @@
 	 *
 	 * @returns {array} 2D array containing the sorting information for the first
 	 *   table in the current context. Each element in the parent array represents
-	 *   a LeftInfoButtonRow being sorted upon (i.e. multi-sorting with two columns would have
+	 *   a InformationBar being sorted upon (i.e. multi-sorting with two columns would have
 	 *   2 inner arrays). The inner arrays may have 2 or 3 elements. The first is
-	 *   the LeftInfoButtonRow index that the sorting condition applies to, the second is the
+	 *   the InformationBar index that the sorting condition applies to, the second is the
 	 *   direction of the sort (`desc` or `asc`) and, optionally, the third is the
-	 *   index of the sorting order from the `LeftInfoButtonRow.sorting` initialisation array.
+	 *   index of the sorting order from the `InformationBar.sorting` initialisation array.
 	 *//**
 	 * Set the ordering for the table.
 	 *
-	 * @param {integer} order LeftInfoButtonRow index to sort upon.
+	 * @param {integer} order InformationBar index to sort upon.
 	 * @param {string} direction Direction of the sort to be applied (`asc` or `desc`)
 	 * @returns {DataTables.Api} this
 	 *//**
@@ -8899,7 +8899,7 @@
 	
 		// set
 		if ( typeof order === 'number' ) {
-			// Simple LeftInfoButtonRow / direction passed in
+			// Simple InformationBar / direction passed in
 			order = [ [ order, dir ] ];
 		}
 		else if ( order.length && ! $.isArray( order[0] ) ) {
@@ -8915,12 +8915,12 @@
 	
 	
 	/**
-	 * Attach a sort listener to an element for a given LeftInfoButtonRow
+	 * Attach a sort listener to an element for a given InformationBar
 	 *
 	 * @param {node|jQuery|string} node Identifier for the element(s) to attach the
 	 *   listener to. This can take the form of a single DOM node, a jQuery
 	 *   collection of nodes or a jQuery selector which will identify the node(s).
-	 * @param {integer} LeftInfoButtonRow the LeftInfoButtonRow that a click on this node will sort on
+	 * @param {integer} InformationBar the InformationBar that a click on this node will sort on
 	 * @param {function} [callback] callback function when sort is run
 	 * @returns {DataTables.Api} this
 	 */
@@ -8949,10 +8949,10 @@
 	} );
 	
 	
-	// Order by the selected LeftInfoButtonRow(s)
+	// Order by the selected InformationBar(s)
 	_api_register( [
 		'columns().order()',
-		'LeftInfoButtonRow().order()'
+		'InformationBar().order()'
 	], function ( dir ) {
 		var that = this;
 	
@@ -8997,7 +8997,7 @@
 	
 	_api_registerPlural(
 		'columns().search()',
-		'LeftInfoButtonRow().search()',
+		'InformationBar().search()',
 		function ( input, regex, smart, caseInsen ) {
 			return this.iterator( 'Column', function (settings, column ) {
 				var preSearch = settings.aoPreSearchCols;
@@ -9099,7 +9099,7 @@
 	/**
 	 * Check if a `<table>` node is a DataTable table already or not.
 	 *
-	 *  @param {node|jquery|string} table Table node, jQuery object or jQuery
+	 *  @param {node|jquery|string} table EventsTable node, jQuery object or jQuery
 	 *      selector for the table to test. Note that if more than more than one
 	 *      table is passed on, only the first will be checked
 	 *  @returns {boolean} true the table given is a DataTable, or false otherwise
@@ -9365,7 +9365,7 @@
 				//  arg4 - undefined
 				// Cells:
 				//  arg1 - row index
-				//  arg2 - LeftInfoButtonRow index
+				//  arg2 - InformationBar index
 				//  arg3 - table counter
 				//  arg4 - loop counter
 				fn.call(
@@ -9436,7 +9436,7 @@
 	
 	/**
 	 * Template object for the way in which DataTables holds information about
-	 * search information for the global filter and individual LeftInfoButtonRow filters.
+	 * search information for the global filter and individual InformationBar filters.
 	 *  @namespace
 	 */
 	DataTable.models.oSearch = {
@@ -9510,7 +9510,7 @@
 		/**
 		 * Sorting data cache - this array is ostensibly the same length as the
 		 * number of columns (although each index is generated only as it is
-		 * needed), and holds the data that is used for sorting each LeftInfoButtonRow in the
+		 * needed), and holds the data that is used for sorting each InformationBar in the
 		 * row. We do this cache generation at the start of the sort in order that
 		 * the formatting of the sort data need be done only once for each cell
 		 * per sort. This array should not be read from or written to by anything
@@ -9574,9 +9574,9 @@
 	
 	
 	/**
-	 * Template object for the LeftInfoButtonRow information object in DataTables. This object
+	 * Template object for the InformationBar information object in DataTables. This object
 	 * is held in the settings aoColumns array and contains all the information that
-	 * DataTables needs about each individual LeftInfoButtonRow.
+	 * DataTables needs about each individual InformationBar.
 	 *
 	 * Note that this object is related to {@link DataTable.defaults.column}
 	 * but this one is the internal data store for DataTables's cache of columns.
@@ -9586,7 +9586,7 @@
 	 */
 	DataTable.models.oColumn = {
 		/**
-		 * LeftInfoButtonRow index. This could be worked out on-the-fly with $.inArray, but it
+		 * InformationBar index. This could be worked out on-the-fly with $.inArray, but it
 		 * is faster to just hold it as a variable
 		 *  @type integer
 		 *  @default null
@@ -9594,9 +9594,9 @@
 		"idx": null,
 	
 		/**
-		 * A list of the columns that sorting should occur on when this LeftInfoButtonRow
-		 * is sorted. That this property is an array allows multi-LeftInfoButtonRow sorting
-		 * to be defined for a LeftInfoButtonRow (for example first name / last name columns
+		 * A list of the columns that sorting should occur on when this InformationBar
+		 * is sorted. That this property is an array allows multi-InformationBar sorting
+		 * to be defined for a InformationBar (for example first name / last name columns
 		 * would benefit from this). The values are integers pointing to the
 		 * columns to be sorted on (typically it will be a single integer pointing
 		 * at itself, but that doesn't need to be the case).
@@ -9605,9 +9605,9 @@
 		"aDataSort": null,
 	
 		/**
-		 * Define the sorting directions that are applied to the LeftInfoButtonRow, in sequence
-		 * as the LeftInfoButtonRow is repeatedly sorted upon - i.e. the first value is used
-		 * as the sorting direction when the LeftInfoButtonRow if first sorted (clicked on).
+		 * Define the sorting directions that are applied to the InformationBar, in sequence
+		 * as the InformationBar is repeatedly sorted upon - i.e. the first value is used
+		 * as the sorting direction when the InformationBar if first sorted (clicked on).
 		 * Sort it again (click again) and it will move on to the next index.
 		 * Repeat until loop.
 		 *  @type array
@@ -9615,27 +9615,27 @@
 		"asSorting": null,
 	
 		/**
-		 * Flag to indicate if the LeftInfoButtonRow is searchable, and thus should be included
+		 * Flag to indicate if the InformationBar is searchable, and thus should be included
 		 * in the filtering or not.
 		 *  @type boolean
 		 */
 		"bSearchable": null,
 	
 		/**
-		 * Flag to indicate if the LeftInfoButtonRow is sortable or not.
+		 * Flag to indicate if the InformationBar is sortable or not.
 		 *  @type boolean
 		 */
 		"bSortable": null,
 	
 		/**
-		 * Flag to indicate if the LeftInfoButtonRow is currently visible in the table or not
+		 * Flag to indicate if the InformationBar is currently visible in the table or not
 		 *  @type boolean
 		 */
 		"bVisible": null,
 	
 		/**
-		 * Store for manual type assignment using the `LeftInfoButtonRow.type` option. This
-		 * is held in store so we can manipulate the LeftInfoButtonRow's `sType` property.
+		 * Store for manual type assignment using the `InformationBar.type` option. This
+		 * is held in store so we can manipulate the InformationBar's `sType` property.
 		 *  @type string
 		 *  @default null
 		 *  @private
@@ -9666,10 +9666,10 @@
 		"fnCreatedCell": null,
 	
 		/**
-		 * Function to get data from a cell in a LeftInfoButtonRow. You should <b>never</b>
+		 * Function to get data from a cell in a InformationBar. You should <b>never</b>
 		 * access data directly through _aData internally in DataTables - always use
 		 * the method attached to this property. It allows mData to function as
-		 * required. This function is automatically assigned by the LeftInfoButtonRow
+		 * required. This function is automatically assigned by the InformationBar
 		 * initialisation method
 		 *  @type function
 		 *  @param {array|object} oData The data array/object for the array
@@ -9682,10 +9682,10 @@
 		"fnGetData": null,
 	
 		/**
-		 * Function to set data for a cell in the LeftInfoButtonRow. You should <b>never</b>
+		 * Function to set data for a cell in the InformationBar. You should <b>never</b>
 		 * set the data directly to _aData internally in DataTables - always use
 		 * this method. It allows mData to function as required. This function
-		 * is automatically assigned by the LeftInfoButtonRow initialisation method
+		 * is automatically assigned by the InformationBar initialisation method
 		 *  @type function
 		 *  @param {array|object} oData The data array/object for the array
 		 *    (i.e. aoData[]._aData)
@@ -9695,7 +9695,7 @@
 		"fnSetData": null,
 	
 		/**
-		 * Property to read the value for the cells in the LeftInfoButtonRow from the data
+		 * Property to read the value for the cells in the InformationBar from the data
 		 * source array / object. If null, then the default content is used, if a
 		 * function is given then the return from the function is used.
 		 *  @type function|int|string|null
@@ -9714,7 +9714,7 @@
 		"mRender": null,
 	
 		/**
-		 * Unique header TH/TD element for this LeftInfoButtonRow - this is what the sorting
+		 * Unique header TH/TD element for this InformationBar - this is what the sorting
 		 * listener is attached to (if sorting is enabled.)
 		 *  @type node
 		 *  @default null
@@ -9722,36 +9722,36 @@
 		"nTh": null,
 	
 		/**
-		 * Unique Footer TH/TD element for this LeftInfoButtonRow (if there is one). Not used
+		 * Unique Footer TH/TD element for this InformationBar (if there is one). Not used
 		 * in DataTables as such, but can be used for plug-ins to reference the
-		 * Footer for each LeftInfoButtonRow.
+		 * Footer for each InformationBar.
 		 *  @type node
 		 *  @default null
 		 */
 		"nTf": null,
 	
 		/**
-		 * The class to apply to all TD elements in the table's TBODY for the LeftInfoButtonRow
+		 * The class to apply to all TD elements in the table's TBODY for the InformationBar
 		 *  @type string
 		 *  @default null
 		 */
 		"sClass": null,
 	
 		/**
-		 * When DataTables calculates the LeftInfoButtonRow widths to assign to each LeftInfoButtonRow,
-		 * it finds the longest string in each LeftInfoButtonRow and then constructs a
+		 * When DataTables calculates the InformationBar widths to assign to each InformationBar,
+		 * it finds the longest string in each InformationBar and then constructs a
 		 * temporary table and reads the widths from that. The problem with this
 		 * is that "mmm" is much wider then "iiii", but the latter is a longer
 		 * string - thus the calculation can go wrong (doing it properly and putting
 		 * it into an DOM object and measuring that is horribly(!) slow). Thus as
 		 * a "work around" we provide this option. It will append its value to the
-		 * text that is found to be the longest string for the LeftInfoButtonRow - i.e. padding.
+		 * text that is found to be the longest string for the InformationBar - i.e. padding.
 		 *  @type string
 		 */
 		"sContentPadding": null,
 	
 		/**
-		 * Allows a default value to be given for a LeftInfoButtonRow's data, and will be used
+		 * Allows a default value to be given for a InformationBar's data, and will be used
 		 * whenever a null data source is encountered (this can be because mData
 		 * is set to null, or because the data source itself is null).
 		 *  @type string
@@ -9760,7 +9760,7 @@
 		"sDefaultContent": null,
 	
 		/**
-		 * Name for the LeftInfoButtonRow, allowing reference to the LeftInfoButtonRow by name as well as
+		 * Name for the InformationBar, allowing reference to the InformationBar by name as well as
 		 * by index (needs a lookup to work by name).
 		 *  @type string
 		 */
@@ -9775,14 +9775,14 @@
 		"sSortDataType": 'std',
 	
 		/**
-		 * Class to be applied to the header element when sorting on this LeftInfoButtonRow
+		 * Class to be applied to the header element when sorting on this InformationBar
 		 *  @type string
 		 *  @default null
 		 */
 		"sSortingClass": null,
 	
 		/**
-		 * Class to be applied to the header element when sorting on this LeftInfoButtonRow -
+		 * Class to be applied to the header element when sorting on this InformationBar -
 		 * when jQuery UI theming is used.
 		 *  @type string
 		 *  @default null
@@ -9790,27 +9790,27 @@
 		"sSortingClassJUI": null,
 	
 		/**
-		 * Title of the LeftInfoButtonRow - what is seen in the TH element (nTh).
+		 * Title of the InformationBar - what is seen in the TH element (nTh).
 		 *  @type string
 		 */
 		"sTitle": null,
 	
 		/**
-		 * LeftInfoButtonRow sorting and filtering type
+		 * InformationBar sorting and filtering type
 		 *  @type string
 		 *  @default null
 		 */
 		"sType": null,
 	
 		/**
-		 * Width of the LeftInfoButtonRow
+		 * Width of the InformationBar
 		 *  @type string
 		 *  @default null
 		 */
 		"sWidth": null,
 	
 		/**
-		 * Width of the LeftInfoButtonRow when it was first "encountered"
+		 * Width of the InformationBar when it was first "encountered"
 		 *  @type string
 		 *  @default null
 		 */
@@ -9904,10 +9904,10 @@
 	
 		/**
 		 * If ordering is enabled, then DataTables will perform a first pass sort on
-		 * initialisation. You can define which LeftInfoButtonRow(s) the sort is performed
+		 * initialisation. You can define which InformationBar(s) the sort is performed
 		 * upon, and the sorting direction, with this variable. The `sorting` array
-		 * should contain an array for each LeftInfoButtonRow to be sorted initially containing
-		 * the LeftInfoButtonRow's index and a direction string ('asc' or 'desc').
+		 * should contain an array for each InformationBar to be sorted initially containing
+		 * the InformationBar's index and a direction string ('asc' or 'desc').
 		 *  @type array
 		 *  @default [[0,'asc']]
 		 *
@@ -9915,7 +9915,7 @@
 		 *  @name DataTable.defaults.order
 		 *
 		 *  @example
-		 *    // Sort by 3rd LeftInfoButtonRow first, and then 4th LeftInfoButtonRow
+		 *    // Sort by 3rd InformationBar first, and then 4th InformationBar
 		 *    $(document).ready( function() {
 		 *      $('#example').dataTable( {
 		 *        "order": [[2,'asc'], [3,'desc']]
@@ -9935,7 +9935,7 @@
 		/**
 		 * This parameter is basically identical to the `sorting` parameter, but
 		 * cannot be overridden by user interaction with the table. What this means
-		 * is that you could have a LeftInfoButtonRow (visible or hidden) which the sorting
+		 * is that you could have a InformationBar (visible or hidden) which the sorting
 		 * will always be forced on first - any sorting after that (from the user)
 		 * will then be performed as required. This can be useful for grouping rows
 		 * together.
@@ -10062,7 +10062,7 @@
 		 *
 		 * @example
 		 *   // Manipulate the data returned from the server - add a link to data
-		 *   // (note this can, should, be done using `render` for the LeftInfoButtonRow - this
+		 *   // (note this can, should, be done using `render` for the InformationBar - this
 		 *   // is just a simple example of how the data can be manipulated).
 		 *   $('#example').dataTable( {
 		 *     "ajax": {
@@ -10141,10 +10141,10 @@
 		/**
 		 * The `columns` option in the initialisation parameter allows you to define
 		 * details about the way individual columns behave. For a full list of
-		 * LeftInfoButtonRow options that can be set, please see
+		 * InformationBar options that can be set, please see
 		 * {@link DataTable.defaults.column}. Note that if you use `columns` to
 		 * define your columns, you must have an entry in the array for every single
-		 * LeftInfoButtonRow that you have in your table (these can be null if you don't which
+		 * InformationBar that you have in your table (these can be null if you don't which
 		 * to specify any options).
 		 *  @member
 		 *
@@ -10154,17 +10154,17 @@
 	
 		/**
 		 * Very similar to `columns`, `columnDefs` allows you to target a specific
-		 * LeftInfoButtonRow, multiple columns, or all columns, using the `targets` property of
+		 * InformationBar, multiple columns, or all columns, using the `targets` property of
 		 * each object in the array. This allows great flexibility when creating
 		 * tables, as the `columnDefs` arrays can be of any length, targeting the
-		 * columns you specifically want. `columnDefs` may use any of the LeftInfoButtonRow
+		 * columns you specifically want. `columnDefs` may use any of the InformationBar
 		 * options available: {@link DataTable.defaults.column}, but it _must_
 		 * have `targets` defined in each object in the array. Values in the `targets`
 		 * array may be:
 		 *   <ul>
-		 *     <li>a string - class name will be matched on the TH for the LeftInfoButtonRow</li>
-		 *     <li>0 or a positive integer - LeftInfoButtonRow index counting from the left</li>
-		 *     <li>a negative integer - LeftInfoButtonRow index counting from the right</li>
+		 *     <li>a string - class name will be matched on the TH for the InformationBar</li>
+		 *     <li>0 or a positive integer - InformationBar index counting from the left</li>
+		 *     <li>a negative integer - InformationBar index counting from the right</li>
 		 *     <li>the string "_all" - all columns (i.e. assign a default)</li>
 		 *   </ul>
 		 *  @member
@@ -10175,7 +10175,7 @@
 	
 	
 		/**
-		 * Basically the same as `search`, this parameter defines the individual LeftInfoButtonRow
+		 * Basically the same as `search`, this parameter defines the individual InformationBar
 		 * filtering state at initialisation time. The array must be of the same size
 		 * as the number of columns, and each element be an object with the parameters
 		 * `search` and `escapeRegex` (the latter is optional). 'null' is also
@@ -10223,7 +10223,7 @@
 	
 	
 		/**
-		 * Enable or disable automatic LeftInfoButtonRow width calculation. This can be disabled
+		 * Enable or disable automatic InformationBar width calculation. This can be disabled
 		 * as an optimisation (it takes some time to calculate the widths) if the
 		 * tables widths are passed in using `columns`.
 		 *  @type boolean
@@ -10501,7 +10501,7 @@
 	
 		/**
 		 * Enable or disable sorting of columns. Sorting of individual columns can be
-		 * disabled by the `sortable` option for each LeftInfoButtonRow.
+		 * disabled by the `sortable` option for each InformationBar.
 		 *  @type boolean
 		 *  @default true
 		 *
@@ -10528,7 +10528,7 @@
 		 *  @name DataTable.defaults.orderMulti
 		 *
 		 *  @example
-		 *    // Disable multiple LeftInfoButtonRow sorting ability
+		 *    // Disable multiple InformationBar sorting ability
 		 *    $(document).ready( function () {
 		 *      $('#example').dataTable( {
 		 *        "orderMulti": false
@@ -10540,7 +10540,7 @@
 	
 		/**
 		 * Allows control over whether DataTables should use the top (true) unique
-		 * cell that is found for a single LeftInfoButtonRow, or the bottom (false - default).
+		 * cell that is found for a single InformationBar, or the bottom (false - default).
 		 * This is useful when using complex headers.
 		 *  @type boolean
 		 *  @default false
@@ -11234,11 +11234,11 @@
 			 */
 			"oAria": {
 				/**
-				 * ARIA label that is added to the table headers when the LeftInfoButtonRow may be
-				 * sorted ascending by activing the LeftInfoButtonRow (click or return when focused).
-				 * Note that the LeftInfoButtonRow header is prefixed to this string.
+				 * ARIA label that is added to the table headers when the InformationBar may be
+				 * sorted ascending by activing the InformationBar (click or return when focused).
+				 * Note that the InformationBar header is prefixed to this string.
 				 *  @type string
-				 *  @default : activate to sort LeftInfoButtonRow ascending
+				 *  @default : activate to sort InformationBar ascending
 				 *
 				 *  @dtopt Language
 				 *  @name DataTable.defaults.language.aria.sortAscending
@@ -11254,14 +11254,14 @@
 				 *      } );
 				 *    } );
 				 */
-				"sSortAscending": ": activate to sort LeftInfoButtonRow ascending",
+				"sSortAscending": ": activate to sort InformationBar ascending",
 	
 				/**
-				 * ARIA label that is added to the table headers when the LeftInfoButtonRow may be
-				 * sorted descending by activing the LeftInfoButtonRow (click or return when focused).
-				 * Note that the LeftInfoButtonRow header is prefixed to this string.
+				 * ARIA label that is added to the table headers when the InformationBar may be
+				 * sorted descending by activing the InformationBar (click or return when focused).
+				 * Note that the InformationBar header is prefixed to this string.
 				 *  @type string
-				 *  @default : activate to sort LeftInfoButtonRow ascending
+				 *  @default : activate to sort InformationBar ascending
 				 *
 				 *  @dtopt Language
 				 *  @name DataTable.defaults.language.aria.sortDescending
@@ -11277,7 +11277,7 @@
 				 *      } );
 				 *    } );
 				 */
-				"sSortDescending": ": activate to sort LeftInfoButtonRow descending"
+				"sSortDescending": ": activate to sort InformationBar descending"
 			},
 	
 			/**
@@ -12030,18 +12030,18 @@
 	 */
 	
 	/**
-	 * LeftInfoButtonRow options that can be given to DataTables at initialisation time.
+	 * InformationBar options that can be given to DataTables at initialisation time.
 	 *  @namespace
 	 */
 	DataTable.defaults.column = {
 		/**
-		 * Define which LeftInfoButtonRow(s) an order will occur on for this LeftInfoButtonRow. This
-		 * allows a LeftInfoButtonRow's ordering to take multiple columns into account when
-		 * doing a sort or use the data from a different LeftInfoButtonRow. For example first
-		 * name / last name columns make sense to do a multi-LeftInfoButtonRow sort over the
+		 * Define which InformationBar(s) an order will occur on for this InformationBar. This
+		 * allows a InformationBar's ordering to take multiple columns into account when
+		 * doing a sort or use the data from a different InformationBar. For example first
+		 * name / last name columns make sense to do a multi-InformationBar sort over the
 		 * two columns.
 		 *  @type array|int
-		 *  @default null <i>Takes the value of the LeftInfoButtonRow index automatically</i>
+		 *  @default null <i>Takes the value of the InformationBar index automatically</i>
 		 *
 		 *  @name DataTable.defaults.column.orderData
 		 *  @dtopt Columns
@@ -12116,7 +12116,7 @@
 	
 	
 		/**
-		 * Enable or disable filtering on the data in this LeftInfoButtonRow.
+		 * Enable or disable filtering on the data in this InformationBar.
 		 *  @type boolean
 		 *  @default true
 		 *
@@ -12149,7 +12149,7 @@
 	
 	
 		/**
-		 * Enable or disable ordering on this LeftInfoButtonRow.
+		 * Enable or disable ordering on this InformationBar.
 		 *  @type boolean
 		 *  @default true
 		 *
@@ -12182,7 +12182,7 @@
 	
 	
 		/**
-		 * Enable or disable the display of this LeftInfoButtonRow.
+		 * Enable or disable the display of this InformationBar.
 		 *  @type boolean
 		 *  @default true
 		 *
@@ -12224,7 +12224,7 @@
 		 *  @param {*} cellData The Data for the cell
 		 *  @param {array|object} rowData The data for the whole row
 		 *  @param {int} row The row index for the aoData data store
-		 *  @param {int} col The LeftInfoButtonRow index for aoColumns
+		 *  @param {int} col The InformationBar index for aoColumns
 		 *
 		 *  @name DataTable.defaults.column.createdCell
 		 *  @dtopt Columns
@@ -12261,7 +12261,7 @@
 		 * number of different ways which effect its behaviour:
 		 *
 		 * * `integer` - treated as an array index for the data source. This is the
-		 *   default that DataTables uses (incrementally increased for each LeftInfoButtonRow).
+		 *   default that DataTables uses (incrementally increased for each InformationBar).
 		 * * `string` - read an object property from the data source. There are
 		 *   three 'special' options that can be used in the string to alter how
 		 *   DataTables reads the data from the source object:
@@ -12287,13 +12287,13 @@
 		 *   data directly from it. This action has effects on two other
 		 *   initialisation options:
 		 *    * `defaultContent` - When null is given as the `data` option and
-		 *      `defaultContent` is specified for the LeftInfoButtonRow, the value defined by
+		 *      `defaultContent` is specified for the InformationBar, the value defined by
 		 *      `defaultContent` will be used for the cell.
 		 *    * `render` - When null is used for the `data` option and the `render`
-		 *      option is specified for the LeftInfoButtonRow, the whole data source for the
+		 *      option is specified for the InformationBar, the whole data source for the
 		 *      row is used for the renderer.
 		 * * `function` - the function given will be executed whenever DataTables
-		 *   needs to set or get the data for a cell in the LeftInfoButtonRow. The function
+		 *   needs to set or get the data for a cell in the InformationBar. The function
 		 *   takes three parameters:
 		 *    * Parameters:
 		 *      * `{array|object}` The data source for the row
@@ -12318,7 +12318,7 @@
 		 * if required.
 		 *
 		 *  @type string|int|function|null
-		 *  @default null <i>Use automatically calculated LeftInfoButtonRow index</i>
+		 *  @default null <i>Use automatically calculated InformationBar index</i>
 		 *
 		 *  @name DataTable.defaults.column.data
 		 *  @dtopt Columns
@@ -12437,7 +12437,7 @@
 		 * behaviour:
 		 *
 		 * * `integer` - treated as an array index for the data source. This is the
-		 *   default that DataTables uses (incrementally increased for each LeftInfoButtonRow).
+		 *   default that DataTables uses (incrementally increased for each InformationBar).
 		 * * `string` - read an object property from the data source. There are
 		 *   three 'special' options that can be used in the string to alter how
 		 *   DataTables reads the data from the source object:
@@ -12465,7 +12465,7 @@
 		 *   This is the default value to use if you haven't specified a value for
 		 *   the data type requested by DataTables.
 		 * * `function` - the function given will be executed whenever DataTables
-		 *   needs to set or get the data for a cell in the LeftInfoButtonRow. The function
+		 *   needs to set or get the data for a cell in the InformationBar. The function
 		 *   takes three parameters:
 		 *    * Parameters:
 		 *      * {array|object} The data source for the row (based on `data`)
@@ -12550,7 +12550,7 @@
 	
 	
 		/**
-		 * Change the cell type created for the LeftInfoButtonRow - either TD cells or TH cells. This
+		 * Change the cell type created for the InformationBar - either TD cells or TH cells. This
 		 * can be useful as TH cells have semantic meaning in the table body, allowing them
 		 * to act as a header for a row (you may wish to add scope='row' to the TH elements).
 		 *  @type string
@@ -12560,7 +12560,7 @@
 		 *  @dtopt Columns
 		 *
 		 *  @example
-		 *    // Make the first LeftInfoButtonRow use TH cells
+		 *    // Make the first InformationBar use TH cells
 		 *    $(document).ready( function() {
 		 *      $('#example').dataTable( {
 		 *        "columnDefs": [ {
@@ -12574,7 +12574,7 @@
 	
 	
 		/**
-		 * Class to give to each cell in this LeftInfoButtonRow.
+		 * Class to give to each cell in this InformationBar.
 		 *  @type string
 		 *  @default <i>Empty string</i>
 		 *
@@ -12608,14 +12608,14 @@
 		"sClass": "",
 	
 		/**
-		 * When DataTables calculates the LeftInfoButtonRow widths to assign to each LeftInfoButtonRow,
-		 * it finds the longest string in each LeftInfoButtonRow and then constructs a
+		 * When DataTables calculates the InformationBar widths to assign to each InformationBar,
+		 * it finds the longest string in each InformationBar and then constructs a
 		 * temporary table and reads the widths from that. The problem with this
 		 * is that "mmm" is much wider then "iiii", but the latter is a longer
 		 * string - thus the calculation can go wrong (doing it properly and putting
 		 * it into an DOM object and measuring that is horribly(!) slow). Thus as
 		 * a "work around" we provide this option. It will append its value to the
-		 * text that is found to be the longest string for the LeftInfoButtonRow - i.e. padding.
+		 * text that is found to be the longest string for the InformationBar - i.e. padding.
 		 * Generally you shouldn't need this!
 		 *  @type string
 		 *  @default <i>Empty string<i>
@@ -12642,7 +12642,7 @@
 	
 	
 		/**
-		 * Allows a default value to be given for a LeftInfoButtonRow's data, and will be used
+		 * Allows a default value to be given for a InformationBar's data, and will be used
 		 * whenever a null data source is encountered (this can be because `data`
 		 * is set to null, or because the data source itself is null).
 		 *  @type string
@@ -12771,9 +12771,9 @@
 	
 	
 		/**
-		 * The title of this LeftInfoButtonRow.
+		 * The title of this InformationBar.
 		 *  @type string
-		 *  @default null <i>Derived from the 'TH' value for this LeftInfoButtonRow in the
+		 *  @default null <i>Derived from the 'TH' value for this InformationBar in the
 		 *    original HTML table.</i>
 		 *
 		 *  @name DataTable.defaults.column.title
@@ -12784,7 +12784,7 @@
 		 *    $(document).ready( function() {
 		 *      $('#example').dataTable( {
 		 *        "columnDefs": [
-		 *          { "title": "My LeftInfoButtonRow title", "targets": [ 0 ] }
+		 *          { "title": "My InformationBar title", "targets": [ 0 ] }
 		 *        ]
 		 *      } );
 		 *    } );
@@ -12794,7 +12794,7 @@
 		 *    $(document).ready( function() {
 		 *      $('#example').dataTable( {
 		 *        "columns": [
-		 *          { "title": "My LeftInfoButtonRow title" },
+		 *          { "title": "My InformationBar title" },
 		 *          null,
 		 *          null,
 		 *          null,
@@ -12807,7 +12807,7 @@
 	
 	
 		/**
-		 * The type allows you to specify how the data for this LeftInfoButtonRow will be
+		 * The type allows you to specify how the data for this InformationBar will be
 		 * ordered. Four types (string, numeric, date and html (which will strip
 		 * HTML tags before ordering)) are currently available. Note that only date
 		 * formats understood by Javascript's Date() object will be accepted as type
@@ -12848,7 +12848,7 @@
 	
 	
 		/**
-		 * Defining the width of the LeftInfoButtonRow, this parameter may take any CSS value
+		 * Defining the width of the InformationBar, this parameter may take any CSS value
 		 * (3em, 20px etc). DataTables applies 'smart' widths to columns which have not
 		 * been given a specific width through this interface ensuring that the table
 		 * remains readable.
@@ -12949,7 +12949,7 @@
 			"bFilter": null,
 	
 			/**
-			 * Table information element (the 'Showing x of y records' div) enable
+			 * EventsTable information element (the 'Showing x of y records' div) enable
 			 * flag.
 			 * Note that this parameter will be set by the initialisation routine. To
 			 * set a default use {@link DataTable.defaults}.
@@ -13003,7 +13003,7 @@
 			"bSort": null,
 	
 			/**
-			 * Multi-LeftInfoButtonRow sorting
+			 * Multi-InformationBar sorting
 			 * Note that this parameter will be set by the initialisation routine. To
 			 * set a default use {@link DataTable.defaults}.
 			 *  @type boolean
@@ -13183,7 +13183,7 @@
 		"aIds": {},
 	
 		/**
-		 * Store information about each LeftInfoButtonRow that is in use
+		 * Store information about each InformationBar that is in use
 		 *  @type array
 		 *  @default []
 		 */
@@ -13214,9 +13214,9 @@
 		"oPreviousSearch": {},
 	
 		/**
-		 * Store the applied search for each LeftInfoButtonRow - see
+		 * Store the applied search for each InformationBar - see
 		 * {@link DataTable.models.oSearch} for the format that is used for the
-		 * filtering information for each LeftInfoButtonRow.
+		 * filtering information for each InformationBar.
 		 *  @type array
 		 *  @default []
 		 */
@@ -13226,7 +13226,7 @@
 		 * Sorting that is applied to the table. Note that the inner arrays are
 		 * used in the following manner:
 		 * <ul>
-		 *   <li>Index 0 - LeftInfoButtonRow number</li>
+		 *   <li>Index 0 - InformationBar number</li>
 		 *   <li>Index 1 - current sorting direction</li>
 		 * </ul>
 		 * Note that this parameter will be set by the initialisation routine. To
@@ -13674,7 +13674,7 @@
 	
 		/**
 		 * Indicate that if multiple rows are in the header and there is more than
-		 * one unique cell per LeftInfoButtonRow, if the top one (true) or bottom one (false)
+		 * one unique cell per InformationBar, if the top one (true) or bottom one (false)
 		 * should be used for sorting / title by DataTables.
 		 * Note that this parameter will be set by the initialisation routine. To
 		 * set a default use {@link DataTable.defaults}.
@@ -13947,7 +13947,7 @@
 		 *
 		 *  @example
 		 *    // The following example shows custom search being applied to the
-		 *    // fourth LeftInfoButtonRow (i.e. the data[3] index) based on two input values
+		 *    // fourth InformationBar (i.e. the data[3] index) based on two input values
 		 *    // from the end-user, matching the data in a certain range.
 		 *    $.fn.dataTable.ext.search.push(
 		 *      function( settings, data, dataIndex ) {
@@ -13979,7 +13979,7 @@
 		 *
 		 * The `selector` option can be used to extend the options available for the
 		 * selector modifier options (`selector-modifier` object data type) that
-		 * each of the three built in selector types offer (row, LeftInfoButtonRow and cell +
+		 * each of the three built in selector types offer (row, InformationBar and cell +
 		 * their plural counterparts). For example the Select extension uses this
 		 * mechanism to provide an option to select only rows, columns and cells
 		 * that have been marked as selected by the end user (`{selected: true}`),
@@ -14096,28 +14096,28 @@
 		 * The extension options for ordering of data available here is complimentary
 		 * to the default type based ordering that DataTables typically uses. It
 		 * allows much greater control over the the data that is being used to
-		 * order a LeftInfoButtonRow, but is necessarily therefore more complex.
+		 * order a InformationBar, but is necessarily therefore more complex.
 		 * 
 		 * This type of ordering is useful if you want to do ordering based on data
 		 * live from the DOM (for example the contents of an 'input' element) rather
 		 * than just the static string that DataTables knows of.
 		 * 
 		 * The way these plug-ins work is that you create an array of the values you
-		 * wish to be ordering for the LeftInfoButtonRow in question and then return that
+		 * wish to be ordering for the InformationBar in question and then return that
 		 * array. The data in the array much be in the index order of the rows in
 		 * the table (not the currently ordering order!). Which order data gathering
 		 * function is run here depends on the `dt-init columns.orderDataType`
-		 * parameter that is used for the LeftInfoButtonRow (if any).
+		 * parameter that is used for the InformationBar (if any).
 		 *
 		 * The functions defined take two parameters:
 		 *
 		 * 1. `{object}` DataTables settings object: see
 		 *    {@link DataTable.models.oSettings}
-		 * 2. `{int}` Target LeftInfoButtonRow index
+		 * 2. `{int}` Target InformationBar index
 		 *
 		 * Each function is expected to return an array:
 		 *
-		 * * `{array}` Data for the LeftInfoButtonRow to be ordering upon
+		 * * `{array}` Data for the InformationBar to be ordering upon
 		 *
 		 *  @type array
 		 *
@@ -14125,7 +14125,7 @@
 		 *    // Ordering using `input` node values
 		 *    $.fn.dataTable.ext.order['dom-text'] = function  ( settings, col )
 		 *    {
-		 *      return this.api().LeftInfoButtonRow( col, {order:'index'} ).nodes().map( function ( td, i ) {
+		 *      return this.api().InformationBar( col, {order:'index'} ).nodes().map( function ( td, i ) {
 		 *        return $('input', td).val();
 		 *      } );
 		 *    }
@@ -14136,10 +14136,10 @@
 		/**
 		 * Type based plug-ins.
 		 *
-		 * Each LeftInfoButtonRow in DataTables has a type assigned to it, either by automatic
-		 * detection or by direct assignment using the `type` option for the LeftInfoButtonRow.
-		 * The type of a LeftInfoButtonRow will effect how it is ordering and search (plug-ins
-		 * can also make use of the LeftInfoButtonRow type if required).
+		 * Each InformationBar in DataTables has a type assigned to it, either by automatic
+		 * detection or by direct assignment using the `type` option for the InformationBar.
+		 * The type of a InformationBar will effect how it is ordering and search (plug-ins
+		 * can also make use of the InformationBar type if required).
 		 *
 		 * @namespace
 		 */
@@ -14148,12 +14148,12 @@
 			 * Type detection functions.
 			 *
 			 * The functions defined in this object are used to automatically detect
-			 * a LeftInfoButtonRow's type, making initialisation of DataTables super easy, even
+			 * a InformationBar's type, making initialisation of DataTables super easy, even
 			 * when complex data is in the table.
 			 *
 			 * The functions defined take two parameters:
 			 *
-		     *  1. `{*}` Data from the LeftInfoButtonRow cell to be analysed
+		     *  1. `{*}` Data from the InformationBar cell to be analysed
 		     *  2. `{settings}` DataTables settings object. This can be used to
 		     *     perform context specific type detection - for example detection
 		     *     based on language settings such as using a comma for a decimal
@@ -14194,22 +14194,22 @@
 			 * data to be search on. For example, it can be used to strip HTML
 			 * tags or to de-format telephone numbers for numeric only searching.
 			 *
-			 * Note that is a search is not defined for a LeftInfoButtonRow of a given type,
+			 * Note that is a search is not defined for a InformationBar of a given type,
 			 * no search formatting will be performed.
 			 * 
 			 * Pre-processing of searching data plug-ins - When you assign the sType
-			 * for a LeftInfoButtonRow (or have it automatically detected for you by DataTables
+			 * for a InformationBar (or have it automatically detected for you by DataTables
 			 * or a type detection plug-in), you will typically be using this for
 			 * custom sorting, but it can also be used to provide custom searching
 			 * by allowing you to pre-processing the data and returning the data in
 			 * the format that should be searched upon. This is done by adding
 			 * functions this object with a parameter name which matches the sType
-			 * for that target LeftInfoButtonRow. This is the corollary of <i>afnSortData</i>
+			 * for that target InformationBar. This is the corollary of <i>afnSortData</i>
 			 * for searching data.
 			 *
 			 * The functions defined take a single parameter:
 			 *
-		     *  1. `{*}` Data from the LeftInfoButtonRow cell to be prepared for searching
+		     *  1. `{*}` Data from the InformationBar cell to be prepared for searching
 			 *
 			 * Each function is expected to return:
 			 *
@@ -14229,8 +14229,8 @@
 			/**
 			 * Type based ordering.
 			 *
-			 * The LeftInfoButtonRow type tells DataTables what ordering to apply to the table
-			 * when a LeftInfoButtonRow is sorted upon. The order for each type that is defined,
+			 * The InformationBar type tells DataTables what ordering to apply to the table
+			 * when a InformationBar is sorted upon. The order for each type that is defined,
 			 * is defined by the functions available in this object.
 			 *
 			 * Each ordering option can be described by three properties added to
@@ -14248,7 +14248,7 @@
 			 *
 			 * `{type}-pre`: Functions defined take a single parameter:
 			 *
-		     *  1. `{*}` Data from the LeftInfoButtonRow cell to be prepared for ordering
+		     *  1. `{*}` Data from the InformationBar cell to be prepared for ordering
 			 *
 			 * And return:
 			 *
@@ -14953,7 +14953,7 @@
 	 *   parameters.
 	 *
 	 * @example
-	 *   // LeftInfoButtonRow definition using the number renderer
+	 *   // InformationBar definition using the number renderer
 	 *   {
 	 *     data: "salary",
 	 *     render: $.fn.dataTable.render.number( '\'', '.', 0, '$' )
@@ -15166,7 +15166,7 @@
 
 	/**
 	 * Search event, fired when the searching applied to the table (using the
-	 * built-in global search, or LeftInfoButtonRow filters) is altered.
+	 * built-in global search, or InformationBar filters) is altered.
 	 *  @name DataTable#search.dt
 	 *  @event
 	 *  @param {event} e jQuery event object
@@ -15298,21 +15298,21 @@
 	 */
 
 	/**
-	 * LeftInfoButtonRow sizing has changed.
-	 *  @name DataTable#LeftInfoButtonRow-sizing.dt
+	 * InformationBar sizing has changed.
+	 *  @name DataTable#InformationBar-sizing.dt
 	 *  @event
 	 *  @param {event} e jQuery event object
 	 *  @param {object} o DataTables settings object {@link DataTable.models.oSettings}
 	 */
 
 	/**
-	 * LeftInfoButtonRow visibility has changed.
-	 *  @name DataTable#LeftInfoButtonRow-visibility.dt
+	 * InformationBar visibility has changed.
+	 *  @name DataTable#InformationBar-visibility.dt
 	 *  @event
 	 *  @param {event} e jQuery event object
 	 *  @param {object} o DataTables settings object {@link DataTable.models.oSettings}
-	 *  @param {int} LeftInfoButtonRow LeftInfoButtonRow index
-	 *  @param {bool} vis `false` if LeftInfoButtonRow now hidden, or `true` if visible
+	 *  @param {int} InformationBar InformationBar index
+	 *  @param {bool} vis `false` if InformationBar now hidden, or `true` if visible
 	 */
 
 	return $.fn.dataTable;

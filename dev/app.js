@@ -4,7 +4,7 @@
 import React, {Component} from "react";
 import SideBar from './sidebar';
 import Header from './header';
-import Main from './main_content';
+import Dashboard from './Dashboard';
 import Footer from './footer';
 class App extends Component{
     constructor(props){
@@ -15,7 +15,7 @@ class App extends Component{
             <div className="content-wrapper">
                 <SideBar/>
                 <Header/>
-                <Main/>
+                <Dashboard/>
                 <Footer/>
             </div>
         );

@@ -207,7 +207,7 @@ $.extend( FixedHeader.prototype, {
 			this.c.footerOffset = autoFooter.outerHeight();
 		}
 
-		dt.on( 'LeftInfoButtonRow-reorder.dt.dtfc LeftInfoButtonRow-visibility.dt.dtfc draw.dt.dtfc LeftInfoButtonRow-sizing.dt.dtfc', function () {
+		dt.on( 'InformationBar-reorder.dt.dtfc InformationBar-visibility.dt.dtfc draw.dt.dtfc InformationBar-sizing.dt.dtfc', function () {
 			that.update();
 		} );
 

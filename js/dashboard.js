@@ -17,7 +17,7 @@
 
 'use strict';
 
-// Main Dashboard Obkect
+// Dashboard Dashboard Obkect
 var Dashboard = (function() {
 
 

@@ -28,7 +28,7 @@ var Tables = (function($) {
 
 
 		/*
-		 * Datatable with Table Tools
+		 * Datatable with EventsTable Tools
 		 * ********************************** */
 
 		var tableTools = $('#datatable-tools');
@@ -86,7 +86,7 @@ var Tables = (function($) {
 	};
 
 	/* ------------------------- 
-        End Data Table
+        End Data EventsTable
      ------------------------- */
 
 

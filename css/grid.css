@@ -62,7 +62,7 @@
 --------------------*/
 
 
-/* Standard 16 LeftInfoButtonRow */
+/* Standard 16 InformationBar */
 .ui.grid > .column:not(.row),
 .ui.grid > .row > .column {
   position: relative;
@@ -227,11 +227,11 @@
 }
 
 /*-------------------
-     LeftInfoButtonRow Count
+     InformationBar Count
 --------------------*/
 
 
-/* Assume full width with one LeftInfoButtonRow */
+/* Assume full width with one InformationBar */
 .ui.grid > .column:only-child,
 .ui.grid > .row > .column:only-child {
   width: 100%;
@@ -359,7 +359,7 @@
 }
 
 /*-------------------
-    LeftInfoButtonRow Width
+    InformationBar Width
 --------------------*/
 
 
@@ -1069,7 +1069,7 @@
   margin-bottom: 0em;
 }
 
-/* No divider on first LeftInfoButtonRow on row */
+/* No divider on first InformationBar on row */
 .ui.divided.grid:not([class*="vertically divided"]) > .column:first-child,
 .ui.divided.grid:not([class*="vertically divided"]) > .row > .column:first-child {
   box-shadow: none;
