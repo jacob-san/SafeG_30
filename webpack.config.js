@@ -1,32 +1,30 @@
-var path = require('path');
-var webpack = require('webpack');
+var webpack = require("webpack");
+var path = require("path");
+ 
+var DEV = path.resolve(__dirname, "dev");
+var OUTPUT = path.resolve(__dirname, "output");
+ 
+var config = {
+  entry: "./dev/index.js",
+  output: {
+    path: "/",
+    filename: "myCode.js"
+  },
+  module: {
+      loaders: [
+          {
+              test: /\.jsx?$/,
+              exclude: /node_modules/,
+              loader: 'babel-loader',
 
-module.exports = {
-    devServer: {
-        inline: true,
-        contentBase: './src',
-        port: 3000
-    },
-    devtool: 'cheap-module-eval-source-map',
-    entry: './dev/js/index.js',
-    module: {
-        loaders: [
-            {
-                test: /\.js$/,
-                loaders: ['babel'],
-                exclude: /node_modules/
-            },
-            {
-                test: /\.scss/,
-                loader: 'style-loader!css-loader!sass-loader'
-            }
-        ]
-    },
-    output: {
-        path: 'src',
-        filename: 'js/bundle.min.js'
-    },
-    plugins: [
-        new webpack.optimize.OccurrenceOrderPlugin()
-    ]
+              query: {
+                  presets: ['es2015', 'react'],
+                  plugins: []
+              }
+          }
+      ]
+
+}
 };
+ 
+module.exports = config;

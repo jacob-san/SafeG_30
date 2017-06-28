@@ -1,0 +1,149 @@
+/* ----------------------------------------------------
+ *  4. Navigation
+ *
+ *  Base part for the navifation of the application
+ *
+ *  Description: Contains styling for the navigation.
+ * ---------------------------------------------------- */
+
+
+#page-sidebar {
+    background: $sidebar-bg;
+
+.scrollbar-padder {
+    height: 100%;
+    width: 100%;
+
+.mCustomScrollBox {
+.mCSB_container {
+    margin: 0;
+}
+
+.mCSB_scrollTools_vertical {
+.mCSB_draggerContainer {
+.mCSB_draggerRail {
+    background: transparent;
+}
+
+.mCSB_dragger {
+&.mCSB_dragger_onDrag {
+.mCSB_dragger_bar {
+    background: rgba(255, 255, 255, 0.3);
+}
+}
+
+.mCSB_dragger_bar {
+    background: rgba(255, 255, 255, 0.3);
+    margin-right: 0;
+    border-radius: 0;
+}
+}
+}
+}
+}
+}
+.sidebar-container {
+.sidebar-header {
+    height: 50px;
+    line-height: 50px;
+
+a {
+    color: $white;
+    display: block;
+    padding: 0 32px;
+    font-size: 18px;
+
+&:hover,
+&:focus {
+     text-decoration: none;
+ }
+}
+}
+
+.sidebar-avatar {
+    padding: 0px 15px;
+    margin: 25px 0;
+}
+
+.sidebar-navigation {
+.menu-header {
+    padding: 10px 25px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+li {
+    border-left: solid 3px transparent;
+
+
+a {
+    color: rgba(255, 255, 255, 0.25);
+    position: relative;
+    display: block;
+    padding: 15px 25px;
+    height: 40px;
+    line-height: 10px;
+    text-decoration: none;
+
+&:hover {
+     color: $white;
+     text-decoration: none;
+ }
+
+i {
+    position: absolute;
+    right: 25px;
+    top: 0;
+    bottom: 0;
+    height: 40px;
+    line-height: 40px;
+    font-size: 14px;
+}
+}
+
+&.divider {
+     margin: 15px 0;
+     border-top: solid 1px rgba(255, 255, 255, 0.05);
+ }
+
+ul.nav-submenu {
+    height: 0;
+    overflow: hidden;
+
+li {
+    opacity: 0;
+@include translateX(-15px);
+@include transition(all 0.2s);
+}
+}
+
+&.open {
+     background: rgba(0, 0, 0, 0.25);
+     border-left: solid 3px $success;
+
+> a {
+      color: $white;
+  }
+
+ul.nav-submenu {
+    height: auto;
+
+li {
+    opacity: 1;
+@include translateX(0);
+
+&.active {
+a {
+    color: $white !important;
+}
+}
+}
+}
+}
+}
+}
+
+.sidebar-stats {
+    padding: 25px;
+}
+}
+}
