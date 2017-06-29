@@ -2,12 +2,14 @@
  * Created by sandeepj on 21/6/17.
  */
 import React, {Component} from "react";
+import SideBar from './sidebar';
+import Header from './header';
+import Footer from './footer';
 import InformationBar from './DashboardContents/InformationBar';
 import EventsTable from './DashboardContents/EventsTable';
 import LatestMembers from './DashboardContents/LatestMembers';
 import Locations from './DashboardContents/Locations';
 import Country from './DashboardContents/Country';
-
 
 class Dashboard extends Component {
     constructor(props) {
@@ -20,30 +22,44 @@ class Dashboard extends Component {
             ],
         }
     }
+
     render() {
         return (
-            <div>
-                <main id="page-content">
-                    <div className="page-title">
-                        <h3>Dashboard</h3>
-                        <ol className="breadcrumb">
-                            <li>
-                                <small><i className="fa fa-home fa-fw m-xs-r"></i>Home</small>
-                            </li>
-                            <li><a href="javascript:void(0)" className="text-info">
-                                <small>Dashboard</small>
-                            </a></li>
-                        </ol>
-                    </div>
+            <div >
+                <SideBar/>
+                <Header handleNavbarClick={this.props.handleMenuClick}/>
+                <Footer/>
+                <div id="page-content">
                     <div className="row row-xl">
-                        <div className="col-md-12 text-center">
+
+                        <div className="col-md-3 text-left">
+                            {/*<!-- Begin Panel -->*/}
+                            <div className="page-title">
+                                <h3>Dashboard</h3>
+                                <ol className="breadcrumb">
+                                    <li><small><i className="fa fa-home fa-fw m-xs-r"></i>Home</small></li>
+                                    <li><a href="javascript:void(0)" className="text-info"><small>Dashboard</small></a></li>
+                                </ol>
+
+
+
+
+                            </div>
+                            {/*<!-- End Panel -->*/}
+                        </div>
+                        <div className="col-md-9 text-center">
+                            {/*<!-- Begin Panel -->*/}
                             <div className="panel-x panel-transparent m-n">
                                 <div className="column">
                                     <h1 className="txt-head">
-                                        Welcome to <strong className="text-uppercase">SAFEGUARD</strong> Admin Dashboard
-                                    </h1>
+
+
+
+                                        Welcome to <strong className="text-uppercase">SAFEGUARD</strong> Admin Dashboard</h1>
+
                                 </div>
                             </div>
+                            {/*<!-- End Panel -->*/}
                         </div>
                     </div>
                     <br/>
@@ -68,7 +84,7 @@ class Dashboard extends Component {
                         <Locations/>
                         <Country/>
                     </div>
-                </main>
+                </div>
             </div>
         );
     }

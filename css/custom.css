@@ -10,7 +10,7 @@
 .mini-stats-container {height: 100px !important;}
 .mini-stats-container .mini-stats-icon {width: 100px !important;}
 .mini-stats-container .mini-stats-icon > i {margin-top: 15px !important;}
-.mini-stats-container .mini-stats-content {    padding: 20px 40px !important;}
+.mini-stats-container .mini-stats-content {    padding: 20px 25px !important;}
 .fw-right {position: absolute; right: 111px; top: 30px; }
 .fw-right .fw-thk {font-size: 20px!important; margin: 0px;}
 .fw-right span {font-size: 14px; font-weight:normal}
@@ -28,9 +28,9 @@
 .media-body small.text-white {color:#232323;}
 .mini-user-widget .media .media-body h3 {margin: 20px 0 0 0!important;}
 .btn-black { background-color: #000000!important;font-size: 12px!important; font-weight: 700 !important;color: white!important; }
-#map { height: 280px;}
+#map { height: 267px;}
 .dis-table { display:inline-flex!important }
-.txt-head { margin-bottom: 10px!important;  margin-top: -25px!important;}
+.txt-head { margin-bottom: 10px!important;  margin-top: 0px!important;}
 .table-responsive {
     min-height: .01%;
     overflow-x: auto;
@@ -76,7 +76,58 @@
 
 .ui.inline.dropdown .menu {left:-5px}
 .z-ind-new {z-index: -1;}
+.text-black {color: #0b1115}
+.custom-width { width: 90%; margin: 0 auto}
+#page-footer > p {
+    line-height: 70px;
+}
+.form-horizontal .form-group {
+    margin-right: 0px;
+    margin-left: 0px;
+}
+.switch { margin: 0px!important;}
+.btn-primary, .btn-primary:focus {
+    background-color: #00abe8!important;
+    border-color: #00abe8!important;
 
+}
+.switch label input[type=checkbox]:checked + .lever:after {
+    background-color: #00abe8!important;
+}
+.btn-primary.active, .btn-primary:active, .btn-primary.active:focus, .btn-primary:active:focus, .btn-primary:active:hover, .btn-primary:focus.active, .btn-primary:focus:active, .btn-primary:focus.active:focus, .btn-primary:focus:active:focus, .btn-primary:focus:active:hover {
+    background-color: #00abe8!important;
+    border-color: #00abe8!important;
+
+}
+.btn-circle {height: 42px!important;    width: 42px!important;    line-height: 42px!important; }
+.form-control {padding: 5px 15px!important;height: 35px!important;}
+.table > tbody > tr > td {
+    padding: 5px!important;
+}
+.table > thead > tr > th {
+    padding: 10px!important;
+}
+.v-align {    vertical-align: middle!important;}
+.todo-container .todo-body .todo-aside .todo-projects #todo-projects-ul > li > .dropdown {display: none!important; visibility: hidden!important}
+
+.todo-container {
+    height: 400px!important;
+    max-height: 600px!important;
+}
+.ui.modal { top: -50%!important}
+.ui.modal>.close {
+    top: 1.0535rem!important;
+    right: 1rem!important;
+    color: rgba(0,0,0,.87)!important;
+}
+.todo-container .todo-body .todo-aside .todo-projects #todo-projects-ul > li {padding: 0 0px 0 30px!important;}
+.todo-container .todo-body .todo-aside {width: 400px!important;}
+.todo-container .todo-body .todo-aside .todo-projects #todo-projects-ul > li.red-dot:before {background:red!important;}
+.todo-container .todo-body .todo-aside .todo-projects #todo-projects-ul > li.orange-dot:before {background:orange!important;}
+.todo-container .todo-body .todo-aside .todo-projects #todo-projects-ul > li.green-dot:before {background:green!important;}
+.todo-container .todo-body .todo-aside .todo-projects > p {padding: 20px 20px 0px 20px!important;}
+.ui.menu .item {padding: 1.1em 1.14285714em!important;}
+.ui.menu { font-size: 12px!important;}
 @media (min-width: 768px) {
     .navbar-nav > li > a {
         padding-top: 15px;

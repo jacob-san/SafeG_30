@@ -3,15 +3,27 @@
  */
 import React, {Component} from "react";
 class Header extends Component {
+    constructor(props){
+        super(props);
+        this.state={
+            dropDownVisible:false
+        }
+        this.handleDropdownClick=this.handleDropdownClick.bind(this);
+    }
+    handleDropdownClick(){
+        this.setState({
+            dropDownVisible:!this.state.dropDownVisible
+        })
+    }
     render() {
         return (
             <div id="page-header">
                 <div className="navbar-content">
                     <ul className="nav navbar-nav">
-                        <li className="hidden-sm hidden-xs"><a href="javascript:void(0)" className="text-default"
+                        <li className="hidden-sm hidden-xs"><a onClick={this.props.handleNavbarClick} className="text-default"
                                                                data-toggle-className="navbar-collapsed"
-                                                               data-target="body"><i
-                            className="fa fa-bars fa-fw"></i></a></li>
+                                                               data-target="body">
+                            <i className ="fa fa-bars fa-fw"></i></a></li>
                     </ul>
                     <ul className="nav navbar-nav pull-right hidden-sm hidden-xs">
                         <li className="hidden-xs hidden-sm" id="header-notifications-list">
@@ -52,8 +64,12 @@ class Header extends Component {
                                 </div>
                             </a>
                         </li>
-                        <li className="dropdown">
-                            <a href="javascript:void(0)" className="text-default" data-toggle="dropdown">
+                        <li className={!this.state.dropDownVisible? 'dropdown':'dropdown open'}>
+                            <a  className="text-default" data-toggle="dropdown" onClick={()=>{
+                                this.setState({
+                                    dropDownVisible:!this.state.dropDownVisible
+                                })
+                            }}>
                                 <span className="m-sm-r">Louis Bennet</span><i className="fa fa-angle-down"></i>
                             </a>
                             <ul className="profile-dropdown dropdown-menu dropdown-menu-right" role="menu">
@@ -87,7 +103,6 @@ class Header extends Component {
                                             </div>
                                         </div>
                                     </div>
-                                    &lt;!&ndash; End Profile Menu Container &ndash;&gt;
                                 </li>
                             </ul>
                         </li>

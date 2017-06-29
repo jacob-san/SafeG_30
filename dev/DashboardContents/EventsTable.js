@@ -2,7 +2,7 @@
  * Created by sandeepj on 22/6/17.
  */
 import React, {Component} from 'react';
-import EventSearch from './EventsTableSearch';
+import EventSearch from './EventSearch';
 import EventsTableRow from './EventsTableRow'
 
 class EventsTable extends Component {
@@ -34,12 +34,14 @@ class EventsTable extends Component {
 
                     <p></p>
 
-
+                    {/*<!-- Begin Table -->*/}
                     <div className="col-md-12 ">
-
+                        {/*<!-- Begin Panel -->*/}
                         <div className="panel-transparent">
+                            {/*<!-- Begin Panel Body -->*/}
                             <div className="">
 
+                                {/*<!-- Begin Datatable Tools -->*/}
 
                                 <div id="datatable-tools_wrapper" className="dataTables_wrapper no-footer">
                                     <div className="pull-left">
@@ -51,7 +53,7 @@ class EventsTable extends Component {
 
                                     <EventSearch/>
 
-                                    <div className="h-250 table-responsive col-md-12">
+                                    <div>
                                         <table id="datatable-tools" className="table dataTable no-footer" role="grid"
                                                aria-describedby="datatable-tools_info">
                                             <thead>
@@ -78,119 +80,118 @@ class EventsTable extends Component {
                                                 </th>
                                             </tr>
                                             </thead>
-                                            <tbody>
-                                            {this.state.trows.map((row)=>{
-                                                return(
-                                                    <EventsTableRow tableRow={row}/>
-                                                )
-                                            })}
-                                            {/*<tr role="row" className="odd">*/}
-                                                {/*<td className="sorting_1">1</td>*/}
-                                                {/*<td>ALERT_SITE_TYPE</td>*/}
-                                                {/*<td>http://mypeeps.me</td>*/}
-                                                {/*<td>FRI Feb 26 2016</td>*/}
-                                            {/*</tr>*/}
-                                            {/*<tr role="row" className="even">*/}
-                                                {/*<td className="sorting_1">2</td>*/}
-                                                {/*<td>ALERT_SITE_TYPE</td>*/}
-                                                {/*<td>http://mypeeps.me</td>*/}
-                                                {/*<td>FRI Feb 26 2016</td>*/}
-                                            {/*</tr>*/}
-                                            {/*<tr role="row" className="odd">*/}
-                                                {/*<td className="sorting_1">3</td>*/}
-                                                {/*<td>ALERT_SITE_TYPE</td>*/}
-                                                {/*<td>http://mypeeps.me</td>*/}
-                                                {/*<td>FRI Feb 26 2016</td>*/}
-                                            {/*</tr>*/}
-                                            {/*<tr role="row" className="even">*/}
-                                                {/*<td className="sorting_1">4</td>*/}
-                                                {/*<td>ALERT_SITE_TYPE</td>*/}
-                                                {/*<td>http://mypeeps.me</td>*/}
-                                                {/*<td>FRI Feb 26 2016</td>*/}
-                                            {/*</tr>*/}
-                                            {/*<tr role="row" className="odd">*/}
-                                                {/*<td className="sorting_1">Brenden Wagner</td>*/}
-                                                {/*<td>Software Engineer</td>*/}
-                                                {/*<td>San Francisco</td>*/}
-                                                {/*<td>$206,850</td>*/}
-                                            {/*</tr>*/}
-                                            {/*<tr role="row" className="even">*/}
-                                                {/*<td className="sorting_1">Brielle Williamson</td>*/}
-                                                {/*<td>Integration Specialist</td>*/}
-                                                {/*<td>New York</td>*/}
-                                                {/*<td>$372,000</td>*/}
-                                            {/*</tr>*/}
-                                            {/*<tr role="row" className="odd">*/}
-                                                {/*<td className="sorting_1">Bruno Nash</td>*/}
-                                                {/*<td>Software Engineer</td>*/}
-                                                {/*<td>London</td>*/}
-                                                {/*<td>$163,500</td>*/}
-                                            {/*</tr>*/}
-                                            {/*<tr role="row" className="even">*/}
-                                                {/*<td className="sorting_1">Caesar Vance</td>*/}
-                                                {/*<td>Pre-Sales Support</td>*/}
-                                                {/*<td>New York</td>*/}
-                                                {/*<td>$106,450</td>*/}
-                                            {/*</tr>*/}
-                                            {/*<tr role="row" className="odd">*/}
-                                                {/*<td className="sorting_1">Cara Stevens</td>*/}
-                                                {/*<td>Sales Assistant</td>*/}
-                                                {/*<td>New York</td>*/}
-                                                {/*<td>$145,600</td>*/}
-                                            {/*</tr>*/}
-                                            {/*<tr role="row" className="even">*/}
-                                                {/*<td className="sorting_1">Cedric Kelly</td>*/}
-                                                {/*<td>Senior Javascript Developer</td>*/}
-                                                {/*<td>Edinburgh</td>*/}
-                                                {/*<td>$433,060</td>*/}
-                                            {/*</tr>*/}
-                                            {/*<tr role="row" className="even">*/}
-                                                {/*<td className="sorting_1">Cedric Kelly</td>*/}
-                                                {/*<td>Senior Javascript Developer</td>*/}
-                                                {/*<td>Edinburgh</td>*/}
-                                                {/*<td>$433,060</td>*/}
-                                            {/*</tr>*/}
 
-                                            {/*<tr role="row" className="even">*/}
-                                                {/*<td className="sorting_1">Cedric Kelly</td>*/}
-                                                {/*<td>Senior Javascript Developer</td>*/}
-                                                {/*<td>Edinburgh</td>*/}
-                                                {/*<td>$433,060</td>*/}
-                                            {/*</tr>*/}
-
-                                            {/*<tr role="row" className="even">*/}
-                                                {/*<td className="sorting_1">Cedric Kelly</td>*/}
-                                                {/*<td>Senior Javascript Developer</td>*/}
-                                                {/*<td>Edinburgh</td>*/}
-                                                {/*<td>$433,060</td>*/}
-                                            {/*</tr>*/}
-                                            {/*<tr role="row" className="even">*/}
-                                                {/*<td className="sorting_1">Cedric Kelly</td>*/}
-                                                {/*<td>Senior Javascript Developer</td>*/}
-                                                {/*<td>Edinburgh</td>*/}
-                                                {/*<td>$433,060</td>*/}
-                                            {/*</tr>*/}
-
-                                            {/*<tr role="row" className="even">*/}
-                                                {/*<td className="sorting_1">Cedric Kelly</td>*/}
-                                                {/*<td>Senior Javascript Developer</td>*/}
-                                                {/*<td>Edinburgh</td>*/}
-                                                {/*<td>$433,060</td>*/}
-                                            {/*</tr>*/}
-                                            {/*<tr role="row" className="even">*/}
-                                                {/*<td className="sorting_1">Cedric Kelly</td>*/}
-                                                {/*<td>Senior Javascript Developer</td>*/}
-                                                {/*<td>Edinburgh</td>*/}
-                                                {/*<td>$433,060</td>*/}
-                                            {/*</tr>*/}
-
-                                            {/*<tr role="row" className="even">*/}
-                                                {/*<td className="sorting_1">Cedric Kelly</td>*/}
-                                                {/*<td>Senior Javascript Developer</td>*/}
-                                                {/*<td>Edinburgh</td>*/}
-                                                {/*<td>$433,060</td>*/}
-                                            {/*</tr>*/}
-                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div className="h-250 table-responsive col-md-12">
+                                        <table id="datatable-tools" className="table dataTable no-footer" role="grid"
+                                               aria-describedby="datatable-tools_info">
+                                            <div className="">
+                                                <tbody>
+                                                <tr role="row" className="odd">
+                                                    <td className="sorting_1">1</td>
+                                                    <td>ALERT_SITE_TYPE</td>
+                                                    <td>http://mypeeps.me</td>
+                                                    <td>FRI Feb 26 2016</td>
+                                                </tr>
+                                                <tr role="row" className="even">
+                                                    <td className="sorting_1">2</td>
+                                                    <td>ALERT_SITE_TYPE</td>
+                                                    <td>http://mypeeps.me</td>
+                                                    <td>FRI Feb 26 2016</td>
+                                                </tr>
+                                                <tr role="row" className="odd">
+                                                    <td className="sorting_1">3</td>
+                                                    <td>ALERT_SITE_TYPE</td>
+                                                    <td>http://mypeeps.me</td>
+                                                    <td>FRI Feb 26 2016</td>
+                                                </tr>
+                                                <tr role="row" className="even">
+                                                    <td className="sorting_1">4</td>
+                                                    <td>ALERT_SITE_TYPE</td>
+                                                    <td>http://mypeeps.me</td>
+                                                    <td>FRI Feb 26 2016</td>
+                                                </tr>
+                                                <tr role="row" className="odd">
+                                                    <td className="sorting_1">Brenden Wagner</td>
+                                                    <td>Software Engineer</td>
+                                                    <td>San Francisco</td>
+                                                    <td>$206,850</td>
+                                                </tr>
+                                                <tr role="row" className="even">
+                                                    <td className="sorting_1">Brielle Williamson</td>
+                                                    <td>Integration Specialist</td>
+                                                    <td>New York</td>
+                                                    <td>$372,000</td>
+                                                </tr>
+                                                <tr role="row" className="odd">
+                                                    <td className="sorting_1">Bruno Nash</td>
+                                                    <td>Software Engineer</td>
+                                                    <td>London</td>
+                                                    <td>$163,500</td>
+                                                </tr>
+                                                <tr role="row" className="even">
+                                                    <td className="sorting_1">Caesar Vance</td>
+                                                    <td>Pre-Sales Support</td>
+                                                    <td>New York</td>
+                                                    <td>$106,450</td>
+                                                </tr>
+                                                <tr role="row" className="odd">
+                                                    <td className="sorting_1">Cara Stevens</td>
+                                                    <td>Sales Assistant</td>
+                                                    <td>New York</td>
+                                                    <td>$145,600</td>
+                                                </tr>
+                                                <tr role="row" className="even">
+                                                    <td className="sorting_1">Cedric Kelly</td>
+                                                    <td>Senior Javascript Developer</td>
+                                                    <td>Edinburgh</td>
+                                                    <td>$433,060</td>
+                                                </tr>
+                                                <tr role="row" className="even">
+                                                    <td className="sorting_1">Cedric Kelly</td>
+                                                    <td>Senior Javascript Developer</td>
+                                                    <td>Edinburgh</td>
+                                                    <td>$433,060</td>
+                                                </tr>
+                                                <tr role="row" className="even">
+                                                    <td className="sorting_1">Cedric Kelly</td>
+                                                    <td>Senior Javascript Developer</td>
+                                                    <td>Edinburgh</td>
+                                                    <td>$433,060</td>
+                                                </tr>
+                                                <tr role="row" className="even">
+                                                    <td className="sorting_1">Cedric Kelly</td>
+                                                    <td>Senior Javascript Developer</td>
+                                                    <td>Edinburgh</td>
+                                                    <td>$433,060</td>
+                                                </tr>
+                                                <tr role="row" className="even">
+                                                    <td className="sorting_1">Cedric Kelly</td>
+                                                    <td>Senior Javascript Developer</td>
+                                                    <td>Edinburgh</td>
+                                                    <td>$433,060</td>
+                                                </tr>
+                                                <tr role="row" className="even">
+                                                    <td className="sorting_1">Cedric Kelly</td>
+                                                    <td>Senior Javascript Developer</td>
+                                                    <td>Edinburgh</td>
+                                                    <td>$433,060</td>
+                                                </tr>
+                                                <tr role="row" className="even">
+                                                    <td className="sorting_1">Cedric Kelly</td>
+                                                    <td>Senior Javascript Developer</td>
+                                                    <td>Edinburgh</td>
+                                                    <td>$433,060</td>
+                                                </tr>
+                                                <tr role="row" className="even">
+                                                    <td className="sorting_1">Cedric Kelly</td>
+                                                    <td>Senior Javascript Developer</td>
+                                                    <td>Edinburgh</td>
+                                                    <td>$433,060</td>
+                                                </tr>
+                                                </tbody>
+                                            </div>
                                         </table>
                                     </div>
                                     <div className="dataTables_info" id="datatable-tools_info" role="status"
@@ -217,11 +218,21 @@ class EventsTable extends Component {
                                                                     tabIndex="0" id="datatable-tools_next">Next</a>
                                     </div>
                                 </div>
+                                {/*<!-- End Datatable Tools -->*/}
                             </div>
+                            {/*<!-- End Panel Body -->*/}
                         </div>
+                        {/*<!-- End Panel -->*/}
                     </div>
+
+
+
+                    {/*<!-- End Table -->*/}
+
                 </div>
             </div>
+
+
         );
     }
 }
