@@ -29,8 +29,8 @@ class App extends Component{
             <div className={this.state.navbarCollapsed?'navbar-collapsed':''}>
             <div className="content-wrapper">
 
-                    {/*<Dashboard handleMenuClick={this.handleMenuClick}/>*/}
-                    <ManageDevices handleMenuClick={this.handleMenuClick}/>
+                    <Dashboard handleMenuClick={this.handleMenuClick}/>
+                    {/*<ManageDevices handleMenuClick={this.handleMenuClick}/>*/}
 
 
             </div>
