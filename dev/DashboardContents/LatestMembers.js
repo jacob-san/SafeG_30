@@ -28,11 +28,8 @@ class LatestMembers extends Component{
                             <LatestMember key={memb.id} name={memb.name} time={memb.time} img_src={memb.img_src}/>
                         );
                     })}
-                <div className="ui middle aligned column centered grid">
-                    <button className=" btn btn-black w-175 p-sm text-uppercase fs-lg ls-xs fw-thk btn-rounded">
-                        VIEW ALL USERS
-                    </button>
-                </div>
+                <div className="ui right aligned container m-xl-b"><a href="javascript:void(0)" class="text-info">VIEW
+                    ALL USERS</a></div>
             </div>
         );
     }

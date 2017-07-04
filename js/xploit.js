@@ -51,7 +51,7 @@
 
 	/**
 	 * Function: initSidebarNavigation
-	 * Adds a class named 'open' to the <li> parent item
+	 * Adds a class named 'openModal' to the <li> parent item
 	 * of the <a> tag
 	 */
 	Xploit.prototype.initSidebarNavigation = function () {
@@ -64,14 +64,14 @@
 			var $link = $(this);           // Get the current <a> tag
 			var $parentLi = $link.parent('li'); // Get the parent of the <a> tag
 
-			if ($parentLi.hasClass('open')) {   // Check if 'open' is already added to the <li>
+			if ($parentLi.hasClass('open')) {   // Check if 'openModal' is already added to the <li>
 				$parentLi.removeClass('open');  // Remove the class if added (close the accordion menu)
-			} else {                            // .. else if submenu is closed, close all other (same level) submenus first before open it
+			} else {                            // .. else if submenu is closed, close all other (same level) submenus first before openModal it
 				$link.closest('ul')             // Find the closes ul > li and remove the class
 					.find('> li')
 					.removeClass('open');
 
-				$parentLi.addClass('open');     // Add the class 'open' to the <li>
+				$parentLi.addClass('open');     // Add the class 'openModal' to the <li>
 			}
 		});
 

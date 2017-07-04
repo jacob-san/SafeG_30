@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import {Link} from 'react-router-dom'
 class SideBar extends Component {
     constructor(props) {
         super(props);
@@ -26,23 +27,23 @@ class SideBar extends Component {
                         <ul className="sidebar-navigation ul-clear">
 
                             {/*<!-- Begin Dashboard -->*/}
-                            <li className="open"><a href="index.html"><i className="fa fa-home fa-fw"></i><span>Dashboard</span></a></li>
+                            <li className="open"><a href="/"><i className="fa fa-home fa-fw"></i><span>Dashboard</span></a></li>
                             {/*<!-- End Dashboard -->*/}
 
                             {/*<!-- Begin Mail -->*/}
-                            <li><a href="manage-device.html"><i className="fa fa-tablet  fa-fw"></i><span>Manage Devices</span></a></li>
+                            <li><Link to="/manage-device"><i className="fa fa-tablet  fa-fw"></i><span>Manage Devices</span></Link></li>
                             {/*<!-- End Mail -->*/}
 
 
                             {/*<!-- Begin Calendar -->*/}
-                            <li><a href="manage-events.html"><i className="fa fa-calendar fa-fw"></i><span>Manage Events</span></a></li>
+                            <li><Link to="/manage-events"><i className="fa fa-calendar fa-fw"></i><span>Manage Events</span></Link></li>
                             {/*<!-- End Calendar -->*/}
 
-                            <li><a href="site-scan.html"><i className="fa fa-search fa-fw"></i><span>Site Scanner</span></a></li>
+                            <li><Link to="site-scanner"><i className="fa fa-search fa-fw"></i><span>Site Scanner</span></Link></li>
 
-                            <li><a href="site-alerts.html"><i className="fa fa-bell fa-fw"></i><span>Site Alerts</span></a></li>
+                            <li><Link to="site-alerts"><i className="fa fa-bell fa-fw"></i><span>Site Alerts</span></Link></li>
 
-                            <li><a href="black-list.html"><i className="fa fa-list-alt fa-fw"></i><span>Black List</span></a></li>
+                            <li><Link to="black-list"><i className="fa fa-list-alt fa-fw"></i><span>Black List</span></Link></li>
 
                         </ul>
                         {/*<!-- End Sidebar Navigation -->*/}

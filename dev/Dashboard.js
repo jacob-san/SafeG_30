@@ -2,14 +2,12 @@
  * Created by sandeepj on 21/6/17.
  */
 import React, {Component} from "react";
-import SideBar from './sidebar';
-import Header from './header';
-import Footer from './footer';
 import InformationBar from './DashboardContents/InformationBar';
 import EventsTable from './DashboardContents/EventsTable';
 import LatestMembers from './DashboardContents/LatestMembers';
 import Locations from './DashboardContents/Locations';
 import Country from './DashboardContents/Country';
+import api from './Utils/api'
 
 class Dashboard extends Component {
     constructor(props) {
@@ -20,15 +18,27 @@ class Dashboard extends Component {
                 {id: 2, number: "500", textLight: "Active ", textBold: "users", type: "green"},
                 {id: 3, number: "89", textLight: "Events", textBold: "", type: "blue"}
             ],
+                deviceCount:'',
+            usersCount:'',
+            eventsCount:''
         }
+    }
+    componentDidMount(){
+        api.getDashboardCounts()
+            .then((response)=>{
+                console.log(response.data);
+                this.setState({
+                    deviceCount:response.data.counts.deviceCount,
+                    eventsCount:response.data.counts.eventCount
+                })
+            })
     }
 
     render() {
         return (
             <div >
-                <SideBar/>
-                <Header handleNavbarClick={this.props.handleMenuClick}/>
-                <Footer/>
+
+
                 <div id="page-content">
                     <div className="row row-xl">
 
@@ -40,9 +50,6 @@ class Dashboard extends Component {
                                     <li><small><i className="fa fa-home fa-fw m-xs-r"></i>Home</small></li>
                                     <li><a href="javascript:void(0)" className="text-info"><small>Dashboard</small></a></li>
                                 </ol>
-
-
-
 
                             </div>
                             {/*<!-- End Panel -->*/}
@@ -65,10 +72,7 @@ class Dashboard extends Component {
                     <br/>
                     <div className="ui two column stackable grid">
                         <div className="five wide column">
-                            {this.state.columns.map((col) => {
-                                return (<InformationBar key={col.id} number={col.number} textLight={col.textLight}
-                                                        textBold={col.textBold} type={col.type}/>);
-                            })}
+                            <InformationBar deviceCount={this.state.deviceCount} eventsCount={this.state.eventsCount}/>
                         </div>
                         <EventsTable/>
                     </div>

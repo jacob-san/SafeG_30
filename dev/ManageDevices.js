@@ -2,25 +2,33 @@
  * Created by sandeepj on 28/6/17.
  */
 import React, {Component} from "react";
-import Header from './header'
-import Footer from './footer'
-import SideBar from './sidebar'
-import DevicesTable from './ManageDeviceContent/DevicesTable'
+import DevicesTable from './ManageDeviceContent/DevicesTable';
+import AddDeviceModal from './ManageDeviceContent/AddDeviceModal';
 
 class ManageDevices extends Component {
     constructor(props) {
         super(props);
+        this.state={
+            showModal:false
+        }
+        this.closeModal=this.closeModal.bind(this);
+        this.openModal=this.openModal.bind(this);
+    }
+    closeModal(){
+        this.setState({
+            showModal:false
+        })
+    }
+    openModal(){
+        this.setState({
+            showModal:true
+        })
     }
 
     render() {
         return (
-            <div className="navbar-collapsed">
                 <div id="page-content">
-                    <Header handleNavbarClick={this.props.handleMenuClick}/>
-                    <SideBar/>
-
                     <div className="row row-xl">
-
                         <div className="col-md-3 text-left">
                             {/*<!-- Begin Panel -->*/}
                             <div className="page-title">
@@ -42,7 +50,7 @@ class ManageDevices extends Component {
                             {/*<!-- Begin Panel -->*/}
                             <div className="ui justified right aligned">
 
-                                <button className="ui btn btn-primary w-75 m-sm-r m-sm-b"> Add <i
+                                <button className="ui btn btn-primary w-75 m-sm-r m-sm-b" onClick={this.openModal}> Add <i
                                     className="fa fa-plus fa-fw"></i></button>
 
 
@@ -56,9 +64,8 @@ class ManageDevices extends Component {
                     </div>
 
                     <DevicesTable/>
+                    <AddDeviceModal showModal={this.state.showModal} closeModal={this.closeModal}/>
                 </div>
-                <Footer/>
-            </div>
         )
     }
 }

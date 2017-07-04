@@ -8,7 +8,8 @@ var config = {
   entry: "./dev/index.js",
   output: {
     path: "/",
-    filename: "myCode.js"
+    filename: "myCode.js",
+      publicPath: "/"
   },
   module: {
       loaders: [
@@ -21,10 +22,17 @@ var config = {
                   presets: ['es2015', 'react'],
                   plugins: []
               }
+          },
+          {
+              test: /\.css$/,
+              loader: 'style-loader!css-loader'
           }
       ]
 
-}
+  },
+    devServer:{
+      historyApiFallback:true,
+    }
 };
  
 module.exports = config;

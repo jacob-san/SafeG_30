@@ -6,13 +6,19 @@ class Header extends Component {
     constructor(props){
         super(props);
         this.state={
-            dropDownVisible:false
+            UserDropDownClicked:false,
+            NotificationDropdownClicked:false
         }
-        this.handleDropdownClick=this.handleDropdownClick.bind(this);
+        this.handleUserDropdownClick=this.handleUserDropdownClick.bind(this);
     }
-    handleDropdownClick(){
+    handleUserDropdownClick(){
         this.setState({
-            dropDownVisible:!this.state.dropDownVisible
+            UserDropDownClicked:!this.state.UserDropDownClicked
+        })
+    }
+    handleNotificationDropdownClick(){
+        this.setState({
+            NotificationDropdownClicked:!this.state.NotificationDropdownClicked
         })
     }
     render() {
@@ -27,8 +33,8 @@ class Header extends Component {
                     </ul>
                     <ul className="nav navbar-nav pull-right hidden-sm hidden-xs">
                         <li className="hidden-xs hidden-sm" id="header-notifications-list">
-                            <a href="javascript:void(0)" className="">
-                                <div className="ui inline dropdown">
+                            <a onClick={this.handleNotificationDropdownClick} className="">
+                                <div className='ui inline dropdown'>
                                     <div className="text">
                                         <i className="fa fa-bullhorn fa-fw"></i>
 
@@ -64,10 +70,10 @@ class Header extends Component {
                                 </div>
                             </a>
                         </li>
-                        <li className={!this.state.dropDownVisible? 'dropdown':'dropdown open'}>
+                        <li className={!this.state.UserDropDownClicked? 'dropdown':'dropdown open'}>
                             <a  className="text-default" data-toggle="dropdown" onClick={()=>{
                                 this.setState({
-                                    dropDownVisible:!this.state.dropDownVisible
+                                    UserDropDownClicked:!this.state.UserDropDownClicked
                                 })
                             }}>
                                 <span className="m-sm-r">Louis Bennet</span><i className="fa fa-angle-down"></i>

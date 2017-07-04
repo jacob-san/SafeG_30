@@ -1002,7 +1002,7 @@ Responsive.display = {
 						.append( $('<div class="dtr-modal-content"/>')
 							.append( render() )
 						)
-						.append( $('<div class="dtr-modal-close">&times;</div>' )
+						.append( $('<div class="dtr-modal-closeModal">&times;</div>' )
 							.click( function () {
 								close();
 							} )
@@ -1126,7 +1126,7 @@ Responsive.defaults = {
 	 * * `renderer` - function that is called for display of the child row data.
 	 *   The default function will show the data from the hidden columns
 	 * * `target` - Used as the selector for what objects to attach the child
-	 *   open / close to
+	 *   open / closeModal to
 	 * * `type` - `false` to disable the details display, `inline` or `InformationBar`
 	 *   for the two control types
 	 *

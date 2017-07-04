@@ -10,11 +10,12 @@ constructor(props){
     render(){
         return(
             <tr role="row" className="odd">
-                <td className="sorting_1">{this.props.tableRow.riskCode}</td>
-                <td>{this.props.tableRow.eventType}</td>
-                <td>{this.props.tableRow.host}</td>
-                <td>{this.props.tableRow.time}</td>
+                <td className="sorting_1" style={{width: 272+'px'}}>{this.props.tableRow.riskCode}</td>
+                <td style={{width: 404+'px'}}>{this.props.tableRow.eventType}</td>
+                <td style={{width: 214+'px'}}>{this.props.tableRow.host}</td>
+                <td style={{width: 182+'px'}}>{this.props.tableRow.time}</td>
             </tr>
+
         )
     }
 }

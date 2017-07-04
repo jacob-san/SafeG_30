@@ -299,9 +299,9 @@
 		
 		
 		/**
-		 * The exact opposite of 'opening' a row, this function will close any rows which
-		 * are currently 'open'.
-		 *  @param {node} nTr the table row to 'close'
+		 * The exact opposite of 'opening' a row, this function will closeModal any rows which
+		 * are currently 'openModal'.
+		 *  @param {node} nTr the table row to 'closeModal'
 		 *  @returns {int} 0 on success, or 1 if failed (can't find the row)
 		 *  @dtopt API
 		 *  @deprecated Since v1.10
@@ -310,7 +310,7 @@
 		 *    $(document).ready(function() {
 		 *      var oTable;
 		 *
-		 *      // 'open' an information row when a row is clicked on
+		 *      // 'openModal' an information row when a row is clicked on
 		 *      $('#example tbody tr').click( function () {
 		 *        if ( oTable.fnIsOpen(this) ) {
 		 *          oTable.fnClose( this );
@@ -574,9 +574,9 @@
 		
 		
 		/**
-		 * Check to see if a row is 'open' or not.
+		 * Check to see if a row is 'openModal' or not.
 		 *  @param {node} nTr the table row to check
-		 *  @returns {boolean} true if the row is currently open, false otherwise
+		 *  @returns {boolean} true if the row is currently openModal, false otherwise
 		 *  @dtopt API
 		 *  @deprecated Since v1.10
 		 *
@@ -584,7 +584,7 @@
 		 *    $(document).ready(function() {
 		 *      var oTable;
 		 *
-		 *      // 'open' an information row when a row is clicked on
+		 *      // 'openModal' an information row when a row is clicked on
 		 *      $('#example tbody tr').click( function () {
 		 *        if ( oTable.fnIsOpen(this) ) {
 		 *          oTable.fnClose( this );
@@ -607,7 +607,7 @@
 		 * on display on the page, with the HTML contents that is passed into the
 		 * function. This can be used, for example, to ask for confirmation that a
 		 * particular record should be deleted.
-		 *  @param {node} nTr The table row to 'open'
+		 *  @param {node} nTr The table row to 'openModal'
 		 *  @param {string|node|jQuery} mHtml The HTML to put into the row
 		 *  @param {string} sClass Class to give the new TD cell
 		 *  @returns {node} The row opened. Note that if the table row passed in as the
@@ -620,7 +620,7 @@
 		 *    $(document).ready(function() {
 		 *      var oTable;
 		 *
-		 *      // 'open' an information row when a row is clicked on
+		 *      // 'openModal' an information row when a row is clicked on
 		 *      $('#example tbody tr').click( function () {
 		 *        if ( oTable.fnIsOpen(this) ) {
 		 *          oTable.fnClose( this );
@@ -13404,7 +13404,7 @@
 		"bInitialised": false,
 	
 		/**
-		 * Information about open rows. Each object in the array has the parameters
+		 * Information about openModal rows. Each object in the array has the parameters
 		 * 'nTr' and 'nParent'
 		 *  @type array
 		 *  @default []
