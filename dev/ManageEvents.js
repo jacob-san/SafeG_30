@@ -3,6 +3,7 @@
  */
 import React, {Component} from "react";
 import DatePicker from './ManageEventContents/DatePicker'
+import Toggle from './ManageEventContents/Toggle'
 class ManageEvents extends Component{
     constructor(props){
         super(props);
@@ -67,7 +68,10 @@ class ManageEvents extends Component{
                                         {/*</div>*/}
                                     {/*</div>*/}
                                 {/*</div>*/}
-                                <DatePicker className="col-md-3"/>
+                                <DatePicker/>
+
+                                {/*<DateTimeField/>*/}
+                                {/*<DateTimeField/>*/}
                                 {/*<StartDate/>*/}
                                 {/*<div className="col-md-3">*/}
                                     {/*<div className="form-group">*/}
@@ -97,8 +101,10 @@ class ManageEvents extends Component{
                                     <div className="switch primary text-left m-md-t">
                                         <label>
                                             <span>Table</span>
-                                            <input type="checkbox" checked=""/>
-                                                <span className="lever"></span><span> Map</span>
+                                            {/*<input type="checkbox" checked=""/>*/}
+                                                {/*<span className="lever"></span>*/}
+                                                <Toggle/>
+                                            <span> Map</span>
                                         </label>
                                     </div>
                                 </div>
