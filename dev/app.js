@@ -15,6 +15,8 @@ import ManageEvents from './ManageEvents'
 import SiteScanner from './SiteScanner'
 import SiteAlerts from './SiteAlerts'
 import Blacklists from './Blacklists'
+import Login from './Login'
+import SignUp from './SignUp'
 class App extends Component{
     constructor(props){
         super(props);
@@ -29,13 +31,11 @@ class App extends Component{
         })
     }
     render(){
-
-        console.log('********navbarCollapsed: '+this.state.navbarCollapsed);
-
         return(
         <Router>
             <div className={this.state.navbarCollapsed?'navbar-collapsed':''}>
             <div className="content-wrapper">
+                {/*<Login/>*/}
                 <Header handleNavbarClick={this.handleMenuClick}/>
                 <SideBar/>
                 <Switch>
@@ -50,7 +50,6 @@ class App extends Component{
                 <Footer/>
             </div>
         </Router>
-
         );
     }
 }
