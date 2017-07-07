@@ -5,6 +5,12 @@ import React, {Component} from "react";
 import DeviceSearch from './DeviceSearch'
 import DeviceRow from './DeviceRow'
 class DevicesTable extends Component{
+    constructor(props){
+        super(props);
+        this.state={
+            device:[{name:'', status:'', },]
+        }
+    }
     render(){
         return(
             <div className="row row-xl bg-white">
@@ -26,35 +32,40 @@ class DevicesTable extends Component{
                                         <th>Device Name</th>
                                         <th>Status</th>
                                         <th>Action</th>
-
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Samsung</td>
-                                        <td><code>active</code></td>
-                                        <td>Otto</td>
 
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>I Phone</td>
-                                        <td><code>active</code></td>
-                                        <td>Thornton</td>
+                                    {this.props.devices.map((device, index)=>{
+                                        return(
+                                        <DeviceRow key={index} ind={index} device={device} handleEditClick={this.props.handleEditClick}/>
+                                        ) })}
 
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>LG</td>
-                                        <td><code>active</code></td>
-                                        <td><h5 className="m-n fw-thk text-danger"><i
-                                            className="fa fa-edit text-success m-xs-r fa-fw"></i><a href=""
-                                                                                                    className="text-black">
-                                            Edit</a> <i className="fa fa-trash m-xs-r fa-fw "></i><a href="" className="text-black">Delete</a>
-                                        </h5><h5 className="m-n fw-thk text-danger"></h5></td>
+                                    {/*<tr>*/}
+                                        {/*<td>1</td>*/}
+                                        {/*<td>Samsung</td>*/}
+                                        {/*<td><code>active</code></td>*/}
+                                        {/*<td>Otto</td>*/}
 
-                                    </tr>
+                                    {/*</tr>*/}
+                                    {/*<tr>*/}
+                                        {/*<td>2</td>*/}
+                                        {/*<td>I Phone</td>*/}
+                                        {/*<td><code>active</code></td>*/}
+                                        {/*<td>Thornton</td>*/}
+
+                                    {/*</tr>*/}
+                                    {/*<tr>*/}
+                                        {/*<td>3</td>*/}
+                                        {/*<td>LG</td>*/}
+                                        {/*<td><code>active</code></td>*/}
+                                        {/*<td><h5 className="m-n fw-thk text-danger"><i*/}
+                                            {/*className="fa fa-edit text-success m-xs-r fa-fw"></i><a href=""*/}
+                                                                                                    {/*className="text-black">*/}
+                                            {/*Edit</a> <i className="fa fa-trash m-xs-r fa-fw "></i><a href="" className="text-black">Delete</a>*/}
+                                        {/*</h5><h5 className="m-n fw-thk text-danger"></h5></td>*/}
+
+                                    {/*</tr>*/}
                                     </tbody>
                                 </table>
                                 {/*<!-- End Table Contextual -->*/}

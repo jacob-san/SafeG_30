@@ -17,40 +17,70 @@ import SiteAlerts from './SiteAlerts'
 import Blacklists from './Blacklists'
 import Login from './Login'
 import SignUp from './SignUp'
-class App extends Component{
-    constructor(props){
+import authActions from './Utils/authActions'
+class App extends Component {
+    constructor(props) {
         super(props);
-        this.state={
-            navbarCollapsed:true
+        this.state = {
+            navbarCollapsed: true,
+            isLoggedIn:false
         }
-        this.handleMenuClick=this.handleMenuClick.bind(this);
+        this.handleMenuClick = this.handleMenuClick.bind(this);
+        this.validateToken = this.validateToken.bind(this);
     }
-    handleMenuClick(){
+
+    handleMenuClick() {
         this.setState({
-            navbarCollapsed:!this.state.navbarCollapsed
+            navbarCollapsed: !this.state.navbarCollapsed
         })
     }
-    render(){
-        return(
+    validateToken(){
+        authActions.validateAuthToken()
+            .then((response)=>{
+                if(response.data.status==="success"){
+                    this.setState({
+                        isLoggedIn:true
+                    })
+                }
+            })
+    }
+    // componentDidMount(){
+    //    this.isLoggedIn()
+    // }
+    render() {
+        console.log("LoggedIn:***"+this.state.isLoggedIn)
+        return (
         <Router>
-            <div className={this.state.navbarCollapsed?'navbar-collapsed':''}>
-            <div className="content-wrapper">
-                {/*<Login/>*/}
-                <Header handleNavbarClick={this.handleMenuClick}/>
-                <SideBar/>
-                <Switch>
-                    <Route exact path="/" component={Dashboard}/>
-                    <Route path="/manage-device" component={ManageDevices}/>
-                    <Route path="/manage-events" component={ManageEvents}/>
-                    <Route path="/site-scanner" component={SiteScanner} />
-                    <Route path="/site-alerts" component={SiteAlerts}/>
-                    <Route path="/black-list" component={Blacklists}/>
-                </Switch>
-            </div>
+            <div className={this.state.navbarCollapsed ? 'navbar-collapsed' : ''}>
+                <div className="content-wrapper">
+                    {/*<Login/>*/}
+                    {/*<Route path="/login" component={Login}/>*/}
+                    <Header handleNavbarClick={this.handleMenuClick}/>
+                    <SideBar/>
+                    <Switch>
+                        <Route exact path="/" component={Dashboard}/>
+                        {/*<Route exact path="/" render={()=>{*/}
+                             {/*this.state.isLoggedIn?(<Redirect to="/login"/>):(<Dashboard/>)*/}
+                        {/*}}/>*/}
+                        <Route path="/manage-device" component={ManageDevices}/>
+                        <Route path="/manage-events" component={ManageEvents}/>
+                        <Route path="/site-scanner" component={SiteScanner}/>
+                        <Route path="/site-alerts" component={SiteAlerts}/>
+                        <Route path="/black-list" component={Blacklists}/>
+                    </Switch>
+                </div>
                 <Footer/>
             </div>
         </Router>
-        );
+        )
     }
 }
+const SignIn = () => (
+    <Route path="/login" component={Login}/>
+)
+const Main = () => (
+    <main>
+
+    </main>
+)
 export default App;

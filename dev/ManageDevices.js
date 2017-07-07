@@ -4,15 +4,57 @@
 import React, {Component} from "react";
 import DevicesTable from './ManageDeviceContent/DevicesTable';
 import AddDeviceModal from './ManageDeviceContent/AddDeviceModal';
+import manageDeviceActions from './Utils/manageDeviceActions'
+
 
 class ManageDevices extends Component {
     constructor(props) {
         super(props);
         this.state={
-            showModal:false
+            showModal:false,
+            devices:[{
+                deviceActive:'',
+                deviceId:'',
+                deviceImageURL:'',
+                deviceMake:'',
+                deviceModel:'',
+                deviceName:'',
+                deviceSince:'',
+                deviceStatus:'',
+                deviceToken:'',
+                deviceType:'',
+                entityId:'',
+                message:'',
+                status:'',
+                userId:'',
+                userType:'',
+                valid:'',
+                validDeviceName:'',
+                verified:''},
+            ],
+            modalTitle:'Add new device'
         }
         this.closeModal=this.closeModal.bind(this);
         this.openModal=this.openModal.bind(this);
+        this.handleEditClick=this.handleEditClick.bind(this)
+        this.handleDeleteClick=this.handleDeleteClick.bind(this)
+    }
+    componentDidMount(){
+        manageDeviceActions.getDeviceList()
+            .then((response)=>{
+            this.setState({
+                devices:response.data.devices
+            })
+            })
+    }
+    // handleDeleteClick(){
+    //
+    // }
+    handleEditClick(){
+        this.setState({
+            modalTitle:"Edit Device",
+            showModal:true
+        })
     }
     closeModal(){
         this.setState({
@@ -63,8 +105,8 @@ class ManageDevices extends Component {
                         {/*<!-- End Panel -->*/}
                     </div>
 
-                    <DevicesTable/>
-                    <AddDeviceModal showModal={this.state.showModal} closeModal={this.closeModal}/>
+                    <DevicesTable devices={this.state.devices} handleEditClick={this.handleEditClick}/>
+                    <AddDeviceModal showModal={this.state.showModal} closeModal={this.closeModal} modalTitle={this.state.modalTitle}/>
                 </div>
         )
     }

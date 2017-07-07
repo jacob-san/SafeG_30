@@ -6,29 +6,16 @@ import LatestMember from './LatestMember';
 class LatestMembers extends Component{
     constructor(props){
         super(props);
-        this.state = {
-            latestmemb:[
-                {id:1,name:"Louis Bennett", time: "2 days ago", img_src:"images/avatar5.png"},
-                {id:2,name:"Louis Bennett", time: "2 days ago", img_src:"images/avatar5.png"},
-                {id:3,name:"Louis Bennett", time: "2 days ago", img_src:"images/avatar5.png"},
-                {id:4,name:"Louis Bennett", time: "2 days ago", img_src:"images/avatar5.png"},
-                {id:5,name:"Louis Bennett", time: "2 days ago", img_src:"images/avatar5.png"},
-                {id:6,name:"Louis Bennett", time: "2 days ago", img_src:"images/avatar5.png"},
-                {id:7,name:"Louis Bennett", time: "2 days ago", img_src:"images/avatar5.png"},
-                {id:8,name:"Louis Bennett", time: "2 days ago", img_src:"images/avatar5.png"},
-
-            ]
-        }
     }
     render(){
         return(
             <div className="ui four column stackable grid dis-table">
-                    {this.state.latestmemb.map((memb)=>{
+                    {this.props.latestUsers.map((memb, index)=>{
                         return(
-                            <LatestMember key={memb.id} name={memb.name} time={memb.time} img_src={memb.img_src}/>
+                            <LatestMember key={index} name={memb.fullName} time={memb.userSince} img_src={'http://10.10.1.5:5050'+memb.profileImageURL}/>
                         );
                     })}
-                <div className="ui right aligned container m-xl-b"><a href="javascript:void(0)" class="text-info">VIEW
+                <div className="ui right aligned container m-xl-b"><a href="javascript:void(0)" className="text-info">VIEW
                     ALL USERS</a></div>
             </div>
         );

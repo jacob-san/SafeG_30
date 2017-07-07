@@ -1,10 +1,13 @@
 /**
+ * Created by sandeepj on 7/7/17.
+ */
+/**
  * Created by sandeepj on 3/7/17.
  */
 import React, {Component} from 'react';
 import {Modal, Button} from 'react-bootstrap';
 import manageDeviceactions from '../Utils/manageDeviceActions'
-class AddDeviceModal extends Component {
+class EditDeviceModal extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -73,7 +76,7 @@ class AddDeviceModal extends Component {
             <div className="ui small modal ">
                 <Modal show={this.props.showModal} onHide={this.props.closeModal}>
                     <Modal.Header closeButton>
-                        <Modal.Title>{this.props.modalTitle}</Modal.Title>
+                        <Modal.Title>Add new device</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
                         <div>
@@ -124,16 +127,6 @@ class AddDeviceModal extends Component {
                                     {/*<!-- Begin Required -->*/}
                                     <div className="form-group">
                                         <label htmlFor="exampleInputRequired"
-                                               className="control-label col-md-3 col-xs-12">User ID</label>
-                                        <div className="col-md-8 col-xs-12">
-                                            <input type="text" className="form-control" placeholder="User ID" onChange={this.onChangeToken}/>
-                                        </div>
-                                    </div>
-                                    {/*<!-- End Required -->*/}
-
-                                    {/*<!-- Begin Required -->*/}
-                                    <div className="form-group">
-                                        <label htmlFor="exampleInputRequired"
                                                className="control-label col-md-3 col-xs-12">Device Status</label>
                                         <div className="col-md-8 col-xs-12">
                                             <div className="inline field">
@@ -144,7 +137,7 @@ class AddDeviceModal extends Component {
                                                     <div className="checkbox m-lg-t">
                                                         <label htmlFor="checkbox-style-md1" className="checkbox-default primary">
                                                             <input type="checkbox" name="checkbox1" id="checkbox-style-md1" onChange={this.onChangeStatus}/>
-                                                                <span></span>
+                                                            <span></span>
                                                         </label>
                                                     </div>
 

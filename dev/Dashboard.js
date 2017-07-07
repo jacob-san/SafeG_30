@@ -7,7 +7,7 @@ import EventsTable from './DashboardContents/EventsTable';
 import LatestMembers from './DashboardContents/LatestMembers';
 import Locations from './DashboardContents/Locations';
 import Country from './DashboardContents/Country';
-import api from './Utils/api'
+import dashboardActions from './Utils/dashboardActions'
 
 class Dashboard extends Component {
     constructor(props) {
@@ -18,26 +18,40 @@ class Dashboard extends Component {
                 {id: 2, number: "500", textLight: "Active ", textBold: "users", type: "green"},
                 {id: 3, number: "89", textLight: "Events", textBold: "", type: "blue"}
             ],
+            latestUsers:[{email:'',firstname:'',fullname:'',lastname:'',phone:'',profileImageURL:'',userActive:'',userId:'',userSince:'',userStatus:'',userType:''}],
                 deviceCount:'',
-            usersCount:'',
+            activeUsersCount:'',
             eventsCount:''
         }
     }
     componentDidMount(){
-        api.getDashboardCounts()
+        dashboardActions.getDashboardCounts()
             .then((response)=>{
                 console.log(response.data);
                 this.setState({
                     deviceCount:response.data.counts.deviceCount,
-                    eventsCount:response.data.counts.eventCount
+                    eventsCount:response.data.counts.eventCount,
+                    activeUsersCount:response.data.counts.userCount
                 })
+            })
+        dashboardActions.getLatestUsers()
+            .then((response)=>{
+            this.setState({
+                latestUsers:response.data.users
+            })
+            })
+        dashboardActions.getLatestAlerts()
+            .then((response)=>{
+                // this.setState({
+                //
+                // })
+                console.log(""+response.data)
             })
     }
 
     render() {
         return (
             <div >
-
 
                 <div id="page-content">
                     <div className="row row-xl">
@@ -72,7 +86,7 @@ class Dashboard extends Component {
                     <br/>
                     <div className="ui two column stackable grid">
                         <div className="five wide column">
-                            <InformationBar deviceCount={this.state.deviceCount} eventsCount={this.state.eventsCount}/>
+                            <InformationBar deviceCount={this.state.deviceCount} eventsCount={this.state.eventsCount} activeUsersCount={this.state.activeUsersCount}/>
                         </div>
                         <EventsTable/>
                     </div>
@@ -83,7 +97,7 @@ class Dashboard extends Component {
                             </div>
                         </div>
                     </div>
-                    <LatestMembers/>
+                    <LatestMembers latestUsers={this.state.latestUsers}/>
                     <div className="ui two column stackable grid">
                         <Locations/>
                         <Country/>

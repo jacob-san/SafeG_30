@@ -25,7 +25,7 @@ class InformationBar extends Component {
                 <div className="column">
                     <div className="mini-stats-container mini-stats-violet">
                         <div className="mini-stats-content">
-                            <h1 className="m-n fw-thk text-white">500</h1>
+                            <h1 className="m-n fw-thk text-white">{this.props.activeUsersCount}</h1>
                             <small className="text-uppercase text-white">Active <strong>Users </strong></small>
                         </div>
                         <div className="mini-stats-icon">
@@ -40,7 +40,7 @@ class InformationBar extends Component {
                             <h1 className="m-n fw-thk text-white left floated">{this.props.eventsCount}</h1>
                             <div className="fw-right">
                                 <h1 className="fw-thk text-white">89 <span>Existng Active</span></h1>
-                                <h1 className="fw-thk text-white">9 <span>Registered Device</span></h1>
+                                <h1 className="fw-thk text-white">{this.props.deviceCount} <span>Registered Device</span></h1>
                             </div>
                             <small className="text-uppercase text-white">Events</small>
                         </div>
