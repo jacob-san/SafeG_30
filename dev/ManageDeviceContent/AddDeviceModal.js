@@ -12,14 +12,17 @@ class AddDeviceModal extends Component {
             make: '',
             model: '',
             token: '',
-            status: '',
+            userID:'',
+            status: 'active',
+            isStatusChecked: true
         }
-        this.onChangeName = this.onChangeName.bind(this),
-            this.onChangeMake = this.onChangeMake.bind(this),
-            this.onChangeModel = this.onChangeModel.bind(this),
-            this.onChangeToken = this.onChangeToken.bind(this),
-            this.onChangeStatus = this.onChangeStatus.bind(this),
-            this.handleSaveChanges=this.handleSaveChanges.bind(this)
+        this.onChangeName = this.onChangeName.bind(this);
+        this.onChangeMake = this.onChangeMake.bind(this);
+        this.onChangeModel = this.onChangeModel.bind(this);
+        this.onChangeToken = this.onChangeToken.bind(this);
+        this.onChangeStatus = this.onChangeStatus.bind(this);
+        this.handleSaveChanges = this.handleSaveChanges.bind(this);
+        this.onChangeUserID = this.onChangeUserID.bind(this);
     }
 
     onChangeName(e) {
@@ -53,22 +56,38 @@ class AddDeviceModal extends Component {
 
     }
 
-    onChangeStatus(e) {
+    onChangeUserID(e) {
         this.setState({
-            status: e.target.value
+            userID: e.target.value
         })
         console.log(e.target.value)
 
     }
 
-    handleSaveChanges() {
-        manageDeviceactions.addNewDevice(this.state.name, this.state.make, this.state.model, this.state.token, this.state.status)
-            .then((response) => {
-                console.log(response.data)
+    onChangeStatus() {
+        this.setState({
+            isStatusChecked: !this.state.isStatusChecked
+        })
+        if (this.state.isStatusChecked) {
+            this.setState({
+                status: "active"
             })
+        }
+        else {
+            this.setState({
+                status: ""
+            })
+        }
     }
 
-    render(){
+    handleSaveChanges() {
+        manageDeviceactions.addNewDevice(this.state.name, this.state.make, this.state.model, this.state.token, this.state.userID, this.state.status)
+        // .then((response) => {
+        //     console.log(response.data)
+        // })
+    }
+
+    render() {
         return (
             <div className="ui small modal ">
                 <Modal show={this.props.showModal} onHide={this.props.closeModal}>
@@ -84,7 +103,8 @@ class AddDeviceModal extends Component {
                                         <label htmlFor="exampleInputRequired"
                                                className="control-label col-md-3 col-xs-12">Device Name</label>
                                         <div className="col-md-8 col-xs-12">
-                                            <input type="text" className="form-control" placeholder="Device Name" onChange={this.onChangeName}/>
+                                            <input type="text" className="form-control" placeholder="Device Name"
+                                                   onChange={this.onChangeName}/>
                                         </div>
                                     </div>
                                     {/*<!-- End Required -->*/}
@@ -94,7 +114,8 @@ class AddDeviceModal extends Component {
                                         <label htmlFor="exampleInputRequired"
                                                className="control-label col-md-3 col-xs-12">Device Make</label>
                                         <div className="col-md-8 col-xs-12">
-                                            <input type="text" className="form-control" placeholder="Device Make" onChange={this.onChangeMake}/>
+                                            <input type="text" className="form-control" placeholder="Device Make"
+                                                   onChange={this.onChangeMake}/>
                                         </div>
                                     </div>
                                     {/*<!-- End Required -->*/}
@@ -105,7 +126,8 @@ class AddDeviceModal extends Component {
                                         <label htmlFor="exampleInputRequired"
                                                className="control-label col-md-3 col-xs-12">Device Model</label>
                                         <div className="col-md-8 col-xs-12">
-                                            <input type="text" className="form-control" placeholder="Device Model" onChange={this.onChangeModel}/>
+                                            <input type="text" className="form-control" placeholder="Device Model"
+                                                   onChange={this.onChangeModel}/>
                                         </div>
                                     </div>
                                     {/*<!-- End Required -->*/}
@@ -116,7 +138,8 @@ class AddDeviceModal extends Component {
                                         <label htmlFor="exampleInputRequired"
                                                className="control-label col-md-3 col-xs-12">Device Token</label>
                                         <div className="col-md-8 col-xs-12">
-                                            <input type="text" className="form-control" placeholder="Device Token" onChange={this.onChangeToken}/>
+                                            <input type="text" className="form-control" placeholder="Device Token"
+                                                   onChange={this.onChangeToken}/>
                                         </div>
                                     </div>
                                     {/*<!-- End Required -->*/}
@@ -126,7 +149,8 @@ class AddDeviceModal extends Component {
                                         <label htmlFor="exampleInputRequired"
                                                className="control-label col-md-3 col-xs-12">User ID</label>
                                         <div className="col-md-8 col-xs-12">
-                                            <input type="text" className="form-control" placeholder="User ID" onChange={this.onChangeToken}/>
+                                            <input type="text" className="form-control" placeholder="User ID"
+                                                   onChange={this.onChangeUserID}/>
                                         </div>
                                     </div>
                                     {/*<!-- End Required -->*/}
@@ -142,9 +166,13 @@ class AddDeviceModal extends Component {
                                                     {/*<label></label>*/}
 
                                                     <div className="checkbox m-lg-t">
-                                                        <label htmlFor="checkbox-style-md1" className="checkbox-default primary">
-                                                            <input type="checkbox" name="checkbox1" id="checkbox-style-md1" onChange={this.onChangeStatus}/>
-                                                                <span></span>
+                                                        <label htmlFor="checkbox-style-md1"
+                                                               className="checkbox-default primary">
+                                                            <input type="checkbox" name="checkbox1"
+                                                                   id="checkbox-style-md1"
+                                                                   onChange={this.onChangeStatus}
+                                                                   checked={this.state.isStatusChecked}/>
+                                                            <span></span>
                                                         </label>
                                                     </div>
 
@@ -164,7 +192,8 @@ class AddDeviceModal extends Component {
                         </div>
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button className="ui btn btn-info w-150 deny m-xs-l" onClick={this.handleSaveChanges}>Save Changes</Button>
+                        <Button className="ui btn btn-info w-150 deny m-xs-l" onClick={this.handleSaveChanges}>Save
+                            Changes</Button>
                         <Button className="ui btn btn-danger w-100 deny" onClick={this.props.closeModal}>Close</Button>
                     </Modal.Footer>
                 </Modal>

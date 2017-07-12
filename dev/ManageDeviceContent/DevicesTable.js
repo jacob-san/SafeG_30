@@ -38,7 +38,7 @@ class DevicesTable extends Component{
 
                                     {this.props.devices.map((device, index)=>{
                                         return(
-                                        <DeviceRow key={index} ind={index} device={device} handleEditClick={this.props.handleEditClick}/>
+                                        <DeviceRow key={index} ind={index} device={device} handleEditClick={this.props.handleEditClick} handleDeleteClick={this.props.handleDeleteClick}/>
                                         ) })}
 
                                     {/*<tr>*/}

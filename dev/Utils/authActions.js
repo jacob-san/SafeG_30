@@ -2,24 +2,55 @@
  * Created by sandeepj on 7/7/17.
  */
 import axios from 'axios';
-module.exports={
-    validateAuthToken(){
+import {API_URL} from '../constants/APIconstants'
+class authActions{
+   static validateAuthToken(){
+       console.log("validateAuthToken: called******")
         return axios({
-            url:'http://10.10.1.5:5050/api/validate-auth-token',
+            url:API_URL+'/api/validate-auth-token',
             method:'get',
             withCredentials: true
         })
-    },
-    tryLogin(email,password){
-        console.log(email+ password)
+            .then((response)=>{
+           if(response.data.status==="success"){
+               console.log("******authTokenValidated")
+               return true
+           }
+           return false
+            })
+    }
+   static authenticate(email, password){
         return axios({
-            url:'http://10.10.1.5:5050/api/signin',
+            url:API_URL+'/api/signin',
             method:'post',
             data:{
                 email: email,
                 password: password
             },
-            // withCredentials:true
+            withCredentials:true,
+            contentType: "application/json"
+        })
+    }
+    static userSignUp(firstName,lastName,email,phone,password){
+       return axios({
+           url:API_URL+'/api/signup',
+           method:'put',
+           data:{
+               firstName:firstName,
+               lastName:lastName,
+               email:email,
+               phone:phone,
+               password:password
+           },
+           withCredentials:true
+       })
+    }
+    static userLogout(){
+        return axios({
+            url:API_URL+'/api/logout',
+            method:'post',
+            withCredentials:true
         })
     }
 }
+export default authActions;

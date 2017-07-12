@@ -11,12 +11,12 @@ class DeviceRow extends Component{
                 <tr>
                 <td>{this.props.ind+1}</td>
                 <td>{this.props.device.deviceName}</td>
-                <td><code>{this.props.device.status}</code></td>
+                <td><code>{this.props.device.deviceStatus}</code></td>
                 <td><h5 className="m-n fw-thk text-danger"><i
                 className="fa fa-edit text-success m-xs-r fa-fw"></i>
-                    <a className="text-black" onClick={this.props.handleEditClick}>Edit</a>
+                    <a className="text-black" onClick={()=>{this.props.handleEditClick(this.props.device)}}>Edit</a>
                     <i className="fa fa-trash m-xs-r fa-fw "></i>
-                    <a  className="text-black" onClick={this.props.handleDeleteClick}>Delete</a>
+                    <a  className="text-black" onClick={()=>{this.props.handleDeleteClick(this.props.device.deviceId)}}>Delete</a>
                 </h5><h5 className="m-n fw-thk text-danger"></h5></td>
                 </tr>
 

@@ -2,17 +2,30 @@
  * Created by sandeepj on 5/7/17.
  */
 import React, {Component} from "react";
-import api from './Utils/dashboardActions'
+import {Link,Redirect} from 'react-router-dom'
+import authActions from './Utils/authActions'
 class Login extends Component{
     constructor(props){
         super(props);
         this.state={
             username:'',
-            password:''
+            password:'',
+            redirectToReferrer:false
         }
-        this.handleUsernameChange=this.handleUsernameChange.bind(this)
-        this.handlePasswordChange=this.handlePasswordChange.bind(this)
-        this.attemptLogin=this.attemptLogin.bind(this);
+        this.handleUsernameChange=this.handleUsernameChange.bind(this);
+        this.handlePasswordChange=this.handlePasswordChange.bind(this);
+        this.login=this.login.bind(this)
+    }
+    login(){
+        authActions.authenticate(this.state.username, this.state.password)
+            .then((response)=>{
+            console.log(response.data)
+                if(response.data.status==='success'){
+                    this.setState({
+                        redirectToReferrer:true
+                    })
+                }
+            })
     }
     handleUsernameChange(event){
         this.setState({
@@ -24,16 +37,14 @@ class Login extends Component{
             password:event.target.value
         })
     }
-    attemptLogin(){
-        console.log("submited")
-        console.log(this.state.username+" "+ this.state.password)
-        api.tryLogin(this.state.username, this.state.password)
-            .then((response)=>{
-            console.log(response.data)
-            })
-    }
-
     render(){
+        const { from } = this.props.location.state || { from: { pathname: '/' } }
+        const { redirectToReferrer } = this.state
+        if(redirectToReferrer){
+            return(
+                <Redirect to={from}/>
+            )
+        }
         return(
             <div className="login-container">
                 <h2 className="m-n fw-thk"><span className="text-success">S</span>AFEGUARD</h2>
@@ -62,14 +73,14 @@ class Login extends Component{
                     </div>
                     {/*<!-- End Form Group -->*/}
 
-                    <p className="m-xl-t m-md-b"><a href="index.html" className="btn btn-primary w-150" onClick={this.attemptLogin}>Sign In</a></p>
+                    <p className="m-xl-t m-md-b"><a href="index.html" className="btn btn-primary w-150" onClick={this.login}>Sign In</a></p>
 
                     <div className="row">
                         <div className="col-xs-6">
                             <p><a href="pages.forgot-password.html" className="text-grey">Forgot Password?</a></p>
                         </div>
                         <div className="col-xs-6">
-                            <p className="text-right"><a href="pages.register.html" className="text-grey">Don't have an account yet?</a>
+                            <p className="text-right"><Link to="/signup" className="text-grey">Don't have an account yet?</Link>
                             </p>
                         </div>
                     </div>

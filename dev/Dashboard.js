@@ -27,7 +27,7 @@ class Dashboard extends Component {
     componentDidMount(){
         dashboardActions.getDashboardCounts()
             .then((response)=>{
-                console.log(response.data);
+                console.log(JSON.stringify(response.data));
                 this.setState({
                     deviceCount:response.data.counts.deviceCount,
                     eventsCount:response.data.counts.eventCount,

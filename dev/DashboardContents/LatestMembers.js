@@ -12,7 +12,7 @@ class LatestMembers extends Component{
             <div className="ui four column stackable grid dis-table">
                     {this.props.latestUsers.map((memb, index)=>{
                         return(
-                            <LatestMember key={index} name={memb.fullName} time={memb.userSince} img_src={'http://10.10.1.5:5050'+memb.profileImageURL}/>
+                            <LatestMember key={index} memb={memb}/>
                         );
                     })}
                 <div className="ui right aligned container m-xl-b"><a href="javascript:void(0)" className="text-info">VIEW

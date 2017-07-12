@@ -6,6 +6,7 @@ import BlacklistSearch from './BlackListContents/BlacklistSearch';
 import Blacklist_listItem from './BlackListContents/Blacklist_listItem';
 import Blacklist_list from './BlackListContents/Blacklist_list';
 import BlackListTable from './BlackListContents/BlackListTable';
+import blackListActions from './Utils/blackListActions'
 
 
 class Blacklists extends Component{
@@ -20,6 +21,9 @@ class Blacklists extends Component{
         this.setState({
             blacklistItemClicked:item
         })
+    }
+    componentDidMount(){
+        blackListActions.getBlacklist()
     }
     render(){
         return(

@@ -2,6 +2,7 @@
  * Created by sandeepj on 5/7/17.
  */
 import React, {Component} from "react";
+import authActions from './Utils/authActions'
 class SignUp extends Component{
     constructor(props){
         super(props);
@@ -13,31 +14,56 @@ class SignUp extends Component{
             password:'',
             confirmPassword:''
         }
+        this.handleFirstnameChange=this.handleFirstnameChange.bind(this);
+        this.handleLastnameChange=this.handleLastnameChange.bind(this);
+        this.handleEmailChange=this.handleEmailChange.bind(this);
+        this.handlePhoneChange=this.handlePhoneChange.bind(this);
+        this.handlePasswordChange=this.handlePasswordChange.bind(this);
+        this.handleConfirmPasswordChange=this.handleConfirmPasswordChange.bind(this);
+        this.signUp=this.signUp.bind(this);
+
+    }
+    signUp(){
+        authActions.userSignUp(this.state.firstname, this.state.lastname, this.state.email, this.state.phone, this.state.password)
+            .then((response)=>{
+                console.log(response.data)
+            })
     }
     handleFirstnameChange(e){
         this.setState({
             firstname:e.target.value
         })
+        console.log(e.target.value)
     }
     handleLastnameChange(e){
         this.setState({
             lastname:e.target.value
         })
+        console.log(e.target.value)
     }
     handleEmailChange(e){
         this.setState({
             email:e.target.value
         })
+        console.log(e.target.value)
+    }
+    handlePhoneChange(e){
+        this.setState({
+            phone:e.target.value
+        })
+        console.log(e.target.value)
     }
     handlePasswordChange(e){
         this.setState({
             password:e.target.value
         })
+        console.log(e.target.value)
     }
     handleConfirmPasswordChange(e){
         this.setState({
             confirmPassword:e.target.value
         })
+        console.log(e.target.value)
     }
     render(){
         return(
@@ -54,8 +80,8 @@ class SignUp extends Component{
                                 {/*<!-- Begin Form Group -->*/}
                                 <div className="form-group form-group-default">
                                     <label htmlFor="exampleInputFirstName1"><i className="fa fa-user m-xs-r"></i>First Name</label>
-                                    <input  onchange={this.handleFirstnameChange}  type="text" className="form-control" id="exampleInputFirstName1"
-                                           name="exampleInputFirstName1" value=""/>
+                                    <input  onChange={this.handleFirstnameChange}  type="text" className="form-control" id="exampleInputFirstName1"
+                                           name="exampleInputFirstName1"/>
                                 </div>
                                 {/*<!-- End Form Group -->*/}
                             </div>
@@ -102,7 +128,7 @@ class SignUp extends Component{
 
 
                         <p className="m-xl-t m-md-b">
-                            <button className="btn btn-primary w-150">Submit</button>
+                            <button className="btn btn-primary w-150" onClick={this.signUp}>Submit</button>
                         </p>
 
                         <div className="row">

@@ -2,6 +2,26 @@
  * Created by sandeepj on 21/6/17.
  */
 import React, {Component} from "react";
+import authActions from './Utils/authActions'
+import {API_URL} from './constants/APIconstants'
+import {withRouter} from 'react-router-dom'
+const LogoutButton = withRouter(({history})=>(
+    <div className="text-center">
+        <a href="javascript:void(0)" onClick={()=>{
+            UserLogout.logout(()=>history.push('/login'))
+        }}><i className="fa fa-power-off"></i></a>
+    </div>
+))
+const UserLogout={
+    logout(redirect){
+        authActions.userLogout()
+            .then((response)=>{
+                console.log(response.data);
+                // history.push('/')
+                redirect();
+            })
+    }
+}
 class Header extends Component {
     constructor(props){
         super(props);
@@ -10,7 +30,9 @@ class Header extends Component {
             NotificationDropdownClicked:false
         }
         this.handleUserDropdownClick=this.handleUserDropdownClick.bind(this);
+        // this.logout=this.logout.bind(this);
     }
+
     handleUserDropdownClick(){
         this.setState({
             UserDropDownClicked:!this.state.UserDropDownClicked
@@ -21,6 +43,7 @@ class Header extends Component {
             NotificationDropdownClicked:!this.state.NotificationDropdownClicked
         })
     }
+
     render() {
         return (
             <div id="page-header">
@@ -76,7 +99,7 @@ class Header extends Component {
                                     UserDropDownClicked:!this.state.UserDropDownClicked
                                 })
                             }}>
-                                <span className="m-sm-r">Louis Bennet</span><i className="fa fa-angle-down"></i>
+                                <span className="m-sm-r">{this.props.profile.fullName}</span><i className="fa fa-angle-down"></i>
                             </a>
                             <ul className="profile-dropdown dropdown-menu dropdown-menu-right" role="menu">
                                 <li role="presentation">
@@ -84,11 +107,11 @@ class Header extends Component {
                                     <div className="profile-menu-container">
                                         <div className="media">
                                             <div className="profile-image pull-left">
-                                                <img src="images/avatar1.png" alt="Avatar" height="64" width="64"
+                                                <img src={`${API_URL}${this.props.profile.profileImageURL}`} alt="Avatar" height="64" width="64"
                                                      className="img-circle"/>
                                             </div>
                                             <div className="media-body">
-                                                <h4 className="fw-thk m-n">Louis Bennett</h4>
+                                                <h4 className="fw-thk m-n">{this.props.profile.fullName}</h4>
                                                 <p className="fs-sm m-xs-t">Director at <strong><a
                                                     href="javascript:void(0)" className="text-info">Absolut
                                                     Pixels</a></strong></p>
@@ -104,9 +127,10 @@ class Header extends Component {
                                             <div className="text-center">
                                                 <a href="javascript:void(0)"><i className="fa fa-cog fa-fw"></i></a>
                                             </div>
-                                            <div className="text-center">
-                                                <a href="javascript:void(0)"><i className="fa fa-power-off"></i></a>
-                                            </div>
+                                            {/*<div className="text-center">*/}
+                                                {/*<a href="javascript:void(0)"><i className="fa fa-power-off" onClick={this.logout}></i></a>*/}
+                                            {/*</div>*/}
+                                            <LogoutButton/>
                                         </div>
                                     </div>
                                 </li>

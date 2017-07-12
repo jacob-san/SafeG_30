@@ -5,6 +5,7 @@ import React, {Component} from "react";
 import DevicesTable from './ManageDeviceContent/DevicesTable';
 import AddDeviceModal from './ManageDeviceContent/AddDeviceModal';
 import manageDeviceActions from './Utils/manageDeviceActions'
+import authActions from './Utils/authActions'
 
 
 class ManageDevices extends Component {
@@ -45,12 +46,15 @@ class ManageDevices extends Component {
             this.setState({
                 devices:response.data.devices
             })
+                console.log(response.data)
             })
     }
-    // handleDeleteClick(){
-    //
-    // }
-    handleEditClick(){
+    handleDeleteClick(deviceId){
+        console.log(deviceId)
+        manageDeviceActions.deleteDevice(deviceId)
+    }
+    handleEditClick(deviceId){
+        console.log(deviceId)
         this.setState({
             modalTitle:"Edit Device",
             showModal:true
@@ -63,7 +67,8 @@ class ManageDevices extends Component {
     }
     openModal(){
         this.setState({
-            showModal:true
+            showModal:true,
+            modalTitle:"Add new"
         })
     }
 
@@ -105,7 +110,7 @@ class ManageDevices extends Component {
                         {/*<!-- End Panel -->*/}
                     </div>
 
-                    <DevicesTable devices={this.state.devices} handleEditClick={this.handleEditClick}/>
+                    <DevicesTable devices={this.state.devices} handleEditClick={this.handleEditClick} handleDeleteClick={this.handleDeleteClick}/>
                     <AddDeviceModal showModal={this.state.showModal} closeModal={this.closeModal} modalTitle={this.state.modalTitle}/>
                 </div>
         )
