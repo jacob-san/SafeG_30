@@ -4,10 +4,7 @@
 import React, {Component} from "react";
 import DevicesTable from './ManageDeviceContent/DevicesTable';
 import AddDeviceModal from './ManageDeviceContent/AddDeviceModal';
-import manageDeviceActions from './Utils/manageDeviceActions'
-import authActions from './Utils/authActions'
-
-
+import manageDeviceActions from './Actions/manageDeviceActions'
 class ManageDevices extends Component {
     constructor(props) {
         super(props);

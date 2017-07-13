@@ -34,6 +34,9 @@ class SideBar extends Component {
                             <li><Link to="/manage-device"><i className="fa fa-tablet  fa-fw"></i><span>Manage Devices</span></Link></li>
                             {/*<!-- End Mail -->*/}
 
+                            {/*<!-- Begin Mail -->*/}
+                            <li><Link to="/manage-users"><i className="fa fa-user  fa-fw"></i><span>Manage Users</span></Link></li>
+                            {/*<!-- End Mail -->*/}
 
                             {/*<!-- Begin Calendar -->*/}
                             <li><Link to="/manage-events"><i className="fa fa-calendar fa-fw"></i><span>Manage Events</span></Link></li>

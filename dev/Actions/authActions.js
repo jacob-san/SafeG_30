@@ -5,7 +5,6 @@ import axios from 'axios';
 import {API_URL} from '../constants/APIconstants'
 class authActions{
    static validateAuthToken(){
-       console.log("validateAuthToken: called******")
         return axios({
             url:API_URL+'/api/validate-auth-token',
             method:'get',
@@ -13,7 +12,7 @@ class authActions{
         })
             .then((response)=>{
            if(response.data.status==="success"){
-               console.log("******authTokenValidated")
+               console.log("Authtoken validated: User logged in")
                return true
            }
            return false

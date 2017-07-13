@@ -32,6 +32,7 @@ var config = {
   },
     devServer:{
       historyApiFallback:true,
+        port:8082
     }
 };
  

@@ -3,7 +3,7 @@
  */
 import React, {Component} from "react";
 import {Link,Redirect} from 'react-router-dom'
-import authActions from './Utils/authActions'
+import authActions from './Actions/authActions'
 class Login extends Component{
     constructor(props){
         super(props);
@@ -38,6 +38,7 @@ class Login extends Component{
         })
     }
     render(){
+        console.log("props passed: "+this.props.location.state)
         const { from } = this.props.location.state || { from: { pathname: '/' } }
         const { redirectToReferrer } = this.state
         if(redirectToReferrer){

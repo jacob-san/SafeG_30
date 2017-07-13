@@ -6,8 +6,8 @@ import InformationBar from './DashboardContents/InformationBar';
 import EventsTable from './DashboardContents/EventsTable';
 import LatestMembers from './DashboardContents/LatestMembers';
 import Locations from './DashboardContents/Locations';
-import Country from './DashboardContents/Country';
-import dashboardActions from './Utils/dashboardActions'
+import CountriesList from './DashboardContents/CountriesList';
+import dashboardActions from './Actions/dashboardActions'
 
 class Dashboard extends Component {
     constructor(props) {
@@ -27,7 +27,7 @@ class Dashboard extends Component {
     componentDidMount(){
         dashboardActions.getDashboardCounts()
             .then((response)=>{
-                console.log(JSON.stringify(response.data));
+                console.log(response.data);
                 this.setState({
                     deviceCount:response.data.counts.deviceCount,
                     eventsCount:response.data.counts.eventCount,
@@ -98,9 +98,19 @@ class Dashboard extends Component {
                         </div>
                     </div>
                     <LatestMembers latestUsers={this.state.latestUsers}/>
-                    <div className="ui two column stackable grid">
-                        <Locations/>
-                        <Country/>
+                    <div className="row row-xl">
+                        <div className="col-md-8">
+                            <div className="panel-x panel-transparent">
+                                <div className="panel-body">
+                                    <p className="header text-uppercase">Locations
+                                    </p>
+                                        <div id="map">
+                                            <Locations/>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                        <CountriesList/>
                     </div>
                 </div>
             </div>

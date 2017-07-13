@@ -3,56 +3,48 @@
  */
 import React, {Component} from 'react';
 import {Modal, Button} from 'react-bootstrap';
-import manageDeviceactions from '../Actions/manageDeviceActions'
-class AddDeviceModal extends Component {
+import manageUserActions from '../Actions/manageUserActions'
+class AddUserModal extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            name: '',
-            make: '',
-            model: '',
-            token: '',
-            userID:'',
+            firstname: '',
+            lastname: '',
+            email: '',
+            phone: '',
             status: 'active',
             isStatusChecked: true
         }
-        this.onChangeName = this.onChangeName.bind(this);
-        this.onChangeMake = this.onChangeMake.bind(this);
-        this.onChangeModel = this.onChangeModel.bind(this);
-        this.onChangeToken = this.onChangeToken.bind(this);
+        this.onChangeFirstName = this.onChangeFirstName.bind(this);
+        this.onChangeLastname = this.onChangeLastname.bind(this);
+        this.onChangeEmail = this.onChangeEmail.bind(this);
+        this.onChangePhone = this.onChangePhone.bind(this);
         this.onChangeStatus = this.onChangeStatus.bind(this);
         this.handleSaveChanges = this.handleSaveChanges.bind(this);
-        this.onChangeUserID = this.onChangeUserID.bind(this);
     }
 
-    onChangeName(e) {
+    onChangeFirstName(e) {
         this.setState({
             name: e.target.value
         })
 
     }
 
-    onChangeMake(e) {
+    onChangeLastname(e) {
         this.setState({
             make: e.target.value
         })
     }
 
-    onChangeModel(e) {
+    onChangeEmail(e) {
         this.setState({
             model: e.target.value
         })
     }
 
-    onChangeToken(e) {
+    onChangePhone(e) {
         this.setState({
             token: e.target.value
-        })
-    }
-
-    onChangeUserID(e) {
-        this.setState({
-            userID: e.target.value
         })
     }
 
@@ -73,7 +65,7 @@ class AddDeviceModal extends Component {
     }
 
     handleSaveChanges() {
-        manageDeviceactions.addNewDevice(this.state.name, this.state.make, this.state.model, this.state.token, this.state.userID, this.state.status)
+        manageUserActions.addNewUser(this.state.firstname, this.state.lastname, this.state.email, this.state.phone, this.state.status)
         // .then((response) => {
         //     console.log(response.data)
         // })
@@ -93,10 +85,10 @@ class AddDeviceModal extends Component {
                                     {/*<!-- Begin Required -->*/}
                                     <div className="form-group">
                                         <label htmlFor="exampleInputRequired"
-                                               className="control-label col-md-3 col-xs-12">Device Name</label>
+                                               className="control-label col-md-3 col-xs-12">First Name</label>
                                         <div className="col-md-8 col-xs-12">
-                                            <input type="text" className="form-control" placeholder="Device Name"
-                                                   onChange={this.onChangeName}/>
+                                            <input type="text" className="form-control" placeholder="First Name"
+                                                   onChange={this.onChangeFirstName}/>
                                         </div>
                                     </div>
                                     {/*<!-- End Required -->*/}
@@ -104,22 +96,10 @@ class AddDeviceModal extends Component {
                                     {/*<!-- Begin Required -->*/}
                                     <div className="form-group">
                                         <label htmlFor="exampleInputRequired"
-                                               className="control-label col-md-3 col-xs-12">Device Make</label>
+                                               className="control-label col-md-3 col-xs-12">Last Name</label>
                                         <div className="col-md-8 col-xs-12">
-                                            <input type="text" className="form-control" placeholder="Device Make"
-                                                   onChange={this.onChangeMake}/>
-                                        </div>
-                                    </div>
-                                    {/*<!-- End Required -->*/}
-
-
-                                    {/*<!-- Begin Required -->*/}
-                                    <div className="form-group">
-                                        <label htmlFor="exampleInputRequired"
-                                               className="control-label col-md-3 col-xs-12">Device Model</label>
-                                        <div className="col-md-8 col-xs-12">
-                                            <input type="text" className="form-control" placeholder="Device Model"
-                                                   onChange={this.onChangeModel}/>
+                                            <input type="text" className="form-control" placeholder="Last Name"
+                                                   onChange={this.onChangeLastname}/>
                                         </div>
                                     </div>
                                     {/*<!-- End Required -->*/}
@@ -128,29 +108,31 @@ class AddDeviceModal extends Component {
                                     {/*<!-- Begin Required -->*/}
                                     <div className="form-group">
                                         <label htmlFor="exampleInputRequired"
-                                               className="control-label col-md-3 col-xs-12">Device Token</label>
+                                               className="control-label col-md-3 col-xs-12">Email</label>
                                         <div className="col-md-8 col-xs-12">
-                                            <input type="text" className="form-control" placeholder="Device Token"
-                                                   onChange={this.onChangeToken}/>
+                                            <input type="text" className="form-control" placeholder="Email"
+                                                   onChange={this.onChangeEmail}/>
                                         </div>
                                     </div>
                                     {/*<!-- End Required -->*/}
 
-                                    {/*<!-- Begin Required -->*/}
-                                    <div className="form-group">
-                                        <label htmlFor="exampleInputRequired"
-                                               className="control-label col-md-3 col-xs-12">User ID</label>
-                                        <div className="col-md-8 col-xs-12">
-                                            <input type="text" className="form-control" placeholder="User ID"
-                                                   onChange={this.onChangeUserID}/>
-                                        </div>
-                                    </div>
-                                    {/*<!-- End Required -->*/}
 
                                     {/*<!-- Begin Required -->*/}
                                     <div className="form-group">
                                         <label htmlFor="exampleInputRequired"
-                                               className="control-label col-md-3 col-xs-12">Device Status</label>
+                                               className="control-label col-md-3 col-xs-12">Phone</label>
+                                        <div className="col-md-8 col-xs-12">
+                                            <input type="text" className="form-control" placeholder="Phone"
+                                                   onChange={this.onChangePhone}/>
+                                        </div>
+                                    </div>
+                                    {/*<!-- End Required -->*/}
+
+
+                                    {/*<!-- Begin Required -->*/}
+                                    <div className="form-group">
+                                        <label htmlFor="exampleInputRequired"
+                                               className="control-label col-md-3 col-xs-12">User Status</label>
                                         <div className="col-md-8 col-xs-12">
                                             <div className="inline field">
                                                 <div className="ui checkbox">
@@ -172,10 +154,6 @@ class AddDeviceModal extends Component {
                                             </div>
                                         </div>
                                     </div>
-
-                                    <div className="ui header center aligned container m-sm-r m-sm-b">
-                                        <h5> Device Name is required</h5>
-                                    </div>
                                     {/*<!-- End Required -->*/}
                                 </form>
 
@@ -193,4 +171,4 @@ class AddDeviceModal extends Component {
         )
     }
 }
-export default AddDeviceModal;
+export default AddUserModal;

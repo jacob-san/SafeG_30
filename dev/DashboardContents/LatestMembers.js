@@ -3,6 +3,7 @@
  */
 import React, {Component} from "react";
 import LatestMember from './LatestMember';
+import {Link} from 'react-router-dom'
 class LatestMembers extends Component{
     constructor(props){
         super(props);
@@ -15,8 +16,8 @@ class LatestMembers extends Component{
                             <LatestMember key={index} memb={memb}/>
                         );
                     })}
-                <div className="ui right aligned container m-xl-b"><a href="javascript:void(0)" className="text-info">VIEW
-                    ALL USERS</a></div>
+                <div className="ui right aligned container m-xl-b"><Link to="manage-users" href="javascript:void(0)" className="text-info">VIEW
+                    ALL USERS</Link></div>
             </div>
         );
     }

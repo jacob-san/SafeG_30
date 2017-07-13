@@ -4,12 +4,25 @@
 import React, {Component} from 'react';
 import EventSearch from './EventSearch';
 import EventsTableRow from './EventsTableRow'
+import ReactTable from 'react-table'
+import 'react-table/react-table.css'
+
+const columns = [
+    {   Header: 'RISK CODE',
+        accessor: 'riskCode'},
+    {   Header: 'EVENT TYPE',
+        accessor: 'eventType'},
+    {   Header: 'HOST',
+        accessor: 'host'},
+    {   Header: 'TIME',
+        accessor: 'time'}
+]
 
 class EventsTable extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            trows: [{riskCode: "1", eventType: "ALERT_SITE_TYPE", host: "http://mypeeps.me", time: "FRI Feb 26 2016"},
+            alertEvents: [{riskCode: "1", eventType: "ALERT_SITE_TYPE", host: "http://mypeeps.me", time: "FRI Feb 26 2016"},
                 {riskCode: "Brenden Wagner", eventType: "Software Engineer", host: "San Francisco", time: "$206,850"},
                 {riskCode: "1", eventType: "ALERT_SITE_TYPE", host: "http://mypeeps.me", time: "FRI Feb 26 2016"},
                 {riskCode: "Brenden Wagner", eventType: "Software Engineer", host: "San Francisco", time: "$206,850"},
@@ -18,15 +31,30 @@ class EventsTable extends Component {
                 {riskCode: "1", eventType: "ALERT_SITE_TYPE", host: "http://mypeeps.me", time: "FRI Feb 26 2016"},
                 {riskCode: "Brenden Wagner", eventType: "Software Engineer", host: "San Francisco", time: "$206,850"},
                 {riskCode: "1", eventType: "ALERT_SITE_TYPE", host: "http://mypeeps.me", time: "FRI Feb 26 2016"},
-                {riskCode: "Brenden Wagner", eventType: "Software Engineer", host: "San Francisco", time: "$206,850"},],
-            totalPages:"",
-            currentPage:"",
-            numberOfEntries:"",
-            entriesShowing:[{first:"", last:""}],
+                {riskCode: "Brenden Wagner", eventType: "Software Engineer", host: "San Francisco", time: "$206,850"},
+                {riskCode: "Brenden Wagner", eventType: "Software Engineer", host: "San Francisco", time: "$206,850"},
+                {riskCode: "1", eventType: "ALERT_SITE_TYPE", host: "http://mypeeps.me", time: "FRI Feb 26 2016"},
+                {riskCode: "Brenden Wagner", eventType: "Software Engineer", host: "San Francisco", time: "$206,850"},
+                {riskCode: "1", eventType: "ALERT_SITE_TYPE", host: "http://mypeeps.me", time: "FRI Feb 26 2016"},
+                {riskCode: "Brenden Wagner", eventType: "Software Engineer", host: "San Francisco", time: "$206,850"},
+                {riskCode: "1", eventType: "ALERT_SITE_TYPE", host: "http://mypeeps.me", time: "FRI Feb 26 2016"},
+                {riskCode: "Brenden Wagner", eventType: "Software Engineer", host: "San Francisco", time: "$206,850"},
+                {riskCode: "1", eventType: "ALERT_SITE_TYPE", host: "http://mypeeps.me", time: "FRI Feb 26 2016"},
+                {riskCode: "Brenden Wagner", eventType: "Software Engineer", host: "San Francisco", time: "$206,850"}],
+            totalPages: "",
+            currentPage: "",
+            numberOfEntries: "",
+            entriesShowing: [{first: "", last: ""}],
         }
     }
 
     render() {
+        var style = {
+            color:'black',
+            fontWeight:'bold',
+            textAlign: 'left',
+            fontSize:'12px'
+        };
         return (
             <div className="eleven wide column bg-color">
 
@@ -46,7 +74,6 @@ class EventsTable extends Component {
                                 <div id="datatable-tools_wrapper" className="dataTables_wrapper no-footer">
                                     <div className="pull-left">
                                         <p className="header text-uppercase">Latest Alert Event</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. tenetur. Quas.</p>
                                     </div>
                                     <div className="DTTT_container"></div>
                                     <div className="clear"></div>
@@ -56,70 +83,27 @@ class EventsTable extends Component {
                                     <div>
                                         <table id="datatable-tools" className="table dataTable no-footer" role="grid"
                                                aria-describedby="datatable-tools_info">
-                                            <thead>
-                                            <tr role="row">
-                                                <th className="sorting_asc" tabIndex="0" aria-controls="datatable-tools"
-                                                    rowSpan="1" colSpan="1" aria-sort="ascending"
-                                                    aria-label="Name: activate to sort column descending"
-                                                    style={{width: 272+'px'}}>RISK CODE
-                                                </th>
-                                                <th className="sorting" tabIndex="0" aria-controls="datatable-tools"
-                                                    rowSpan="1" colSpan="1"
-                                                    aria-label="Position: activate to sort column ascending"
-                                                    style={{width: 404+'px'}}>EVENT TYPE
-                                                </th>
-                                                <th className="sorting" tabIndex="0" aria-controls="datatable-tools"
-                                                    rowSpan="1" colSpan="1"
-                                                    aria-label="Office: activate to sort column ascending"
-                                                    style={{width: 214+'px'}}>HOST
-                                                </th>
-                                                <th className="sorting" tabIndex="0" aria-controls="datatable-tools"
-                                                    rowSpan="1" colSpan="1"
-                                                    aria-label="Salary: activate to sort column ascending"
-                                                    style={{width: 182+'px'}}>TIME
-                                                </th>
-                                            </tr>
-                                            </thead>
+                                            <div>
+                                                <ReactTable
+                                                    className="-striped -highlight"
+                                                    data={this.state.alertEvents}
+                                                    columns={columns}
+                                                    defaultPageSize="10"
+                                                    pageSizeOptions= {[10, 20]}
+                                                    sortable={false}
+                                                    headerStyle={{
+                                                        color:'black',
+                                                        fontWeight:'bold',
+                                                        textAlign: 'left',
+                                                        fontSize:'12px'}}
+                                                />
+                                                <br />
+                                                <br />
+                                            </div>
 
                                         </table>
                                     </div>
-                                    <div className="h-250 table-responsive col-md-12">
-                                        <table id="datatable-tools" className="table dataTable no-footer" role="grid"
-                                               aria-describedby="datatable-tools_info">
 
-                                                <tbody>
-
-                                                {this.state.trows.map((row, index)=>{
-                                                    return <EventsTableRow key={index} tableRow={row}/>
-                                                })}
-
-                                                </tbody>
-
-                                        </table>
-                                    </div>
-                                    <div className="dataTables_info" id="datatable-tools_info" role="status"
-                                         aria-live="polite">Showing 1 to 10 of 57 entries
-                                    </div>
-                                    <div className="dataTables_paginate paging_simple_numbers"
-                                         id="datatable-tools_paginate"><a className="paginate_button previous disabled"
-                                                                          aria-controls="datatable-tools"
-                                                                          data-dt-idx="0" tabIndex="0"
-                                                                          id="datatable-tools_previous">Previous</a><span><a
-                                        className="paginate_button current" aria-controls="datatable-tools"
-                                        data-dt-idx="1" tabIndex="0">1</a><a className="paginate_button "
-                                                                             aria-controls="datatable-tools"
-                                                                             data-dt-idx="2" tabIndex="0">2</a><a
-                                        className="paginate_button " aria-controls="datatable-tools" data-dt-idx="3"
-                                        tabIndex="0">3</a><a className="paginate_button "
-                                                             aria-controls="datatable-tools" data-dt-idx="4"
-                                                             tabIndex="0">4</a><a className="paginate_button "
-                                                                                  aria-controls="datatable-tools"
-                                                                                  data-dt-idx="5" tabIndex="0">5</a><a
-                                        className="paginate_button " aria-controls="datatable-tools" data-dt-idx="6"
-                                        tabIndex="0">6</a></span><a className="paginate_button next"
-                                                                    aria-controls="datatable-tools" data-dt-idx="7"
-                                                                    tabIndex="0" id="datatable-tools_next">Next</a>
-                                    </div>
                                 </div>
                                 {/*<!-- End Datatable Tools -->*/}
                             </div>
@@ -127,7 +111,6 @@ class EventsTable extends Component {
                         </div>
                         {/*<!-- End Panel -->*/}
                     </div>
-
 
 
                     {/*<!-- End Table -->*/}
@@ -140,5 +123,7 @@ class EventsTable extends Component {
     }
 }
 export default EventsTable;
+
+
 
 

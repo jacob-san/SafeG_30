@@ -36,5 +36,12 @@ class dashboardActions {
            withCredentials:true
        })
     }
+    static getCountriesList(){
+        return axios({
+            url:API_URL+'/api/user/list-locations',
+            method:'get',
+            withCredentials:true
+        })
+    }
 }
 export default dashboardActions;

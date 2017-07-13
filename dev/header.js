@@ -2,7 +2,7 @@
  * Created by sandeepj on 21/6/17.
  */
 import React, {Component} from "react";
-import authActions from './Utils/authActions'
+import authActions from './Actions/authActions'
 import {API_URL} from './constants/APIconstants'
 import {withRouter} from 'react-router-dom'
 const LogoutButton = withRouter(({history})=>(
@@ -93,12 +93,12 @@ class Header extends Component {
                                 </div>
                             </a>
                         </li>
-                        <li className={!this.state.UserDropDownClicked? 'dropdown':'dropdown open'}>
-                            <a  className="text-default" data-toggle="dropdown" onClick={()=>{
-                                this.setState({
-                                    UserDropDownClicked:!this.state.UserDropDownClicked
-                                })
-                            }}>
+                        <li className={!this.state.UserDropDownClicked? 'dropdown':'dropdown open'} onClick={()=>{
+                            this.setState({
+                                UserDropDownClicked:!this.state.UserDropDownClicked
+                            })
+                        }}>
+                            <a  className="text-default" data-toggle="dropdown" >
                                 <span className="m-sm-r">{this.props.profile.fullName}</span><i className="fa fa-angle-down"></i>
                             </a>
                             <ul className="profile-dropdown dropdown-menu dropdown-menu-right" role="menu">

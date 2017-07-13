@@ -15,14 +15,15 @@ import Header from './header';
 import SideBar from './sidebar';
 import Footer from './footer';
 import ManageDevices from './ManageDevices'
+import ManageUsers from './ManageUsers'
 import ManageEvents from './ManageEvents'
 import SiteScanner from './SiteScanner'
 import SiteAlerts from './SiteAlerts'
 import Blacklists from './Blacklists'
 import Login from './Login'
 import SignUp from './SignUp'
-import authActions from './Utils/authActions'
-import dashboardActions from './Utils/dashboardActions'
+import authActions from './Actions/authActions'
+import dashboardActions from './Actions/dashboardActions'
 class App extends Component {
     constructor(props) {
         super(props);
@@ -62,7 +63,6 @@ class App extends Component {
     //         })
     // }
     render() {
-        console.log("LoggedIn:***"+this.state.isLoggedIn);
         return (
         <Router>
             <div className={this.state.navbarCollapsed ? 'navbar-collapsed' : ''}>
@@ -73,11 +73,13 @@ class App extends Component {
                     <Header handleNavbarClick={this.handleMenuClick} profile={this.state.profile}/>
                     <SideBar/>
                     <Switch>
+
                         <PrivateRoute exact path="/" component={Dashboard}/>
                         {/*<Route exact path="/" render={()=>{*/}
                              {/*this.state.isLoggedIn?(<Redirect to="/login"/>):(<Dashboard/>)*/}
                         {/*}}/>*/}
                         <PrivateRoute path="/manage-device" component={ManageDevices}/>
+                        <PrivateRoute path="/manage-users" component={ManageUsers}/>
                         <PrivateRoute path="/manage-events" component={ManageEvents}/>
                         <PrivateRoute path="/site-scanner" component={SiteScanner}/>
                         <PrivateRoute path="/site-alerts" component={SiteAlerts}/>
@@ -90,8 +92,12 @@ class App extends Component {
         )
     }
 }
+const LoginRoute = (()=>({}
+
+))
 const PrivateRoute = ({ component: Component, ...rest }) => (
     <Route {...rest} render={props => (
+        console.log(...rest),
        authActions.validateAuthToken() ? (
             <Component {...props}/>
         ) : (

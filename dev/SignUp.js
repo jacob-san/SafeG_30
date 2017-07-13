@@ -2,7 +2,7 @@
  * Created by sandeepj on 5/7/17.
  */
 import React, {Component} from "react";
-import authActions from './Utils/authActions'
+import authActions from './Actions/authActions'
 class SignUp extends Component{
     constructor(props){
         super(props);

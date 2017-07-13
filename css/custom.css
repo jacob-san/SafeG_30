@@ -284,7 +284,10 @@
 .todo-container .todo-body .todo-aside .todo-projects #todo-projects-ul > li {
     padding: 0 0px 0 30px !important;
 }
-
+.todo-container .todo-body .todo-aside .todo-projects #todo-projects-ul > li.active {
+    background: #efefef;
+}
+.todo-container .todo-body .todo-aside .todo-projects #todo-projects-ul > li:hover {background: #efefef;}
 .todo-container .todo-body .todo-aside {
     width: 400px !important;
 }
@@ -371,8 +374,9 @@
     vertical-align: middle !important;
 }
 
-.
-
+.todo-container .todo-body .todo-project-content { height: 85% !important;}
+.table > tbody > tr > th { text-transform:uppercase!important}
+.navbar-collapsed #page-sidebar {z-index: 5000!important}
 @media (min-width: 768px) {
     .navbar-nav > li > a {
         padding-top: 15px;

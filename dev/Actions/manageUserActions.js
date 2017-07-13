@@ -1,28 +1,27 @@
 /**
- * Created by sandeepj on 6/7/17.
+ * Created by sandeepj on 13/7/17.
  */
 import axios from 'axios';
 import {API_URL} from '../constants/APIconstants'
-class manageDeviceActions {
-   static getDeviceList() {
+class manageUserActions {
+    static getUserList() {
         return axios({
-            url: API_URL + '/api/user/list-devices',
+            url: API_URL + '/api/user/list-users',
             method: 'get',
             withCredentials: true
         })
     }
-  static  addNewDevice(name, make, model, token,userID, status) {
-       // console.log(name+", "+make+", "+model+", "+token+", "+userID+", "+status)
+    static  addNewUser(firstname, lastname, email, phone, status) {
+        // console.log(name+", "+make+", "+model+", "+token+", "+userID+", "+status)
         return axios({
-            url: API_URL + '/api/user/create-device',
+            url: API_URL + '/api/user/create-user',
             method: 'post',
             data: {
-                deviceName: name,
-                deviceMake: make,
-                deviceModel: model,
-                deviceToken: token,
-                userId:userID,
-                deviceStatus: status
+                firstName: firstname,
+                lastName: lastname,
+                email: email,
+                phone: phone,
+                userStatus: status
             },
             withCredentials: true,
             contentType: "application/json"
@@ -35,19 +34,19 @@ class manageDeviceActions {
         //             status: status,
         // })
     }
-  static  deleteDevice(deviceId) {
+    static  deleteUser(userId) {
         return axios({
-            url: API_URL + '/api/user/delete-device',
+            url: API_URL + '/api/user/delete-user',
             method: 'post',
             data: {
-                deviceId: deviceId
+                userId: userId
             },
             withCredentials:true
         })
     }
-   static editDevice(name, make, model, token, status) {
+    static editUser(firstname, lastname, email, phone, status) {
         return axios({
-            url: API_URL + '',
+            url: API_URL + '/api/user/update-user',
             method: 'post',
             data: [{
                 deviceName: '',
@@ -59,4 +58,4 @@ class manageDeviceActions {
         })
     }
 }
-export default manageDeviceActions;
+export default manageUserActions;

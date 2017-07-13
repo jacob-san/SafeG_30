@@ -6,7 +6,7 @@ import BlacklistSearch from './BlackListContents/BlacklistSearch';
 import Blacklist_listItem from './BlackListContents/Blacklist_listItem';
 import Blacklist_list from './BlackListContents/Blacklist_list';
 import BlackListTable from './BlackListContents/BlackListTable';
-import blackListActions from './Utils/blackListActions'
+import blackListActions from './Actions/blackListActions'
 
 
 class Blacklists extends Component{

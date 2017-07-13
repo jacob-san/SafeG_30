@@ -8,7 +8,6 @@ class LatestMember extends Component{
         super(props);
     }
     render(){
-        console.log(`${API_URL}${this.props.memb.profileImageURL}`)
         return(
             <div className="column">
               <div className="mini-user-widget  grey-button">
